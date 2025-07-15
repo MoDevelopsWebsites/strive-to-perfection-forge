@@ -46,10 +46,19 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" className="esports-button text-lg px-8 py-4">
+            <Button 
+              size="lg" 
+              className="esports-button text-lg px-8 py-4"
+              onClick={() => window.open('https://discord.gg/Hyu6j4RFrp', '_blank')}
+            >
               Join Our Team
             </Button>
-            <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 text-lg px-8 py-4">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 text-lg px-8 py-4"
+              onClick={() => window.open('https://www.youtube.com/@S2PGGs', '_blank')}
+            >
               Watch Highlights
             </Button>
           </div>

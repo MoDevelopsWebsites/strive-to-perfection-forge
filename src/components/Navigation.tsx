@@ -15,6 +15,16 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   const navItems = [
     { name: 'Team', href: '#team', icon: Users },
     { name: 'Matches', href: '#matches', icon: Trophy },
@@ -32,9 +42,13 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-gaming font-bold text-lg">S2P</span>
+        <div className="flex items-center space-x-3">
+            <div className="w-12 h-12 rounded-full overflow-hidden bg-gradient-primary p-0.5 purple-glow">
+              <img 
+                src="/lovable-uploads/6af2116b-6281-4072-b96b-cec7ad59b43a.png" 
+                alt="S2PGGs Logo" 
+                className="w-full h-full object-cover rounded-full bg-background"
+              />
             </div>
             <div className="hidden sm:block">
               <h1 className="font-gaming font-bold text-xl text-primary glow-text">
@@ -49,20 +63,23 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
-              <a
+              <button
                 key={item.name}
-                href={item.href}
+                onClick={() => scrollToSection(item.href)}
                 className="nav-link flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-muted/50 transition-all duration-300"
               >
                 <item.icon size={16} />
                 <span className="font-display font-medium">{item.name}</span>
-              </a>
+              </button>
             ))}
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button className="esports-button">
+            <Button 
+              className="esports-button"
+              onClick={() => window.open('https://discord.gg/Hyu6j4RFrp', '_blank')}
+            >
               Join S2PGGs
             </Button>
           </div>
@@ -85,18 +102,23 @@ const Navigation = () => {
           <div className="md:hidden animate-slide-in-left">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-card/95 backdrop-blur-md rounded-xl border border-border/50 mt-2">
               {navItems.map((item) => (
-                <a
+                <button
                   key={item.name}
-                  href={item.href}
-                  className="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-muted/50 transition-all duration-300"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => {
+                    scrollToSection(item.href);
+                    setIsMenuOpen(false);
+                  }}
+                  className="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-muted/50 transition-all duration-300 w-full text-left"
                 >
                   <item.icon size={18} />
                   <span className="font-display font-medium">{item.name}</span>
-                </a>
+                </button>
               ))}
               <div className="pt-2">
-                <Button className="esports-button w-full">
+                <Button 
+                  className="esports-button w-full"
+                  onClick={() => window.open('https://discord.gg/Hyu6j4RFrp', '_blank')}
+                >
                   Join S2PGGs
                 </Button>
               </div>

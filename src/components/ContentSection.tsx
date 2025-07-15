@@ -1,7 +1,9 @@
-import { Play, Youtube, Twitch, Camera, TrendingUp, Eye } from 'lucide-react';
+import { useState } from 'react';
+import { Play, Youtube, Twitch, Camera, TrendingUp, Eye, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const ContentSection = () => {
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const contentTypes = [
     {
       icon: Youtube,
@@ -26,30 +28,27 @@ const ContentSection = () => {
     }
   ];
 
-  const recentContent = [
+  const recentVideos = [
     {
-      title: 'Championship Victory Montage',
+      id: 'hQAA7k7aYY8',
+      title: 'Latest S2PGGs Highlights',
       type: 'Highlight Reel',
-      views: '125K',
-      duration: '8:42'
+      views: '15K',
+      thumbnail: `https://img.youtube.com/vi/hQAA7k7aYY8/maxresdefault.jpg`
     },
     {
-      title: 'Advanced Building Techniques',
-      type: 'Tutorial',
-      views: '89K',
-      duration: '12:15'
+      id: '4AvT8Cn-FdE',
+      title: 'Tournament Performance',
+      type: 'Competition',
+      views: '12K',
+      thumbnail: `https://img.youtube.com/vi/4AvT8Cn-FdE/maxresdefault.jpg`
     },
     {
-      title: 'Behind the Scenes: Tournament Prep',
-      type: 'Documentary',
-      views: '67K',
-      duration: '15:30'
-    },
-    {
-      title: 'Team Scrimmage Highlights',
-      type: 'Gameplay',
-      views: '45K',
-      duration: '6:28'
+      id: 'FHEv_O8XgwI',
+      title: 'Team Strategy Breakdown',
+      type: 'Analysis',
+      views: '8K',
+      thumbnail: `https://img.youtube.com/vi/FHEv_O8XgwI/maxresdefault.jpg`
     }
   ];
 
@@ -100,24 +99,33 @@ const ContentSection = () => {
         <div className="gaming-card p-8 max-w-6xl mx-auto">
           <div className="flex items-center justify-between mb-8">
             <h3 className="text-2xl font-gaming font-bold text-accent">
-              RECENT CONTENT
+              RECENT VIDEOS
             </h3>
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-              View All Content
+            <Button 
+              variant="outline" 
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              onClick={() => window.open('https://www.youtube.com/@S2PGGs', '_blank')}
+            >
+              View Channel
             </Button>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {recentContent.map((video, index) => (
+          <div className="grid md:grid-cols-3 gap-6">
+            {recentVideos.map((video, index) => (
               <div 
-                key={video.title}
+                key={video.id}
                 className="group cursor-pointer hover-lift animate-slide-in-right"
                 style={{ animationDelay: `${index * 0.1}s` }}
+                onClick={() => setSelectedVideo(video.id)}
               >
-                <div className="relative bg-muted/30 rounded-lg p-6 h-40 flex items-center justify-center mb-4 overflow-hidden">
-                  <Play className="w-12 h-12 text-primary group-hover:scale-110 transition-transform duration-300" />
-                  <div className="absolute top-3 right-3 bg-background/80 rounded px-2 py-1 text-xs font-display">
-                    {video.duration}
+                <div className="relative bg-muted/30 rounded-lg overflow-hidden mb-4">
+                  <img 
+                    src={video.thumbnail} 
+                    alt={video.title}
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <Play className="w-12 h-12 text-primary" fill="currentColor" />
                   </div>
                 </div>
                 <h4 className="font-display font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
@@ -135,6 +143,30 @@ const ContentSection = () => {
           </div>
         </div>
 
+        {/* Video Modal */}
+        {selectedVideo && (
+          <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 modal-enter">
+            <div className="relative w-full max-w-4xl bg-background rounded-xl overflow-hidden shadow-elevated">
+              <button
+                onClick={() => setSelectedVideo(null)}
+                className="absolute top-4 right-4 z-10 p-2 bg-background/80 rounded-full hover:bg-background transition-colors hover:scale-110"
+              >
+                <X className="w-6 h-6" />
+              </button>
+              <div className="aspect-video">
+                <iframe
+                  src={`https://www.youtube.com/embed/${selectedVideo}?autoplay=1`}
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* CTA Section */}
         <div className="text-center mt-16">
           <div className="gaming-card p-8 max-w-2xl mx-auto">
@@ -145,13 +177,20 @@ const ContentSection = () => {
               Subscribe to our channels and never miss epic content from S2PGGs
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="esports-button">
+              <Button 
+                className="esports-button"
+                onClick={() => window.open('https://www.youtube.com/@S2PGGs', '_blank')}
+              >
                 <Youtube className="w-4 h-4 mr-2" />
                 Subscribe on YouTube
               </Button>
-              <Button variant="outline" className="border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white">
+              <Button 
+                variant="outline" 
+                className="border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white"
+                onClick={() => window.open('https://discord.gg/Hyu6j4RFrp', '_blank')}
+              >
                 <Twitch className="w-4 h-4 mr-2" />
-                Follow on Twitch
+                Join Discord
               </Button>
             </div>
           </div>
