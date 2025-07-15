@@ -1,5 +1,12 @@
-import { Crown, Star, Users, Trophy } from 'lucide-react';
+import { Crown, Star, Users, Trophy, Shield, Settings, BarChart3, Briefcase } from 'lucide-react';
 import teamPhoto from '@/assets/team-photo.jpg';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const TeamSection = () => {
   const leadership = [
@@ -13,24 +20,45 @@ const TeamSection = () => {
     {
       name: 'Stunna',
       role: 'COO',
-      icon: Star,
+      icon: Shield,
       description: 'Operations mastermind ensuring peak performance across all divisions.',
       achievements: ['Tournament Coordination', 'Team Development', 'Performance Analytics']
     },
     {
       name: 'Cowen',
       role: 'COO',
-      icon: Star,
+      icon: Users,
       description: 'Strategic operations leader focused on competitive excellence.',
       achievements: ['Tactical Analysis', 'Player Coordination', 'Content Strategy']
+    },
+    {
+      name: 'Bando',
+      role: 'COS',
+      icon: Settings,
+      description: 'Chief Operating Strategist overseeing daily operations and team coordination.',
+      achievements: ['Strategic Planning', 'Workflow Optimization', 'Team Management']
+    },
+    {
+      name: 'Clxud',
+      role: 'CAO',
+      icon: BarChart3,
+      description: 'Chief Analytics Officer driving data-driven decisions and performance metrics.',
+      achievements: ['Performance Analytics', 'Data Insights', 'Growth Metrics']
+    },
+    {
+      name: 'Medo',
+      role: 'CSO',
+      icon: Briefcase,
+      description: 'Chief Strategy Officer leading competitive initiatives and market expansion.',
+      achievements: ['Strategic Vision', 'Competitive Analysis', 'Market Expansion']
     }
   ];
 
   const teamStats = [
-    { label: 'Active Players', value: '12+', icon: Users },
-    { label: 'Tournament Wins', value: '25+', icon: Trophy },
-    { label: 'Content Creators', value: '8+', icon: Star },
-    { label: 'Years Experience', value: '4+', icon: Crown }
+    { label: 'Active Players', value: '50+', icon: Users },
+    { label: 'Tournament Wins', value: '75+', icon: Trophy },
+    { label: 'Content Creators', value: '25+', icon: Star },
+    { label: 'Years Experience', value: '4', icon: Crown }
   ];
 
   return (
@@ -47,39 +75,46 @@ const TeamSection = () => {
           </p>
         </div>
 
-        {/* Leadership Team */}
+        {/* Leadership Team Carousel */}
         <div className="mb-16">
           <h3 className="text-2xl font-gaming font-bold text-center mb-8 text-accent">
             LEADERSHIP
           </h3>
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {leadership.map((leader, index) => (
-              <div 
-                key={leader.name}
-                className="gaming-card p-8 hover-lift text-center animate-slide-in-left"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4 purple-glow">
-                  <leader.icon className="w-8 h-8 text-primary-foreground" />
-                </div>
-                <h4 className="text-2xl font-gaming font-bold text-primary mb-2">
-                  {leader.name}
-                </h4>
-                <p className="text-accent font-display font-semibold mb-4">
-                  {leader.role}
-                </p>
-                <p className="text-muted-foreground mb-6 font-display">
-                  {leader.description}
-                </p>
-                <div className="space-y-2">
-                  {leader.achievements.map((achievement, idx) => (
-                    <div key={idx} className="text-sm bg-muted/30 rounded-lg px-3 py-1">
-                      {achievement}
+          <div className="max-w-6xl mx-auto px-4">
+            <Carousel className="w-full">
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {leadership.map((leader, index) => (
+                  <CarouselItem key={leader.name} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
+                    <div 
+                      className="gaming-card p-8 hover-lift text-center animate-slide-in-left h-full"
+                      style={{ animationDelay: `${index * 0.2}s` }}
+                    >
+                      <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4 purple-glow">
+                        <leader.icon className="w-8 h-8 text-primary-foreground" />
+                      </div>
+                      <h4 className="text-2xl font-gaming font-bold text-primary mb-2">
+                        {leader.name}
+                      </h4>
+                      <p className="text-accent font-display font-semibold mb-4">
+                        {leader.role}
+                      </p>
+                      <p className="text-muted-foreground mb-6 font-display">
+                        {leader.description}
+                      </p>
+                      <div className="space-y-2">
+                        {leader.achievements.map((achievement, idx) => (
+                          <div key={idx} className="text-sm bg-muted/30 rounded-lg px-3 py-1">
+                            {achievement}
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  ))}
-                </div>
-              </div>
-            ))}
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden sm:flex" />
+              <CarouselNext className="hidden sm:flex" />
+            </Carousel>
           </div>
         </div>
 
