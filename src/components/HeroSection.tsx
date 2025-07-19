@@ -1,7 +1,9 @@
 import { Trophy, Users, Calendar, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const HeroSection = () => {
+  const heroRef = useScrollAnimation();
   const stats = [
     { icon: Calendar, label: 'Years Active', value: '4+' },
     { icon: Trophy, label: 'Tournaments', value: '50+' },
@@ -10,7 +12,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section ref={heroRef} className="section-reveal relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background with gradient */}
       <div className="absolute inset-0 hero-gradient"></div>
       
