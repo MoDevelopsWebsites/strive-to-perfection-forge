@@ -40,37 +40,39 @@ const HeroSection = () => {
             </h1>
           </div>
 
-          {/* Professional subtitle */}
+          {/* Professional subtitle with advanced animation */}
           {showDescription && (
-            <Card className="mb-16 max-w-4xl mx-auto bg-card/90 backdrop-blur-xl border border-border hover:border-primary/40 transition-all duration-500 animate-fade-in">
+            <Card className="mb-16 max-w-4xl mx-auto bg-card/90 backdrop-blur-xl border border-border hover:border-primary/40 transition-all duration-500 animate-[slideUpScale_0.8s_ease-out_forwards] opacity-0">
               <CardContent className="p-8">
-                <p className="text-2xl md:text-3xl font-display font-light text-muted-foreground leading-relaxed">
+                <p className="text-2xl md:text-3xl font-display font-light text-muted-foreground leading-relaxed animate-[fadeInUp_1s_ease-out_0.2s_forwards] opacity-0">
                   Premier Fortnite esports organization competing at the highest level.
                   <br />
-                  <span className="text-primary font-semibold glow-text">Building champions since 2020.</span>
+                  <span className="text-primary font-semibold glow-text animate-[glowPulse_2s_ease-in-out_infinite]">Building champions since 2020.</span>
                 </p>
               </CardContent>
             </Card>
           )}
 
-          {/* Professional CTA Buttons */}
+          {/* Professional CTA Buttons with advanced staggered animations */}
           {showButtons && (
-            <div className="flex flex-col sm:flex-row gap-8 justify-center animate-fade-in">
+            <div className="flex flex-col sm:flex-row gap-8 justify-center">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-2xl shadow-primary/25 hover:shadow-primary/40 transition-all duration-500 hover:scale-105 hover:-translate-y-1 text-xl px-12 py-8 font-semibold rounded-xl"
+                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-2xl shadow-primary/25 hover:shadow-primary/40 transition-all duration-500 hover:scale-110 hover:-translate-y-2 text-xl px-12 py-8 font-semibold rounded-xl animate-[bounceInLeft_1s_ease-out_forwards] opacity-0 transform hover:rotate-1"
+                style={{ animationDelay: '0.1s' }}
                 onClick={() => window.open('https://discord.gg/Hyu6j4RFrp', '_blank')}
               >
-                <Users className="w-6 h-6 mr-3" />
+                <Users className="w-6 h-6 mr-3 animate-[iconFloat_2s_ease-in-out_infinite]" />
                 Join Our Team
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-2 border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:scale-105 hover:-translate-y-1 transition-all duration-500 text-xl px-12 py-8 font-semibold backdrop-blur-sm bg-background/20 shadow-lg shadow-primary/10 rounded-xl"
+                className="border-2 border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:scale-110 hover:-translate-y-2 transition-all duration-500 text-xl px-12 py-8 font-semibold backdrop-blur-sm bg-background/20 shadow-lg shadow-primary/10 rounded-xl animate-[bounceInRight_1s_ease-out_forwards] opacity-0 transform hover:-rotate-1"
+                style={{ animationDelay: '0.3s' }}
                 onClick={() => window.open('https://www.youtube.com/@S2PGGs', '_blank')}
               >
-                <Play className="w-6 h-6 mr-3" />
+                <Play className="w-6 h-6 mr-3 animate-[iconSpin_3s_ease-in-out_infinite]" />
                 Watch Highlights
               </Button>
             </div>
