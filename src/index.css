@@ -282,8 +282,8 @@
   }
 
   /* Professional dropdown styling */
-  .light .dropdown-menu {
-    @apply bg-card/98 border-2 border-border/50;
+  .dropdown-menu {
+    @apply bg-card border-2 border-border/50;
     box-shadow: 0 8px 32px hsl(240 10% 3.9% / 0.12);
   }
 }

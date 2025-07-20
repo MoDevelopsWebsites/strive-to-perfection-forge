@@ -103,7 +103,7 @@ const Navigation = () => {
                   
                   {/* Dropdown Menu */}
                   {hasDropdown && hoveredItem === item.name && (
-                    <div className="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-card/98 backdrop-blur-xl border border-border rounded-xl shadow-lg shadow-primary/10 z-50 overflow-hidden">
+                    <div className="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-card backdrop-blur-xl border border-border rounded-xl shadow-lg shadow-primary/10 z-50 overflow-hidden">
                       <div className="py-2">
                         {item.dropdown.map((dropdownItem) => (
                           <button
