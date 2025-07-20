@@ -28,8 +28,8 @@ const streamers = [
   },
   {
     name: 'Misq',
-    username: 'misqs2p',
-    twitchUrl: 'https://twitch.tv/misqs2p',
+    username: 'misqiwnl',
+    twitchUrl: 'https://twitch.tv/misqiwnl',
     description: 'Strategic mastermind with years of competitive gaming experience',
     specialties: ['Strategy', 'Analysis', 'Teaching'],
     avatar: '/placeholder-streamer3.png'
@@ -229,7 +229,7 @@ const StreamersSection = () => {
                     <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
                       Misq
                     </h3>
-                    <p className="text-sm text-muted-foreground">@misqs2p</p>
+                    <p className="text-sm text-muted-foreground">@misqiwnl</p>
                   </div>
                 </div>
                 
@@ -260,7 +260,7 @@ const StreamersSection = () => {
                   
                   <Button
                     variant="outline"
-                    onClick={() => window.open('https://twitch.tv/misqs2p', '_blank')}
+                    onClick={() => window.open('https://twitch.tv/misqiwnl', '_blank')}
                     className="w-full border-purple-500/50 text-purple-500 hover:bg-purple-500/10 hover:border-purple-500 transition-all duration-300"
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
