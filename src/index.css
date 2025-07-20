@@ -166,7 +166,7 @@
   }
   
   .hero-gradient {
-    background: var(--gradient-hero);
+    background: linear-gradient(180deg, hsl(270 91% 60%) 0%, hsl(270 91% 65%) 20%, hsl(270 50% 80%) 60%, hsl(0 0% 100%) 100%);
   }
   
   .purple-glow {

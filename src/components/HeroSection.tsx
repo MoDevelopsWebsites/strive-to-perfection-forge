@@ -153,8 +153,8 @@ const HeroSection = () => {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Enhanced animated background */}
-      <div className="absolute inset-0 hero-gradient"></div>
+      {/* Enhanced animated background that extends to full page */}
+      <div className="fixed inset-0 hero-gradient -z-50"></div>
       
       {/* Multiple floating background elements */}
       <div className="absolute inset-0 pointer-events-none">
