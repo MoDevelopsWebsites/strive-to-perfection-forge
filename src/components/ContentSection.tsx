@@ -70,8 +70,14 @@ const ContentSection = () => {
   }, []);
 
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+    <section className="py-20 relative">
+      {/* Floating background elements matching hero */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/3 left-1/3 w-72 h-72 bg-blue-500/2 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/3 right-1/3 w-64 h-64 bg-secondary/2 rounded-full blur-3xl animate-pulse delay-500"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-foreground mb-4">Content & Creators</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">

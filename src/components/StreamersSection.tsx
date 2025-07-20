@@ -84,14 +84,13 @@ const StreamersSection = () => {
 
   return (
     <section id="streamers" className="py-20 relative">
-      <div className="container mx-auto px-4">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-
-        {/* Section Header */}
+      {/* Floating background elements matching hero */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/3 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-primary/2 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16 relative z-10">
           <h2 className="text-4xl md:text-6xl font-gaming font-bold text-primary glow-text mb-6">
             LIVE STREAMERS

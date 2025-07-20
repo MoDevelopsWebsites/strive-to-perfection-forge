@@ -108,14 +108,13 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="py-20 relative">
-      <div className="container mx-auto px-4">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/3 left-1/4 w-64 h-64 bg-secondary/5 rounded-full blur-3xl animate-pulse delay-500"></div>
-        </div>
-
-        {/* Section Header */}
+      {/* Floating background elements matching hero */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-primary/2 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/3 left-1/4 w-56 h-56 bg-green-500/2 rounded-full blur-3xl animate-pulse delay-700"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16 relative z-10">
           <h2 className="text-4xl md:text-6xl font-gaming font-bold text-primary glow-text mb-6">
             GET IN TOUCH

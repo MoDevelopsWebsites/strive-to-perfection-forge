@@ -1,7 +1,6 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Users, Trophy, Target, Zap } from 'lucide-react';
-import teamPhoto from '@/assets/team-photo.jpg';
 import { TeamCarousel } from '@/components/TeamCarousel';
 
 const TeamSection = () => {
@@ -13,8 +12,14 @@ const TeamSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-secondary/20">
-      <div className="container mx-auto px-4">
+    <section className="py-20 relative">
+      {/* Floating background elements matching hero */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-secondary/4 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-primary/3 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-gaming font-bold text-primary glow-text mb-6">
@@ -35,25 +40,40 @@ const TeamSection = () => {
           <TeamCarousel />
         </div>
 
-        {/* Team Photo */}
+        {/* Enhanced Team Excellence Section */}
         <div className="mb-16">
-          <div className="gaming-card p-8 max-w-4xl mx-auto">
-            <div className="relative rounded-xl overflow-hidden">
-              <img 
-                src={teamPhoto} 
-                alt="S2PGGs Team" 
-                className="w-full h-80 object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
-              <div className="absolute bottom-6 left-6">
-                <h4 className="text-2xl font-gaming font-bold text-primary glow-text mb-2">
-                  S2PGGs ROSTER
-                </h4>
-                <p className="text-muted-foreground font-display">
-                  Our competitive Fortnite team ready for action
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {/* Team Values */}
+            <Card className="bg-card/20 backdrop-blur-xl border-primary/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 group">
+              <CardContent className="p-8">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-primary/25 group-hover:shadow-primary/40 transition-all duration-300">
+                    <Target className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-2">Our Mission</h3>
+                </div>
+                <p className="text-muted-foreground text-center leading-relaxed">
+                  To cultivate excellence in competitive gaming while building a community that embodies dedication, 
+                  skill, and the relentless pursuit of perfection in everything we do.
                 </p>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
+
+            {/* Team Achievements */}
+            <Card className="bg-card/20 backdrop-blur-xl border-primary/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 group">
+              <CardContent className="p-8">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-yellow-500/25 group-hover:shadow-yellow-500/40 transition-all duration-300">
+                    <Trophy className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-2">Our Legacy</h3>
+                </div>
+                <p className="text-muted-foreground text-center leading-relaxed">
+                  Four years of competitive excellence, building champions and creating content that inspires 
+                  the next generation of gamers to strive for their own perfection.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
 
