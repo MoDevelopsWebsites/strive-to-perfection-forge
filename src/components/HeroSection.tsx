@@ -37,7 +37,7 @@ const HeroSection = () => {
         <div className="max-w-4xl mx-auto">
           {/* Professional title with typewriter effect */}
           <div className="mb-12">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-gaming font-black text-primary glow-text leading-tight">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-sans font-medium text-primary glow-text leading-tight tracking-tight">
               {displayedText}
               <span className="animate-pulse">|</span>
             </h1>
