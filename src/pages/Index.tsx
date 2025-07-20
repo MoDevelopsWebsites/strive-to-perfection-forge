@@ -3,13 +3,10 @@ import HeroSection from '@/components/HeroSection';
 import TeamSection from '@/components/TeamSection';
 import StreamersSection from '@/components/StreamersSection';
 import ContentSection from '@/components/ContentSection';
-import { useScrollSnap } from '@/hooks/useScrollSnap';
 
 const Index = () => {
-  const containerRef = useScrollSnap();
-
   return (
-    <div ref={containerRef} className="scroll-snap-container">
+    <div className="min-h-screen bg-background">
       <Navigation />
       <HeroSection />
       <TeamSection />

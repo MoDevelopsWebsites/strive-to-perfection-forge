@@ -1,13 +1,9 @@
 import { useState } from 'react';
-import { Play, Youtube, Twitch, Camera, TrendingUp, Eye, X, Users, ExternalLink } from 'lucide-react';
+import { Play, Youtube, Twitch, Camera, TrendingUp, Eye, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const ContentSection = () => {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
-  const contentRef = useScrollAnimation();
   const contentTypes = [
     {
       icon: Youtube,
@@ -56,38 +52,8 @@ const ContentSection = () => {
     }
   ];
 
-  const contentCreators = [
-    {
-      platform: "YouTube",
-      name: "S2PGGs Official",
-      handle: "@S2PGGs",
-      subscribers: "50K+",
-      description: "Official S2P gaming content, highlights, and tutorials",
-      url: "https://www.youtube.com/@S2PGGs",
-      featured: true
-    },
-    {
-      platform: "Twitch",
-      name: "S2P frusiWIN",
-      handle: "frusiwin",
-      followers: "25K+",
-      description: "Live competitive gameplay and community interaction",
-      url: "https://www.twitch.tv/frusiwin",
-      featured: true
-    },
-    {
-      platform: "TikTok",
-      name: "Coming Soon",
-      handle: "@s2pggs",
-      followers: "TBA",
-      description: "Short-form gaming content and highlights",
-      url: "#",
-      featured: false
-    }
-  ];
-
   return (
-    <section ref={contentRef} id="content" className="snap-section section-reveal min-h-screen py-20 bg-background flex items-center">
+    <section id="content" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -200,62 +166,6 @@ const ContentSection = () => {
             </div>
           </div>
         )}
-
-        {/* Content Creators Section */}
-        <div className="mt-24">
-          <div className="text-center mb-16">
-            <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary via-primary to-purple-400 bg-clip-text text-transparent mb-6">
-              Top Content Creators
-            </h3>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Follow our featured creators across different platforms for the best S2P content
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {contentCreators.map((creator, index) => (
-              <Card 
-                key={creator.platform} 
-                className={`bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group animate-fade-in ${
-                  !creator.featured ? 'opacity-75' : ''
-                }`} 
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <CardContent className="p-6">
-                  <div className="text-center">
-                    <div className="w-16 h-16 mx-auto bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mb-4">
-                      <Users className="w-8 h-8 text-white" />
-                    </div>
-                    
-                    <Badge variant="secondary" className="mb-3">
-                      {creator.platform}
-                    </Badge>
-                    
-                    <h4 className="text-xl font-bold text-foreground mb-2">{creator.name}</h4>
-                    <p className="text-primary font-medium mb-1">{creator.handle}</p>
-                    <p className="text-sm text-muted-foreground mb-4">{creator.followers} followers</p>
-                    <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
-                      {creator.description}
-                    </p>
-                    
-                    {creator.featured ? (
-                      <Button variant="outline" size="sm" asChild className="w-full">
-                        <a href={creator.url} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="w-4 h-4 mr-2" />
-                          Follow
-                        </a>
-                      </Button>
-                    ) : (
-                      <Button variant="outline" size="sm" disabled className="w-full">
-                        Coming Soon
-                      </Button>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
 
         {/* CTA Section */}
         <div className="text-center mt-16">

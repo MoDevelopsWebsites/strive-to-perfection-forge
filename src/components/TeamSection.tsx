@@ -1,5 +1,4 @@
 import { Crown, Star, Users, Trophy, Shield, Settings, BarChart3, Briefcase } from 'lucide-react';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import teamPhoto from '@/assets/team-photo.jpg';
 import {
   Carousel,
@@ -10,7 +9,6 @@ import {
 } from "@/components/ui/carousel";
 
 const TeamSection = () => {
-  const teamRef = useScrollAnimation();
   const leadership = [
     {
       name: 'Helix',
@@ -64,7 +62,7 @@ const TeamSection = () => {
   ];
 
   return (
-    <section ref={teamRef} id="team" className="snap-section section-reveal min-h-screen py-20 bg-secondary/20 flex items-center">
+    <section id="team" className="py-20 bg-secondary/20">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">

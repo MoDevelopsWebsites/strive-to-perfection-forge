@@ -15,24 +15,22 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavigation = (href: string) => {
-    if (href.startsWith('#')) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    } else {
-      window.location.href = href;
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
     }
   };
 
   const navItems = [
     { name: 'Team', href: '#team', icon: Users },
+    { name: 'Matches', href: '#matches', icon: Trophy },
     { name: 'Content', href: '#content', icon: Play },
-    { name: 'Contact', href: '/contact', icon: MessageSquare },
+    { name: 'Events', href: '#events', icon: Calendar },
+    { name: 'Contact', href: '#contact', icon: MessageSquare },
   ];
 
   return (
@@ -67,7 +65,7 @@ const Navigation = () => {
             {navItems.map((item) => (
               <button
                 key={item.name}
-                onClick={() => handleNavigation(item.href)}
+                onClick={() => scrollToSection(item.href)}
                 className="nav-link flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-muted/50 transition-all duration-300"
               >
                 <item.icon size={16} />
@@ -107,7 +105,7 @@ const Navigation = () => {
                 <button
                   key={item.name}
                   onClick={() => {
-                    handleNavigation(item.href);
+                    scrollToSection(item.href);
                     setIsMenuOpen(false);
                   }}
                   className="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-muted/50 transition-all duration-300 w-full text-left"
