@@ -1,10 +1,34 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ShoppingBag, ExternalLink, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
 const MerchSection = () => {
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
+  const [visibleCards, setVisibleCards] = useState<boolean[]>([false, false, false]);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Trigger cards to appear one by one with delays
+            setTimeout(() => setVisibleCards(prev => [true, prev[1], prev[2]]), 200);
+            setTimeout(() => setVisibleCards(prev => [prev[0], true, prev[2]]), 600);
+            setTimeout(() => setVisibleCards(prev => [prev[0], prev[1], true]), 1000);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const merchItems = [
     {
@@ -34,7 +58,7 @@ const MerchSection = () => {
   ];
 
   return (
-    <section id="merch" className="relative min-h-screen py-20 backdrop-blur-xl">
+    <section ref={sectionRef} id="merch" className="relative min-h-screen py-20 backdrop-blur-xl">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -55,19 +79,23 @@ const MerchSection = () => {
           {merchItems.map((item, index) => (
             <Card
               key={item.id}
-              className={`group gaming-card hover:border-primary/60 transition-all duration-700 cursor-pointer overflow-hidden animate-[slideUpFade_0.8s_ease-out_forwards] opacity-0 ${
+              className={`group gaming-card hover:border-primary/60 transition-all duration-700 cursor-pointer overflow-hidden relative ${
                 hoveredItem === index ? 'scale-105 -translate-y-4' : ''
+              } ${
+                visibleCards[index] 
+                  ? 'animate-[glowFadeIn_1.2s_ease-out_forwards] opacity-100' 
+                  : 'opacity-0 translate-y-20'
               }`}
-              style={{ animationDelay: `${index * 0.2}s` }}
               onMouseEnter={() => setHoveredItem(index)}
               onMouseLeave={() => setHoveredItem(null)}
             >
+              {/* Enhanced glow effect that appears on scroll */}
+              <div className={`absolute -inset-4 bg-gradient-to-r from-primary/30 via-secondary/30 to-primary/30 rounded-xl blur-xl transition-all duration-1000 ${
+                visibleCards[index] ? 'opacity-100 animate-pulse' : 'opacity-0'
+              }`}></div>
               <div className="relative overflow-hidden">
                 {/* Holographic effect overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
-                
-                {/* Animated border glow */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm animate-[spin_3s_linear_infinite] z-0"></div>
                 
                 {/* Image with advanced effects */}
                 <div className="relative z-20 bg-gradient-to-br from-background/50 to-card/50 backdrop-blur-sm">
