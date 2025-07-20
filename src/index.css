@@ -67,44 +67,52 @@
   }
 
   .light {
-    --background: 300 20% 98%;
-    --foreground: 240 8% 6%;
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
 
-    --card: 300 20% 96%;
-    --card-foreground: 240 8% 6%;
+    --card: 0 0% 98%;
+    --card-foreground: 240 10% 3.9%;
 
-    --popover: 300 20% 98%;
-    --popover-foreground: 240 8% 6%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
 
-    --primary: 270 91% 65%;
-    --primary-foreground: 300 20% 98%;
+    --primary: 270 91% 60%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 270 100% 70%;
 
-    --secondary: 280 20% 90%;
-    --secondary-foreground: 240 8% 6%;
+    --secondary: 270 15% 92%;
+    --secondary-foreground: 240 10% 3.9%;
 
-    --muted: 280 20% 92%;
-    --muted-foreground: 240 5% 35%;
+    --muted: 270 15% 96%;
+    --muted-foreground: 240 3.8% 45%;
 
-    --accent: 280 100% 70%;
-    --accent-foreground: 300 20% 98%;
+    --accent: 270 91% 60%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 300 20% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 280 20% 85%;
-    --input: 280 20% 85%;
-    --ring: 270 91% 65%;
-    --sidebar-background: 300 20% 96%;
-    --sidebar-foreground: 240 8% 6%;
-    --sidebar-primary: 270 91% 65%;
-    --sidebar-primary-foreground: 300 20% 98%;
-    --sidebar-accent: 280 20% 90%;
-    --sidebar-accent-foreground: 240 8% 6%;
-    --sidebar-border: 280 20% 85%;
-    --sidebar-ring: 270 91% 65%;
+    --border: 270 20% 88%;
+    --input: 270 20% 88%;
+    --ring: 270 91% 60%;
     
-    --gradient-hero: linear-gradient(135deg, hsl(300 20% 98%) 0%, hsl(280 20% 90%) 50%, hsl(270 91% 65%) 100%);
-    --shadow-glow: 0 0 30px hsl(270 91% 65% / 0.2);
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 10% 3.9%;
+    --sidebar-primary: 270 91% 60%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 270 15% 92%;
+    --sidebar-accent-foreground: 240 10% 3.9%;
+    --sidebar-border: 270 20% 88%;
+    --sidebar-ring: 270 91% 60%;
+    
+    /* Light mode specific design tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(270 91% 60%), hsl(280 100% 65%));
+    --gradient-secondary: linear-gradient(180deg, hsl(0 0% 98%), hsl(270 15% 96%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(270 15% 96%) 50%, hsl(270 91% 60%) 100%);
+    
+    --shadow-glow: 0 0 30px hsl(270 91% 60% / 0.15);
+    --shadow-purple: 0 10px 40px hsl(270 91% 60% / 0.1);
+    --shadow-elevated: 0 20px 60px hsl(240 10% 3.9% / 0.08);
   }
 }
 
@@ -166,7 +174,7 @@
   }
   
   .gaming-card {
-    @apply bg-card/80 backdrop-blur-md border border-border/50 rounded-xl;
+    @apply bg-card/90 backdrop-blur-md border border-border rounded-xl;
     box-shadow: var(--shadow-elevated);
   }
   
@@ -208,6 +216,39 @@
     @apply w-full;
   }
 
+  /* Enhanced light mode specific styling */
+  .light .gaming-card {
+    @apply bg-card/95 border-2 border-border/80;
+    box-shadow: 0 8px 32px hsl(240 10% 3.9% / 0.1);
+  }
+
+  .light .esports-button {
+    box-shadow: 0 4px 16px hsl(270 91% 60% / 0.25);
+  }
+
+  .light .esports-button:hover {
+    box-shadow: 0 8px 24px hsl(270 91% 60% / 0.35);
+  }
+
+  .light .purple-glow {
+    box-shadow: 0 0 20px hsl(270 91% 60% / 0.2);
+  }
+
+  .light .glow-text {
+    text-shadow: 0 0 15px hsl(270 91% 60% / 0.4);
+  }
+
+  /* Professional card styling for light mode */
+  .light .stat-card {
+    @apply border-2 border-border/60;
+    background: linear-gradient(135deg, hsl(0 0% 100%), hsl(270 15% 98%));
+    box-shadow: 0 4px 20px hsl(240 10% 3.9% / 0.08);
+  }
+
+  .light .achievement-badge {
+    @apply bg-secondary/80 border-2 border-primary/20 text-foreground;
+  }
+
   /* Enhanced animations */
   .animate-in {
     animation: fadeInUp 0.6s ease-out forwards;
@@ -238,5 +279,11 @@
   @keyframes modalFadeIn {
     from { opacity: 0; transform: scale(0.9); }
     to { opacity: 1; transform: scale(1); }
+  }
+
+  /* Professional dropdown styling */
+  .light .dropdown-menu {
+    @apply bg-card/98 border-2 border-border/50;
+    box-shadow: 0 8px 32px hsl(240 10% 3.9% / 0.12);
   }
 }

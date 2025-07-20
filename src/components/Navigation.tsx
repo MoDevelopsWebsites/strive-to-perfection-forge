@@ -103,13 +103,13 @@ const Navigation = () => {
                   
                   {/* Dropdown Menu */}
                   {hasDropdown && hoveredItem === item.name && (
-                    <div className="absolute top-full left-0 mt-2 w-48 bg-card/95 backdrop-blur-xl border border-border/50 rounded-xl shadow-lg shadow-primary/10 z-50 overflow-hidden">
+                    <div className="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-card/98 backdrop-blur-xl border border-border rounded-xl shadow-lg shadow-primary/10 z-50 overflow-hidden">
                       <div className="py-2">
                         {item.dropdown.map((dropdownItem) => (
                           <button
                             key={dropdownItem.name}
                             onClick={() => scrollToSection(dropdownItem.href)}
-                            className="w-full text-left px-4 py-3 hover:bg-muted/50 transition-all duration-200 text-sm font-display"
+                            className="w-full text-left px-4 py-3 hover:bg-muted/80 transition-all duration-200 text-sm font-display font-medium text-foreground/90 hover:text-primary"
                           >
                             {dropdownItem.name}
                           </button>

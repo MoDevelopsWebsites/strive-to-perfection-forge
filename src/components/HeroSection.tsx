@@ -187,7 +187,7 @@ const HeroSection = () => {
           </div>
 
           {/* Enhanced subtitle with professional card */}
-          <Card className="hero-subtitle mb-8 max-w-3xl mx-auto bg-card/20 backdrop-blur-xl border-primary/20 hover:border-primary/40 transition-all duration-500">
+          <Card className="hero-subtitle mb-8 max-w-3xl mx-auto bg-card/90 backdrop-blur-xl border border-border hover:border-primary/40 transition-all duration-500">
             <CardContent className="p-6">
               <p className="text-xl md:text-2xl font-display font-light text-muted-foreground">
                 Premier Fortnite esports organization competing at the highest level for{' '}
@@ -203,7 +203,7 @@ const HeroSection = () => {
               return (
                 <Badge 
                   key={achievement.text}
-                  className="achievement-badge bg-gradient-to-r from-primary/20 to-secondary/20 text-foreground border-primary/30 px-4 py-2 text-sm font-medium backdrop-blur-sm hover:scale-105 transition-all duration-300 shadow-lg shadow-primary/25"
+                  className="achievement-badge bg-secondary/60 text-foreground border border-primary/30 px-4 py-2 text-sm font-medium backdrop-blur-sm hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg hover:bg-secondary/80"
                 >
                   <Icon className="w-4 h-4 mr-2" />
                   {achievement.text}
@@ -214,14 +214,14 @@ const HeroSection = () => {
 
           {/* Team tag with enhanced styling */}
           <div className="flex items-center justify-center mb-10">
-            <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 backdrop-blur-xl border-primary/30 hover:border-primary/50 transition-all duration-500 hover:scale-105">
+            <Card className="bg-secondary/40 backdrop-blur-xl border border-primary/30 hover:border-primary/50 transition-all duration-500 hover:scale-105">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3">
                   <Sparkles className="w-6 h-6 text-primary animate-pulse" />
                   <span className="text-3xl font-gaming font-bold text-primary glow-text">
                     #S2PGGs
                   </span>
-                  <Zap className="w-6 h-6 text-secondary animate-pulse" />
+                  <Zap className="w-6 h-6 text-primary animate-pulse" />
                 </div>
               </CardContent>
             </Card>
@@ -255,7 +255,7 @@ const HeroSection = () => {
               return (
                 <Card 
                   key={stat.label}
-                  className="stat-card bg-card/20 backdrop-blur-xl border-primary/20 hover:border-primary/40 transition-all duration-500 hover:scale-110 hover:-translate-y-2 group overflow-hidden"
+                  className="stat-card gaming-card hover:border-primary/40 transition-all duration-500 hover:scale-110 hover:-translate-y-2 group overflow-hidden"
                 >
                   <CardContent className="p-6 text-center relative">
                     {/* Animated background glow */}
