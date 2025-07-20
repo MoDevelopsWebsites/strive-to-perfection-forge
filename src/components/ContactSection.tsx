@@ -81,7 +81,7 @@ const ContactSection = () => {
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       // For now, create a mailto link as fallback
-      const mailtoLink = `mailto:contact@s2pggs.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+      const mailtoLink = `mailto:contact@strive2perfection.org?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
         `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
       )}`;
       
@@ -231,7 +231,7 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <p className="font-medium text-foreground">Email</p>
-                      <p className="text-muted-foreground">contact@s2pggs.com</p>
+                      <p className="text-muted-foreground">contact@strive2perfection.org</p>
                     </div>
                   </div>
                   
@@ -241,7 +241,7 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <p className="font-medium text-foreground">Location</p>
-                      <p className="text-muted-foreground">United States</p>
+                      <p className="text-muted-foreground">United Kingdom</p>
                     </div>
                   </div>
                 </div>
