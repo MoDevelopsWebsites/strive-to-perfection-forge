@@ -31,7 +31,8 @@ const leadership = [
     icon: TrendingUp,
     description: 'Growth strategist and operational excellence leader',
     achievements: ['Business development', 'Partnership management', 'Revenue growth'],
-    gradient: 'from-green-500 to-teal-500'
+    gradient: 'from-green-500 to-teal-500',
+    image: '/lovable-uploads/e2314c74-14eb-4023-bfe4-3df1fa93feb0.png'
   },
   {
     name: 'Bando',
