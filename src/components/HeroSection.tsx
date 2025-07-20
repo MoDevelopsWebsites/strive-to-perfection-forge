@@ -6,7 +6,8 @@ import { Card, CardContent } from '@/components/ui/card';
 const HeroSection = () => {
   const [displayedText, setDisplayedText] = useState('');
   const [showDescription, setShowDescription] = useState(false);
-  const [showButtons, setShowButtons] = useState(false);
+  const [showFirstButton, setShowFirstButton] = useState(false);
+  const [showSecondButton, setShowSecondButton] = useState(false);
   
   const fullText = 'STRIVE 2 PERFECTION';
 
@@ -18,10 +19,12 @@ const HeroSection = () => {
         currentIndex++;
       } else {
         clearInterval(typewriterInterval);
-        // Show description after typewriter completes
-        setTimeout(() => setShowDescription(true), 300);
-        // Show buttons after description
-        setTimeout(() => setShowButtons(true), 800);
+        // Show description after typewriter completes (500ms delay)
+        setTimeout(() => setShowDescription(true), 500);
+        // Show first button after description animation completes (1300ms total)
+        setTimeout(() => setShowFirstButton(true), 1300);
+        // Show second button after first button completes (2100ms total)
+        setTimeout(() => setShowSecondButton(true), 2100);
       }
     }, 100);
 
@@ -53,30 +56,30 @@ const HeroSection = () => {
             </Card>
           )}
 
-          {/* Professional CTA Buttons with advanced staggered animations */}
-          {showButtons && (
-            <div className="flex flex-col sm:flex-row gap-8 justify-center">
+          {/* Professional CTA Buttons with sequential animations */}
+          <div className="flex flex-col sm:flex-row gap-8 justify-center">
+            {showFirstButton && (
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-2xl shadow-primary/25 hover:shadow-primary/40 transition-all duration-500 hover:scale-110 hover:-translate-y-2 text-xl px-12 py-8 font-semibold rounded-xl animate-[bounceInLeft_1s_ease-out_forwards] opacity-0 transform hover:rotate-1"
-                style={{ animationDelay: '0.1s' }}
+                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-2xl shadow-primary/25 hover:shadow-primary/40 transition-all duration-500 hover:scale-110 hover:-translate-y-2 text-xl px-12 py-8 font-semibold rounded-xl animate-[bounceInLeft_0.8s_ease-out_forwards] opacity-0 transform hover:rotate-1"
                 onClick={() => window.open('https://discord.gg/Hyu6j4RFrp', '_blank')}
               >
                 <Users className="w-6 h-6 mr-3 animate-[iconFloat_2s_ease-in-out_infinite]" />
                 Join Our Team
               </Button>
+            )}
+            {showSecondButton && (
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-2 border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:scale-110 hover:-translate-y-2 transition-all duration-500 text-xl px-12 py-8 font-semibold backdrop-blur-sm bg-background/20 shadow-lg shadow-primary/10 rounded-xl animate-[bounceInRight_1s_ease-out_forwards] opacity-0 transform hover:-rotate-1"
-                style={{ animationDelay: '0.3s' }}
+                className="border-2 border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:scale-110 hover:-translate-y-2 transition-all duration-500 text-xl px-12 py-8 font-semibold backdrop-blur-sm bg-background/20 shadow-lg shadow-primary/10 rounded-xl animate-[bounceInRight_0.8s_ease-out_forwards] opacity-0 transform hover:-rotate-1"
                 onClick={() => window.open('https://www.youtube.com/@S2PGGs', '_blank')}
               >
                 <Play className="w-6 h-6 mr-3 animate-[iconSpin_3s_ease-in-out_infinite]" />
                 Watch Highlights
               </Button>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </section>
