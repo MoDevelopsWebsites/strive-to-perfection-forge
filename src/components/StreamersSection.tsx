@@ -107,8 +107,8 @@ const StreamersSection = () => {
           <Card 
             className="streamer-card gaming-card hover:border-primary/60 transition-all duration-500 hover:scale-105 group overflow-hidden"
           >
-            <CardContent className="p-0">
-              <div className="relative p-6 bg-gradient-to-br from-primary/10 to-secondary/10 h-full">
+            <CardContent className="p-0 h-full">
+              <div className="relative p-6 bg-gradient-to-br from-primary/10 to-secondary/10 min-h-full flex flex-col">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center shadow-lg shadow-primary/25">
                     <TwitchIcon className="w-8 h-8 text-white" />
@@ -137,7 +137,7 @@ const StreamersSection = () => {
                   Competitive Fortnite player and content creator with exceptional building skills
                 </p>
 
-                <div className="space-y-3">
+                <div className="space-y-3 mt-auto">
                   <Button
                     onClick={() => openStream(streamers[0])}
                     className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-lg shadow-primary/25 transition-all duration-300"
@@ -163,8 +163,8 @@ const StreamersSection = () => {
           <Card 
             className="streamer-card gaming-card hover:border-primary/60 transition-all duration-500 hover:scale-105 group overflow-hidden"
           >
-            <CardContent className="p-0">
-              <div className="relative p-6 bg-gradient-to-br from-primary/10 to-secondary/10 h-full">
+            <CardContent className="p-0 h-full">
+              <div className="relative p-6 bg-gradient-to-br from-primary/10 to-secondary/10 min-h-full flex flex-col">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center shadow-lg shadow-primary/25">
                     <TwitchIcon className="w-8 h-8 text-white" />
@@ -193,7 +193,7 @@ const StreamersSection = () => {
                   High-energy streamer known for incredible gameplay and community engagement
                 </p>
 
-                <div className="space-y-3">
+                <div className="space-y-3 mt-auto">
                   <Button
                     onClick={() => openStream(streamers[1])}
                     className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-lg shadow-primary/25 transition-all duration-300"
@@ -219,8 +219,8 @@ const StreamersSection = () => {
           <Card 
             className="streamer-card gaming-card hover:border-primary/60 transition-all duration-500 hover:scale-105 group overflow-hidden"
           >
-            <CardContent className="p-0">
-              <div className="relative p-6 bg-gradient-to-br from-primary/10 to-secondary/10 h-full">
+            <CardContent className="p-0 h-full">
+              <div className="relative p-6 bg-gradient-to-br from-primary/10 to-secondary/10 min-h-full flex flex-col">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center shadow-lg shadow-primary/25">
                     <TwitchIcon className="w-8 h-8 text-white" />
@@ -249,7 +249,7 @@ const StreamersSection = () => {
                   Strategic mastermind with years of competitive gaming experience
                 </p>
 
-                <div className="space-y-3">
+                <div className="space-y-3 mt-auto">
                   <Button
                     onClick={() => openStream(streamers[2])}
                     className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-lg shadow-primary/25 transition-all duration-300"
