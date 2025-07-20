@@ -3,7 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
-import { Play, Eye, Calendar, Youtube, Twitch, Users, ExternalLink, Settings } from 'lucide-react';
+import { Play, Eye, Calendar, Youtube, Twitch, Users, ExternalLink } from 'lucide-react';
 import { useYouTubeAPI } from '@/hooks/useYouTubeAPI';
 
 // Top content creators for each platform
@@ -45,29 +45,12 @@ const topCreators = [
 
 const ContentSection = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
-  const [apiKey, setApiKey] = useState('');
-  const [showApiKeyInput, setShowApiKeyInput] = useState(false);
-  const { videos, isLoading, error, fetchVideos, formatViewCount, formatDate } = useYouTubeAPI();
+  const { videos, formatViewCount, formatDate } = useYouTubeAPI();
 
   const openVideo = (video: any) => {
     setSelectedVideo(video);
   };
 
-  const handleApiKeySubmit = () => {
-    if (apiKey.trim()) {
-      localStorage.setItem('youtube_api_key', apiKey);
-      fetchVideos(apiKey, 'YOUR_CHANNEL_ID'); // Replace with actual channel ID
-      setShowApiKeyInput(false);
-    }
-  };
-
-  useEffect(() => {
-    const savedApiKey = localStorage.getItem('youtube_api_key');
-    if (savedApiKey) {
-      setApiKey(savedApiKey);
-      fetchVideos(savedApiKey, 'YOUR_CHANNEL_ID'); // Replace with actual channel ID
-    }
-  }, []);
 
   return (
     <section className="py-20 relative">
@@ -85,31 +68,6 @@ const ContentSection = () => {
           </p>
         </div>
 
-        {/* API Key Setup (Optional) */}
-        {!localStorage.getItem('youtube_api_key') && (
-          <div className="mb-8 text-center">
-            <Button
-              onClick={() => setShowApiKeyInput(!showApiKeyInput)}
-              variant="outline"
-              className="mb-4"
-            >
-              <Settings className="w-4 h-4 mr-2" />
-              Setup YouTube API (Optional)
-            </Button>
-            {showApiKeyInput && (
-              <div className="max-w-md mx-auto flex gap-2">
-                <input
-                  type="text"
-                  placeholder="Enter YouTube API Key"
-                  value={apiKey}
-                  onChange={(e) => setApiKey(e.target.value)}
-                  className="flex-1 px-3 py-2 border rounded-md bg-background"
-                />
-                <Button onClick={handleApiKeySubmit}>Save</Button>
-              </div>
-            )}
-          </div>
-        )}
 
         {/* Top Content Creators */}
         <div className="mb-16">
@@ -152,8 +110,6 @@ const ContentSection = () => {
         <div className="mb-16">
           <div className="flex items-center justify-between mb-8">
             <h3 className="text-2xl font-bold text-foreground">Recent Videos</h3>
-            {isLoading && <span className="text-sm text-muted-foreground">Loading latest videos...</span>}
-            {error && <span className="text-sm text-red-500">Using cached videos</span>}
           </div>
           
           <div className="grid md:grid-cols-3 gap-6">
