@@ -75,8 +75,10 @@ export default {
 				'elevated': 'var(--shadow-elevated)'
 			},
 			fontFamily: {
-				'gaming': ['Orbitron', 'monospace'],
-				'display': ['Exo 2', 'sans-serif']
+				'sans': ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				'mono': ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+				'gaming': ['Inter', 'sans-serif'],
+				'display': ['Inter', 'sans-serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
