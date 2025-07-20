@@ -31,20 +31,17 @@ const HeroSection = () => {
     // Hero entrance animations
     const tl = gsap.timeline();
     
-    // Title animation with stagger
+    // Title animation - smooth entrance without fade
     tl.fromTo('.hero-title-line', 
       { 
-        opacity: 0, 
-        y: 100,
-        scale: 0.8
+        y: 50,
+        scale: 0.95
       },
       {
-        opacity: 1,
         y: 0,
         scale: 1,
-        duration: 1.2,
-        stagger: 0.3,
-        ease: "power3.out"
+        duration: 1,
+        ease: "power2.out"
       }
     );
 
@@ -174,17 +171,16 @@ const HeroSection = () => {
 
       <div className="relative z-10 container mx-auto px-4 text-center">
         <div className="max-w-5xl mx-auto">
-          {/* Enhanced main heading with professional styling */}
+          {/* Enhanced main heading with horizontal layout */}
           <div className="mb-8">
-            <h1 className="hero-title-line text-5xl md:text-7xl lg:text-8xl font-gaming font-black mb-4">
-              <span className="glow-text text-primary block relative">
+            <h1 className="hero-title-line text-4xl md:text-6xl lg:text-7xl font-gaming font-black flex flex-wrap items-center justify-center gap-4 md:gap-8">
+              <span className="glow-text text-primary relative">
                 STRIVE
                 <div className="absolute -inset-2 bg-primary/20 rounded-lg blur-xl -z-10"></div>
               </span>
-            </h1>
-            <h1 className="hero-title-line text-5xl md:text-7xl lg:text-8xl font-gaming font-black">
-              <span className="text-transparent bg-gradient-to-r from-secondary to-accent bg-clip-text block relative">
-                2 PERFECTION
+              <span className="text-2xl md:text-4xl lg:text-5xl text-accent font-light">2</span>
+              <span className="text-transparent bg-gradient-to-r from-secondary to-accent bg-clip-text relative">
+                PERFECTION
                 <div className="absolute -inset-2 bg-gradient-to-r from-secondary/20 to-accent/20 rounded-lg blur-xl -z-10"></div>
               </span>
             </h1>
