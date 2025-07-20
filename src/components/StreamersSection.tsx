@@ -20,8 +20,8 @@ const streamers = [
   },
   {
     name: 'Colin',
-    username: 'colins2p',
-    twitchUrl: 'https://twitch.tv/colins2p',
+    username: 's2pcolin',
+    twitchUrl: 'https://twitch.tv/s2pcolin',
     description: 'High-energy streamer known for incredible gameplay and community engagement',
     specialties: ['Entertainment', 'Community', 'Highlights'],
     avatar: '/placeholder-streamer2.png'
@@ -173,7 +173,7 @@ const StreamersSection = () => {
                     <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
                       Colin
                     </h3>
-                    <p className="text-sm text-muted-foreground">@colins2p</p>
+                    <p className="text-sm text-muted-foreground">@s2pcolin</p>
                   </div>
                 </div>
                 
@@ -204,7 +204,7 @@ const StreamersSection = () => {
                   
                   <Button
                     variant="outline"
-                    onClick={() => window.open('https://twitch.tv/colins2p', '_blank')}
+                    onClick={() => window.open('https://twitch.tv/s2pcolin', '_blank')}
                     className="w-full border-purple-500/50 text-purple-500 hover:bg-purple-500/10 hover:border-purple-500 transition-all duration-300"
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
