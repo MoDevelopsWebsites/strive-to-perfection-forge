@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Home, Users, Video, Gamepad2, MessageSquare, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import ThemeToggle from './ThemeToggle';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -167,9 +166,8 @@ const Navigation = () => {
             })}
           </div>
 
-          {/* Theme Toggle & CTA Button */}
-          <div className="hidden md:flex items-center space-x-3">
-            <ThemeToggle />
+          {/* CTA Button */}
+          <div className="hidden md:flex items-center">
             <Button 
               className="esports-button"
               onClick={() => window.open('https://discord.gg/Hyu6j4RFrp', '_blank')}
@@ -208,8 +206,7 @@ const Navigation = () => {
                   </button>
                 );
               })}
-              <div className="pt-2 flex flex-col space-y-2">
-                <ThemeToggle />
+              <div className="pt-2">
                 <Button 
                   className="esports-button w-full"
                   onClick={() => window.open('https://discord.gg/Hyu6j4RFrp', '_blank')}
