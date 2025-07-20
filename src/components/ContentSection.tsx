@@ -30,25 +30,25 @@ const ContentSection = () => {
 
   const recentVideos = [
     {
-      id: 'dQw4w9WgXcQ',
+      id: 'hQAA7k7aYY8',
       title: 'Latest S2PGGs Highlights',
       type: 'Highlight Reel',
       views: '25K',
-      thumbnail: `https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg`
+      thumbnail: `https://img.youtube.com/vi/hQAA7k7aYY8/maxresdefault.jpg`
     },
     {
-      id: 'dQw4w9WgXcQ',
+      id: '4AvT8Cn-FdE',
       title: 'Tournament Victory',
       type: 'Competition',
       views: '18K',
-      thumbnail: `https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg`
+      thumbnail: `https://img.youtube.com/vi/4AvT8Cn-FdE/maxresdefault.jpg`
     },
     {
-      id: 'dQw4w9WgXcQ',
+      id: 'FHEv_O8XgwI',
       title: 'Pro Tips & Strategy',
       type: 'Educational',
       views: '12K',
-      thumbnail: `https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg`
+      thumbnail: `https://img.youtube.com/vi/FHEv_O8XgwI/maxresdefault.jpg`
     }
   ];
 
