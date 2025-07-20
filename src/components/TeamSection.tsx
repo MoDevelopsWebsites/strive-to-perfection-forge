@@ -1,68 +1,19 @@
-import { Crown, Star, Users, Trophy, Shield, Settings, BarChart3, Briefcase } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Users, Trophy, Target, Zap } from 'lucide-react';
 import teamPhoto from '@/assets/team-photo.jpg';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { TeamCarousel } from '@/components/TeamCarousel';
 
 const TeamSection = () => {
-  const leadership = [
-    {
-      name: 'Helix',
-      role: 'CEO & Founder',
-      icon: Crown,
-      description: 'Visionary leader driving S2PGGs to new heights in competitive esports.',
-      achievements: ['4 Years Leadership', 'Strategic Partnerships', 'Team Growth']
-    },
-    {
-      name: 'Stunna',
-      role: 'COO',
-      icon: Shield,
-      description: 'Operations mastermind ensuring peak performance across all divisions.',
-      achievements: ['Tournament Coordination', 'Team Development', 'Performance Analytics']
-    },
-    {
-      name: 'Cowen',
-      role: 'COO',
-      icon: Users,
-      description: 'Strategic operations leader focused on competitive excellence.',
-      achievements: ['Tactical Analysis', 'Player Coordination', 'Content Strategy']
-    },
-    {
-      name: 'Bando',
-      role: 'COS',
-      icon: Settings,
-      description: 'Chief Operating Strategist overseeing daily operations and team coordination.',
-      achievements: ['Strategic Planning', 'Workflow Optimization', 'Team Management']
-    },
-    {
-      name: 'Clxud',
-      role: 'CAO',
-      icon: BarChart3,
-      description: 'Chief Analytics Officer driving data-driven decisions and performance metrics.',
-      achievements: ['Performance Analytics', 'Data Insights', 'Growth Metrics']
-    },
-    {
-      name: 'Medo',
-      role: 'CSO',
-      icon: Briefcase,
-      description: 'Chief Strategy Officer leading competitive initiatives and market expansion.',
-      achievements: ['Strategic Vision', 'Competitive Analysis', 'Market Expansion']
-    }
-  ];
-
   const teamStats = [
-    { label: 'Active Players', value: '50+', icon: Users },
-    { label: 'Tournament Wins', value: '75+', icon: Trophy },
-    { label: 'Content Creators', value: '25+', icon: Star },
-    { label: 'Years Experience', value: '4', icon: Crown }
+    { label: 'Active Members', value: '25+', icon: Users },
+    { label: 'Tournaments Won', value: '12', icon: Trophy },
+    { label: 'Success Rate', value: '85%', icon: Target },
+    { label: 'Years Experience', value: '5+', icon: Zap },
   ];
 
   return (
-    <section id="team" className="py-20 bg-secondary/20">
+    <section className="py-20 bg-secondary/20">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -75,47 +26,13 @@ const TeamSection = () => {
           </p>
         </div>
 
-        {/* Leadership Team Carousel */}
+        {/* Leadership Carousel */}
         <div className="mb-16">
-          <h3 className="text-2xl font-gaming font-bold text-center mb-8 text-accent">
-            LEADERSHIP
-          </h3>
-          <div className="max-w-6xl mx-auto px-4">
-            <Carousel className="w-full">
-              <CarouselContent className="-ml-2 md:-ml-4">
-                {leadership.map((leader, index) => (
-                  <CarouselItem key={leader.name} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
-                    <div 
-                      className="gaming-card p-8 hover-lift text-center animate-slide-in-left h-full"
-                      style={{ animationDelay: `${index * 0.2}s` }}
-                    >
-                      <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4 purple-glow">
-                        <leader.icon className="w-8 h-8 text-primary-foreground" />
-                      </div>
-                      <h4 className="text-2xl font-gaming font-bold text-primary mb-2">
-                        {leader.name}
-                      </h4>
-                      <p className="text-accent font-display font-semibold mb-4">
-                        {leader.role}
-                      </p>
-                      <p className="text-muted-foreground mb-6 font-display">
-                        {leader.description}
-                      </p>
-                      <div className="space-y-2">
-                        {leader.achievements.map((achievement, idx) => (
-                          <div key={idx} className="text-sm bg-muted/30 rounded-lg px-3 py-1">
-                            {achievement}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="hidden sm:flex" />
-              <CarouselNext className="hidden sm:flex" />
-            </Carousel>
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-foreground mb-2">Meet Our Leadership</h3>
+            <p className="text-muted-foreground">The visionaries driving S2PGGs forward</p>
           </div>
+          <TeamCarousel />
         </div>
 
         {/* Team Photo */}
@@ -142,21 +59,25 @@ const TeamSection = () => {
 
         {/* Team Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-          {teamStats.map((stat, index) => (
-            <div 
-              key={stat.label}
-              className="gaming-card p-6 text-center hover-lift animate-slide-in-right"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <stat.icon className="w-8 h-8 text-primary mx-auto mb-3" />
-              <div className="text-3xl font-gaming font-bold text-primary mb-2">
-                {stat.value}
-              </div>
-              <div className="text-sm text-muted-foreground font-display">
-                {stat.label}
-              </div>
-            </div>
-          ))}
+          {teamStats.map((stat, index) => {
+            const Icon = stat.icon;
+            return (
+              <Card 
+                key={stat.label}
+                className="bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105"
+              >
+                <CardContent className="p-6 text-center">
+                  <Icon className="w-8 h-8 text-primary mx-auto mb-3" />
+                  <div className="text-3xl font-gaming font-bold text-primary mb-2">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-muted-foreground font-display">
+                    {stat.label}
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>

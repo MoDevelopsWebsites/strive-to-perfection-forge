@@ -1,161 +1,214 @@
-import { useState } from 'react';
-import { Play, Youtube, Twitch, Camera, TrendingUp, Eye, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Play, Eye, Calendar, Youtube, Twitch, Users, ExternalLink, Settings } from 'lucide-react';
+import { useYouTubeAPI } from '@/hooks/useYouTubeAPI';
+
+// Top content creators for each platform
+const topCreators = [
+  {
+    platform: 'YouTube',
+    name: 'S2PGGs Main Channel',
+    handle: '@S2PGGs',
+    subscribers: '50K+',
+    avatar: '/placeholder-avatar.png',
+    channelUrl: 'https://youtube.com/@s2pggs',
+    description: 'Main gaming content and highlights',
+    icon: Youtube,
+    gradient: 'from-red-500 to-red-600'
+  },
+  {
+    platform: 'Twitch',
+    name: 'S2PGGs Live',
+    handle: 'S2PGGs_Official',
+    followers: '25K+',
+    avatar: '/placeholder-avatar.png',
+    channelUrl: 'https://twitch.tv/s2pggs_official',
+    description: 'Live gaming streams and tournaments',
+    icon: Twitch,
+    gradient: 'from-purple-500 to-purple-600'
+  },
+  {
+    platform: 'TikTok',
+    name: 'Coming Soon',
+    handle: '@S2PGGs',
+    followers: 'Soon',
+    avatar: '/placeholder-avatar.png',
+    channelUrl: '#',
+    description: 'Quick gaming clips and highlights',
+    icon: Users,
+    gradient: 'from-gray-400 to-gray-500'
+  }
+];
 
 const ContentSection = () => {
-  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
-  const contentTypes = [
-    {
-      icon: Youtube,
-      title: 'YouTube Creator',
-      description: 'Our top YouTube content creator with epic gameplay highlights and tutorials',
-      stats: 'Top Creator - Placeholder',
-      color: 'text-red-500'
-    },
-    {
-      icon: Twitch,
-      title: 'Twitch Streamer',
-      description: 'Our featured Twitch streamer bringing live entertainment and competition',
-      stats: 'Featured Streamer - Placeholder',
-      color: 'text-purple-500'
-    },
-    {
-      icon: Camera,
-      title: 'Content Creator',
-      description: 'Our lead content creator for social media and video production',
-      stats: 'Lead Creator - Placeholder',
-      color: 'text-primary'
-    }
-  ];
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [apiKey, setApiKey] = useState('');
+  const [showApiKeyInput, setShowApiKeyInput] = useState(false);
+  const { videos, isLoading, error, fetchVideos, formatViewCount, formatDate } = useYouTubeAPI();
 
-  const recentVideos = [
-    {
-      id: 'hQAA7k7aYY8',
-      title: 'Latest S2PGGs Highlights',
-      type: 'Highlight Reel',
-      views: '25K',
-      thumbnail: `https://img.youtube.com/vi/hQAA7k7aYY8/maxresdefault.jpg`
-    },
-    {
-      id: '4AvT8Cn-FdE',
-      title: 'Tournament Victory',
-      type: 'Competition',
-      views: '18K',
-      thumbnail: `https://img.youtube.com/vi/4AvT8Cn-FdE/maxresdefault.jpg`
-    },
-    {
-      id: 'FHEv_O8XgwI',
-      title: 'Pro Tips & Strategy',
-      type: 'Educational',
-      views: '12K',
-      thumbnail: `https://img.youtube.com/vi/FHEv_O8XgwI/maxresdefault.jpg`
+  const openVideo = (video: any) => {
+    setSelectedVideo(video);
+  };
+
+  const handleApiKeySubmit = () => {
+    if (apiKey.trim()) {
+      localStorage.setItem('youtube_api_key', apiKey);
+      fetchVideos(apiKey, 'YOUR_CHANNEL_ID'); // Replace with actual channel ID
+      setShowApiKeyInput(false);
     }
-  ];
+  };
+
+  useEffect(() => {
+    const savedApiKey = localStorage.getItem('youtube_api_key');
+    if (savedApiKey) {
+      setApiKey(savedApiKey);
+      fetchVideos(savedApiKey, 'YOUR_CHANNEL_ID'); // Replace with actual channel ID
+    }
+  }, []);
 
   return (
-    <section id="content" className="py-20 bg-background">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-gaming font-bold text-primary glow-text mb-6">
-            CONTENT CREATORS
-          </h2>
-          <p className="text-xl text-muted-foreground font-display max-w-3xl mx-auto">
-            Beyond competitive play, S2PGGs produces top-tier content across multiple platforms. 
-            From epic highlights to educational tutorials, we share our passion with the community.
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-foreground mb-4">Content & Creators</h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Follow our journey across platforms and never miss the action
           </p>
         </div>
 
-        {/* Content Types */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16 max-w-6xl mx-auto">
-          {contentTypes.map((content, index) => (
-            <div 
-              key={content.title}
-              className="gaming-card p-8 hover-lift animate-slide-in-left"
-              style={{ animationDelay: `${index * 0.2}s` }}
+        {/* API Key Setup (Optional) */}
+        {!localStorage.getItem('youtube_api_key') && (
+          <div className="mb-8 text-center">
+            <Button
+              onClick={() => setShowApiKeyInput(!showApiKeyInput)}
+              variant="outline"
+              className="mb-4"
             >
-              <div className="flex items-center justify-center mb-6">
-                <div className="w-16 h-16 bg-muted/30 rounded-full flex items-center justify-center">
-                  <content.icon className={`w-8 h-8 ${content.color}`} />
-                </div>
+              <Settings className="w-4 h-4 mr-2" />
+              Setup YouTube API (Optional)
+            </Button>
+            {showApiKeyInput && (
+              <div className="max-w-md mx-auto flex gap-2">
+                <input
+                  type="text"
+                  placeholder="Enter YouTube API Key"
+                  value={apiKey}
+                  onChange={(e) => setApiKey(e.target.value)}
+                  className="flex-1 px-3 py-2 border rounded-md bg-background"
+                />
+                <Button onClick={handleApiKeySubmit}>Save</Button>
               </div>
-              <h3 className="text-xl font-gaming font-bold text-primary mb-3 text-center">
-                {content.title}
-              </h3>
-              <p className="text-muted-foreground mb-4 font-display text-center">
-                {content.description}
-              </p>
-              <div className="text-center">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-primary/20 text-primary font-display font-semibold">
-                  <TrendingUp className="w-4 h-4 mr-1" />
-                  {content.stats}
-                </span>
-              </div>
-            </div>
-          ))}
+            )}
+          </div>
+        )}
+
+        {/* Top Content Creators */}
+        <div className="mb-16">
+          <h3 className="text-2xl font-bold text-center text-foreground mb-8">Top Creators by Platform</h3>
+          <div className="grid md:grid-cols-3 gap-6">
+            {topCreators.map((creator) => {
+              const Icon = creator.icon;
+              return (
+                <Card key={creator.platform} className="bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105">
+                  <CardContent className="p-6 text-center">
+                    <div className="mb-4">
+                      <div className={`w-16 h-16 mx-auto bg-gradient-to-br ${creator.gradient} rounded-full flex items-center justify-center mb-3`}>
+                        <Icon className="w-8 h-8 text-white" />
+                      </div>
+                      <Badge className="bg-primary/20 text-primary border-primary/30">
+                        {creator.platform}
+                      </Badge>
+                    </div>
+                    <h4 className="text-xl font-semibold text-foreground mb-1">{creator.name}</h4>
+                    <p className="text-sm text-muted-foreground mb-2">{creator.handle}</p>
+                    <p className="text-lg font-bold text-primary mb-3">{creator.followers}</p>
+                    <p className="text-sm text-muted-foreground mb-4">{creator.description}</p>
+                    <Button 
+                      className="w-full" 
+                      variant={creator.platform === 'TikTok' ? 'secondary' : 'default'}
+                      disabled={creator.platform === 'TikTok'}
+                      onClick={() => creator.channelUrl !== '#' && window.open(creator.channelUrl, '_blank')}
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      {creator.platform === 'TikTok' ? 'Coming Soon' : `Watch on ${creator.platform}`}
+                    </Button>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Recent Content */}
-        <div className="gaming-card p-8 max-w-6xl mx-auto">
+        {/* Recent Videos with YouTube API */}
+        <div className="mb-16">
           <div className="flex items-center justify-between mb-8">
-            <h3 className="text-2xl font-gaming font-bold text-accent">
-              RECENT VIDEOS
-            </h3>
-            <Button 
-              variant="outline" 
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-              onClick={() => window.open('https://www.youtube.com/@S2PGGs', '_blank')}
-            >
-              View Channel
-            </Button>
+            <h3 className="text-2xl font-bold text-foreground">Recent Videos</h3>
+            {isLoading && <span className="text-sm text-muted-foreground">Loading latest videos...</span>}
+            {error && <span className="text-sm text-red-500">Using cached videos</span>}
           </div>
           
           <div className="grid md:grid-cols-3 gap-6">
-            {recentVideos.map((video, index) => (
-              <div 
-                key={video.id}
-                className="group cursor-pointer hover-lift animate-slide-in-right"
-                style={{ animationDelay: `${index * 0.1}s` }}
-                onClick={() => setSelectedVideo(video.id)}
-              >
-                <div className="relative bg-muted/30 rounded-lg overflow-hidden mb-4">
-                  <img 
-                    src={video.thumbnail} 
-                    alt={video.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Play className="w-12 h-12 text-primary" fill="currentColor" />
+            {videos.map((video) => (
+              <Card key={video.id} className="bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 group">
+                <CardContent className="p-0">
+                  <div className="relative">
+                    <img 
+                      src={video.thumbnail} 
+                      alt={video.title}
+                      className="w-full h-48 object-cover rounded-t-lg"
+                    />
+                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-lg flex items-center justify-center">
+                      <Button
+                        size="lg"
+                        className="bg-primary/90 hover:bg-primary text-white"
+                        onClick={() => openVideo(video)}
+                      >
+                        <Play className="w-6 h-6 mr-2" />
+                        Play Video
+                      </Button>
+                    </div>
+                    <div className="absolute bottom-2 right-2">
+                      <Badge className="bg-red-600 text-white">
+                        <Youtube className="w-3 h-3 mr-1" />
+                        YouTube
+                      </Badge>
+                    </div>
                   </div>
-                </div>
-                <h4 className="font-display font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                  {video.title}
-                </h4>
-                <div className="flex items-center justify-between text-sm text-muted-foreground">
-                  <span>{video.type}</span>
-                  <div className="flex items-center space-x-1">
-                    <Eye className="w-3 h-3" />
-                    <span>{video.views}</span>
+                  <div className="p-4">
+                    <h4 className="font-semibold text-foreground mb-2 line-clamp-2">{video.title}</h4>
+                    <div className="flex items-center justify-between text-sm text-muted-foreground">
+                      <div className="flex items-center gap-1">
+                        <Eye className="w-4 h-4" />
+                        <span>{formatViewCount(video.viewCount)} views</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Calendar className="w-4 h-4" />
+                        <span>{formatDate(video.publishedAt)}</span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
 
         {/* Video Modal */}
         {selectedVideo && (
-          <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 modal-enter">
-            <div className="relative w-full max-w-4xl bg-background rounded-xl overflow-hidden shadow-elevated">
+          <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+            <div className="relative w-full max-w-4xl bg-background rounded-xl overflow-hidden shadow-lg">
               <button
                 onClick={() => setSelectedVideo(null)}
-                className="absolute top-4 right-4 z-10 p-2 bg-background/80 rounded-full hover:bg-background transition-colors hover:scale-110"
+                className="absolute top-4 right-4 z-10 p-2 bg-background/80 rounded-full hover:bg-background transition-colors"
               >
-                <X className="w-6 h-6" />
+                <ExternalLink className="w-6 h-6" />
               </button>
               <div className="aspect-video">
                 <iframe
-                  src={`https://www.youtube.com/embed/${selectedVideo}?autoplay=1`}
+                  src={`https://www.youtube.com/embed/${selectedVideo.id}?autoplay=1`}
                   title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -168,32 +221,33 @@ const ContentSection = () => {
         )}
 
         {/* CTA Section */}
-        <div className="text-center mt-16">
-          <div className="gaming-card p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-gaming font-bold text-primary mb-4">
-              STAY CONNECTED
-            </h3>
-            <p className="text-muted-foreground mb-6 font-display">
-              Subscribe to our channels and never miss epic content from S2PGGs
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                className="esports-button"
-                onClick={() => window.open('https://www.youtube.com/@S2PGGs', '_blank')}
-              >
-                <Youtube className="w-4 h-4 mr-2" />
-                Subscribe on YouTube
-              </Button>
-              <Button 
-                variant="outline" 
-                className="border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white"
-                onClick={() => window.open('https://discord.gg/Hyu6j4RFrp', '_blank')}
-              >
-                <Twitch className="w-4 h-4 mr-2" />
-                Join Discord
-              </Button>
-            </div>
-          </div>
+        <div className="text-center">
+          <Card className="bg-card/50 backdrop-blur-sm border-primary/20 max-w-2xl mx-auto">
+            <CardContent className="p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4">
+                STAY CONNECTED
+              </h3>
+              <p className="text-muted-foreground mb-6">
+                Subscribe to our channels and never miss epic content from S2PGGs
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button 
+                  onClick={() => window.open('https://www.youtube.com/@S2PGGs', '_blank')}
+                >
+                  <Youtube className="w-4 h-4 mr-2" />
+                  Subscribe on YouTube
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white"
+                  onClick={() => window.open('https://discord.gg/Hyu6j4RFrp', '_blank')}
+                >
+                  <Users className="w-4 h-4 mr-2" />
+                  Join Discord
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>
