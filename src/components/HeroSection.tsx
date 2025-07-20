@@ -33,11 +33,11 @@ const HeroSection = () => {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent">
-      <div className="relative z-10 container mx-auto px-4 text-center">
-        <div className="max-w-4xl mx-auto">
-          {/* Professional title with typewriter effect */}
-          <div className="mb-12">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-sans font-medium text-primary glow-text leading-tight tracking-tight">
+      <div className="relative z-10 w-full px-4 text-center">
+        <div className="w-full">
+          {/* Professional title with typewriter effect - Full width */}
+          <div className="mb-12 w-full">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] 2xl:text-[14rem] font-sans font-medium text-primary glow-text leading-none tracking-tighter text-center w-full">
               {displayedText}
               <span className="animate-pulse">|</span>
             </h1>
