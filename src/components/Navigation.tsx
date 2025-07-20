@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Trophy, Users, Play, Calendar, MessageSquare } from 'lucide-react';
+import { Menu, X, Users, Play, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { scrollToSection } = useSmoothScroll();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,14 +17,9 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
+  const handleNavClick = (href: string) => {
+    scrollToSection(href);
+    setIsMenuOpen(false);
   };
 
   const navItems = [
@@ -63,7 +60,7 @@ const Navigation = () => {
             {navItems.map((item) => (
               <button
                 key={item.name}
-                onClick={() => scrollToSection(item.href)}
+                onClick={() => handleNavClick(item.href)}
                 className="nav-link flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-muted/50 transition-all duration-300"
               >
                 <item.icon size={16} />
@@ -102,10 +99,7 @@ const Navigation = () => {
               {navItems.map((item) => (
                 <button
                   key={item.name}
-                  onClick={() => {
-                    scrollToSection(item.href);
-                    setIsMenuOpen(false);
-                  }}
+                  onClick={() => handleNavClick(item.href)}
                   className="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-muted/50 transition-all duration-300 w-full text-left"
                 >
                   <item.icon size={18} />
