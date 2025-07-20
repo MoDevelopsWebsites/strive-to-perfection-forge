@@ -3,6 +3,7 @@ import HeroSection from '@/components/HeroSection';
 import TeamSection from '@/components/TeamSection';
 import StreamersSection from '@/components/StreamersSection';
 import ContentSection from '@/components/ContentSection';
+import MerchSection from '@/components/MerchSection';
 import ContactSection from '@/components/ContactSection';
 
 const Index = () => {
@@ -18,6 +19,7 @@ const Index = () => {
         <TeamSection />
         <StreamersSection />
         <ContentSection />
+        <MerchSection />
         <ContactSection />
       </main>
     </div>

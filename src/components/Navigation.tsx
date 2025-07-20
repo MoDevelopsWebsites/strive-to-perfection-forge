@@ -40,6 +40,7 @@ const Navigation = () => {
       ]
     },
     { name: 'Content', href: '#content', icon: Video },
+    { name: 'Merch', href: '#merch', icon: Gamepad2 },
     { name: 'Contact', href: '#contact', icon: MessageSquare },
   ];
 
