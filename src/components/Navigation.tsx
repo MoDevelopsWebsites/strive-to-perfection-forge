@@ -27,9 +27,7 @@ const Navigation = () => {
 
   const navItems = [
     { name: 'Team', href: '#team', icon: Users },
-    { name: 'Matches', href: '#matches', icon: Trophy },
     { name: 'Content', href: '#content', icon: Play },
-    { name: 'Events', href: '#events', icon: Calendar },
     { name: 'Contact', href: '#contact', icon: MessageSquare },
   ];
 

@@ -7,48 +7,48 @@ const ContentSection = () => {
   const contentTypes = [
     {
       icon: Youtube,
-      title: 'YouTube Content',
-      description: 'Epic gameplay highlights, tutorials, and behind-the-scenes content',
-      stats: '500K+ Views',
+      title: 'YouTube Creator',
+      description: 'Our top YouTube content creator with epic gameplay highlights and tutorials',
+      stats: 'Top Creator - Placeholder',
       color: 'text-red-500'
     },
     {
       icon: Twitch,
-      title: 'Live Streaming',
-      description: 'Watch our team compete live in tournaments and scrimmages',
-      stats: '10K+ Followers',
+      title: 'Twitch Streamer',
+      description: 'Our featured Twitch streamer bringing live entertainment and competition',
+      stats: 'Featured Streamer - Placeholder',
       color: 'text-purple-500'
     },
     {
       icon: Camera,
-      title: 'Content Creation',
-      description: 'Professional video production and social media content',
-      stats: '1M+ Impressions',
+      title: 'Content Creator',
+      description: 'Our lead content creator for social media and video production',
+      stats: 'Lead Creator - Placeholder',
       color: 'text-primary'
     }
   ];
 
   const recentVideos = [
     {
-      id: 'hQAA7k7aYY8',
+      id: 'dQw4w9WgXcQ',
       title: 'Latest S2PGGs Highlights',
       type: 'Highlight Reel',
-      views: '15K',
-      thumbnail: `https://img.youtube.com/vi/hQAA7k7aYY8/maxresdefault.jpg`
+      views: '25K',
+      thumbnail: `https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg`
     },
     {
-      id: '4AvT8Cn-FdE',
-      title: 'Tournament Performance',
+      id: 'dQw4w9WgXcQ',
+      title: 'Tournament Victory',
       type: 'Competition',
-      views: '12K',
-      thumbnail: `https://img.youtube.com/vi/4AvT8Cn-FdE/maxresdefault.jpg`
+      views: '18K',
+      thumbnail: `https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg`
     },
     {
-      id: 'FHEv_O8XgwI',
-      title: 'Team Strategy Breakdown',
-      type: 'Analysis',
-      views: '8K',
-      thumbnail: `https://img.youtube.com/vi/FHEv_O8XgwI/maxresdefault.jpg`
+      id: 'dQw4w9WgXcQ',
+      title: 'Pro Tips & Strategy',
+      type: 'Educational',
+      views: '12K',
+      thumbnail: `https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg`
     }
   ];
 

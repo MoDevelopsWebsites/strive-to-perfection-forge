@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Play, ExternalLink, Users, Clock } from "lucide-react";
+import { Play, ExternalLink, Users } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const streamers = [
@@ -31,24 +31,6 @@ const streamers = [
 
 const StreamersSection = () => {
   const [selectedStreamer, setSelectedStreamer] = useState(null);
-  const [streamStatuses, setStreamStatuses] = useState({});
-
-  // Simulate stream status (in real app, you'd use Twitch API)
-  useEffect(() => {
-    const simulateStreamStatus = () => {
-      const statuses = {};
-      streamers.forEach(streamer => {
-        // Randomly assign online/offline status for demo
-        statuses[streamer.username] = Math.random() > 0.6 ? 'live' : 'offline';
-      });
-      setStreamStatuses(statuses);
-    };
-
-    simulateStreamStatus();
-    // Update every 30 seconds for demo
-    const interval = setInterval(simulateStreamStatus, 30000);
-    return () => clearInterval(interval);
-  }, []);
 
   const openStream = (streamer) => {
     setSelectedStreamer(streamer);
@@ -74,29 +56,8 @@ const StreamersSection = () => {
         {/* Streamers Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {streamers.map((streamer, index) => {
-            const isLive = streamStatuses[streamer.username] === 'live';
-            
             return (
               <Card key={streamer.username} className="bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group animate-fade-in relative overflow-hidden" style={{ animationDelay: `${index * 0.1}s` }}>
-                {/* Live/Offline Overlay */}
-                <div className="absolute top-4 right-4 z-10">
-                  <Badge 
-                    variant={isLive ? "default" : "secondary"} 
-                    className={`${isLive ? 'bg-red-500 hover:bg-red-600 animate-pulse' : 'bg-gray-500'} text-white border-0`}
-                  >
-                    {isLive ? (
-                      <>
-                        <div className="w-2 h-2 bg-white rounded-full mr-2 animate-pulse" />
-                        LIVE
-                      </>
-                    ) : (
-                      <>
-                        <Clock className="w-3 h-3 mr-1" />
-                        OFFLINE
-                      </>
-                    )}
-                  </Badge>
-                </div>
 
                 <CardContent className="p-6">
                   <div className="mb-4 relative">
@@ -126,16 +87,15 @@ const StreamersSection = () => {
                           size="sm" 
                           className="flex-1"
                           onClick={() => openStream(streamer)}
-                          disabled={!isLive}
                         >
                           <Play className="w-4 h-4 mr-2" />
-                          {isLive ? 'Watch Stream' : 'Stream Offline'}
+                          Watch Stream
                         </Button>
                       </DialogTrigger>
                       <DialogContent className="max-w-4xl w-full">
                         <DialogHeader>
                           <DialogTitle className="text-center text-xl font-bold">
-                            {streamer.name} - Live Stream
+                            {streamer.name} - Stream
                           </DialogTitle>
                         </DialogHeader>
                         <div className="aspect-video w-full">
