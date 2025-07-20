@@ -6,6 +6,67 @@
 
 @layer base {
   :root {
+    --background: 240 8% 6%;
+    --foreground: 300 20% 98%;
+
+    --card: 240 10% 8%;
+    --card-foreground: 300 20% 98%;
+
+    --popover: 240 10% 8%;
+    --popover-foreground: 300 20% 98%;
+
+    --primary: 270 91% 65%;
+    --primary-foreground: 240 8% 6%;
+    --primary-glow: 270 100% 75%;
+
+    --secondary: 260 30% 15%;
+    --secondary-foreground: 300 20% 98%;
+
+    --muted: 240 10% 12%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 280 100% 70%;
+    --accent-foreground: 240 8% 6%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 300 20% 98%;
+
+    --border: 240 20% 15%;
+    --input: 240 20% 15%;
+    --ring: 270 91% 65%;
+
+    --radius: 0.75rem;
+
+    /* Gaming-specific design tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(270 91% 65%), hsl(280 100% 70%));
+    --gradient-secondary: linear-gradient(180deg, hsl(240 10% 8%), hsl(240 8% 6%));
+    --gradient-hero: linear-gradient(135deg, hsl(240 8% 6%) 0%, hsl(260 30% 15%) 50%, hsl(270 91% 65%) 100%);
+    
+    --shadow-glow: 0 0 30px hsl(270 91% 65% / 0.3);
+    --shadow-purple: 0 10px 40px hsl(270 91% 65% / 0.2);
+    --shadow-elevated: 0 20px 60px hsl(240 8% 6% / 0.8);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .light {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
 
@@ -34,21 +95,7 @@
     --border: 270 20% 88%;
     --input: 270 20% 88%;
     --ring: 270 91% 60%;
-
-    --radius: 0.75rem;
-
-    /* Gaming-specific design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(270 91% 60%), hsl(280 100% 65%));
-    --gradient-secondary: linear-gradient(180deg, hsl(0 0% 98%), hsl(270 15% 96%));
-    --gradient-hero: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(270 15% 96%) 50%, hsl(270 91% 60%) 100%);
     
-    --shadow-glow: 0 0 30px hsl(270 91% 60% / 0.15);
-    --shadow-purple: 0 10px 40px hsl(270 91% 60% / 0.1);
-    --shadow-elevated: 0 20px 60px hsl(240 10% 3.9% / 0.08);
-    
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 10% 3.9%;
     --sidebar-primary: 270 91% 60%;
@@ -57,8 +104,16 @@
     --sidebar-accent-foreground: 240 10% 3.9%;
     --sidebar-border: 270 20% 88%;
     --sidebar-ring: 270 91% 60%;
+    
+    /* Light mode specific design tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(270 91% 60%), hsl(280 100% 65%));
+    --gradient-secondary: linear-gradient(180deg, hsl(0 0% 98%), hsl(270 15% 96%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(270 15% 96%) 50%, hsl(270 91% 60%) 100%);
+    
+    --shadow-glow: 0 0 30px hsl(270 91% 60% / 0.15);
+    --shadow-purple: 0 10px 40px hsl(270 91% 60% / 0.1);
+    --shadow-elevated: 0 20px 60px hsl(240 10% 3.9% / 0.08);
   }
-
 }
 
 @layer base {
@@ -109,7 +164,7 @@
 @layer components {
   /* Gaming-specific component styles */
   .glow-text {
-    text-shadow: 0 0 15px hsl(270 91% 60% / 0.4);
+    text-shadow: 0 0 20px hsl(var(--primary-glow) / 0.5);
   }
   
   .hero-gradient {
@@ -117,12 +172,12 @@
   }
   
   .purple-glow {
-    box-shadow: 0 0 20px hsl(270 91% 60% / 0.2);
+    box-shadow: var(--shadow-glow);
   }
   
   .gaming-card {
-    @apply bg-card/95 backdrop-blur-md border-2 border-border/80 rounded-xl;
-    box-shadow: 0 8px 32px hsl(240 10% 3.9% / 0.1);
+    @apply bg-card/90 backdrop-blur-md border border-border rounded-xl;
+    box-shadow: var(--shadow-elevated);
   }
   
   .hover-lift {
@@ -138,12 +193,12 @@
     @apply bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold;
     background: var(--gradient-primary);
     transition: var(--transition-smooth);
-    box-shadow: 0 4px 16px hsl(270 91% 60% / 0.25);
+    box-shadow: var(--shadow-glow);
   }
   
   .esports-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px hsl(270 91% 60% / 0.35);
+    box-shadow: var(--shadow-purple);
   }
 
   .nav-link {
@@ -163,14 +218,36 @@
     @apply w-full;
   }
 
-  /* Professional card styling */
-  .stat-card {
+  /* Enhanced light mode specific styling */
+  .light .gaming-card {
+    @apply bg-card/95 border-2 border-border/80;
+    box-shadow: 0 8px 32px hsl(240 10% 3.9% / 0.1);
+  }
+
+  .light .esports-button {
+    box-shadow: 0 4px 16px hsl(270 91% 60% / 0.25);
+  }
+
+  .light .esports-button:hover {
+    box-shadow: 0 8px 24px hsl(270 91% 60% / 0.35);
+  }
+
+  .light .purple-glow {
+    box-shadow: 0 0 20px hsl(270 91% 60% / 0.2);
+  }
+
+  .light .glow-text {
+    text-shadow: 0 0 15px hsl(270 91% 60% / 0.4);
+  }
+
+  /* Professional card styling for light mode */
+  .light .stat-card {
     @apply border-2 border-border/60;
     background: linear-gradient(135deg, hsl(0 0% 100%), hsl(270 15% 98%));
     box-shadow: 0 4px 20px hsl(240 10% 3.9% / 0.08);
   }
 
-  .achievement-badge {
+  .light .achievement-badge {
     @apply bg-secondary/80 border-2 border-primary/20 text-foreground;
   }
 
