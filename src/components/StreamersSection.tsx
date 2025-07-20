@@ -39,7 +39,7 @@ const StreamersSection = () => {
   };
 
   return (
-    <section ref={streamersRef} className="section-reveal py-20 px-4 relative overflow-hidden">
+    <section ref={streamersRef} className="snap-section section-reveal min-h-screen py-20 px-4 relative overflow-hidden flex items-center">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-primary/5" />
       <div className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl animate-pulse" />

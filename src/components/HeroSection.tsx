@@ -7,7 +7,7 @@ const HeroSection = () => {
   const heroRef = useScrollAnimation();
 
   return (
-    <section ref={heroRef} className="section-reveal relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section ref={heroRef} className="snap-section section-reveal relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 

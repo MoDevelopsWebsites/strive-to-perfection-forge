@@ -289,6 +289,50 @@
     animation: reveal-scale 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
+  /* Scroll snap styles */
+  .scroll-snap-container {
+    scroll-behavior: smooth;
+    overflow-y: auto;
+    height: 100vh;
+  }
+
+  .snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Enhanced section transitions */
+  .snap-section:nth-child(even) {
+    animation: slideInFromRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .snap-section:nth-child(odd) {
+    animation: slideInFromLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes slideInFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
   /* Enhanced section reveals */
   .section-reveal {
     opacity: 0;

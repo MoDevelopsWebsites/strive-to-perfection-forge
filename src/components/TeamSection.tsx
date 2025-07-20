@@ -64,7 +64,7 @@ const TeamSection = () => {
   ];
 
   return (
-    <section ref={teamRef} id="team" className="section-reveal py-20 bg-secondary/20">
+    <section ref={teamRef} id="team" className="snap-section section-reveal min-h-screen py-20 bg-secondary/20 flex items-center">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
