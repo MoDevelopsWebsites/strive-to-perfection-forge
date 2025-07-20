@@ -23,7 +23,7 @@ const leadership = [
     description: 'Operations mastermind ensuring smooth daily operations',
     achievements: ['Expert team coordinator', 'Process optimization', 'Strategic planning'],
     gradient: 'from-blue-500 to-purple-500',
-    image: '/lovable-uploads/dd9b3d57-c970-4261-8013-2f539e311295.png'
+    image: '/lovable-uploads/1e954a14-b815-4254-94ed-9762e2ad8379.png'
   },
   {
     name: 'Cowen',
@@ -40,7 +40,7 @@ const leadership = [
     description: 'Security and compliance specialist',
     achievements: ['Platform security', 'Risk management', 'Compliance oversight'],
     gradient: 'from-red-500 to-pink-500',
-    image: '/lovable-uploads/1e954a14-b815-4254-94ed-9762e2ad8379.png'
+    image: '/lovable-uploads/dd9b3d57-c970-4261-8013-2f539e311295.png'
   },
   {
     name: 'Clxud',
