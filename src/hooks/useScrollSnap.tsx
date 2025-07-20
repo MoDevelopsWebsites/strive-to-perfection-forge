@@ -9,12 +9,18 @@ export const useScrollSnap = () => {
     const container = containerRef.current;
     if (!container) return;
 
-    const sections = container.querySelectorAll('.snap-section');
+    const sections = document.querySelectorAll('.snap-section');
     const sectionCount = sections.length;
 
+    console.log('ScrollSnap initialized with', sectionCount, 'sections');
+
     const scrollToSection = (index: number) => {
-      if (index < 0 || index >= sectionCount || isScrollingRef.current) return;
+      if (index < 0 || index >= sectionCount || isScrollingRef.current) {
+        console.log('ScrollToSection blocked:', { index, sectionCount, isScrolling: isScrollingRef.current });
+        return;
+      }
       
+      console.log('Scrolling to section', index);
       isScrollingRef.current = true;
       currentSectionRef.current = index;
       
@@ -30,17 +36,22 @@ export const useScrollSnap = () => {
       // Reset scrolling flag after animation
       setTimeout(() => {
         isScrollingRef.current = false;
+        console.log('Scroll animation completed');
       }, 1000);
     };
 
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
       
-      if (isScrollingRef.current) return;
+      if (isScrollingRef.current) {
+        console.log('Wheel event blocked - already scrolling');
+        return;
+      }
 
       const direction = e.deltaY > 0 ? 1 : -1;
       const nextSection = currentSectionRef.current + direction;
       
+      console.log('Wheel event:', { direction, currentSection: currentSectionRef.current, nextSection });
       scrollToSection(nextSection);
     };
 
@@ -88,7 +99,10 @@ export const useScrollSnap = () => {
         }
       });
       
-      currentSectionRef.current = newCurrentSection;
+      if (newCurrentSection !== currentSectionRef.current) {
+        console.log('Current section changed from', currentSectionRef.current, 'to', newCurrentSection);
+        currentSectionRef.current = newCurrentSection;
+      }
     };
 
     // Add event listeners
@@ -104,6 +118,7 @@ export const useScrollSnap = () => {
       window.removeEventListener('wheel', handleWheel);
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('scroll', handleScroll);
+      console.log('ScrollSnap cleanup');
     };
   }, []);
 
