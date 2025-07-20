@@ -22,7 +22,8 @@ const leadership = [
     icon: Users,
     description: 'Operations mastermind ensuring smooth daily operations',
     achievements: ['Expert team coordinator', 'Process optimization', 'Strategic planning'],
-    gradient: 'from-blue-500 to-purple-500'
+    gradient: 'from-blue-500 to-purple-500',
+    image: '/lovable-uploads/dd9b3d57-c970-4261-8013-2f539e311295.png'
   },
   {
     name: 'Cowen',
@@ -38,7 +39,8 @@ const leadership = [
     icon: Shield,
     description: 'Security and compliance specialist',
     achievements: ['Platform security', 'Risk management', 'Compliance oversight'],
-    gradient: 'from-red-500 to-pink-500'
+    gradient: 'from-red-500 to-pink-500',
+    image: '/lovable-uploads/1e954a14-b815-4254-94ed-9762e2ad8379.png'
   },
   {
     name: 'Clxud',
@@ -46,7 +48,8 @@ const leadership = [
     icon: BarChart3,
     description: 'Analytics and optimization expert',
     achievements: ['Data-driven insights', 'Performance optimization', 'Growth metrics'],
-    gradient: 'from-purple-500 to-indigo-500'
+    gradient: 'from-purple-500 to-indigo-500',
+    image: '/lovable-uploads/1389390b-6946-4880-829e-6c7b433bc757.png'
   },
   {
     name: 'Medo',
@@ -127,10 +130,20 @@ export const TeamCarousel = () => {
                 <Card className="team-card bg-gradient-to-br from-card/50 to-background/30 backdrop-blur-sm border-primary/20 hover:border-primary/40 transition-all duration-300">
                   <CardContent className="p-8">
                     <div className="flex items-center gap-6">
-                      {/* Avatar and Icon */}
+                      {/* Avatar with Profile Picture */}
                       <div className="relative">
-                        <div className={`w-24 h-24 rounded-full bg-gradient-to-br ${member.gradient} flex items-center justify-center shadow-lg shadow-primary/25`}>
-                          <Icon className="w-12 h-12 text-white" />
+                        <div className={`w-24 h-24 rounded-full bg-gradient-to-br ${member.gradient} p-1 shadow-lg shadow-primary/25`}>
+                          {member.image ? (
+                            <img 
+                              src={member.image} 
+                              alt={member.name}
+                              className="w-full h-full rounded-full object-cover"
+                            />
+                          ) : (
+                            <div className={`w-full h-full rounded-full bg-gradient-to-br ${member.gradient} flex items-center justify-center`}>
+                              <Icon className="w-12 h-12 text-white" />
+                            </div>
+                          )}
                         </div>
                         <div className="absolute -bottom-2 -right-2">
                           <Badge className={`bg-gradient-to-r ${member.gradient} text-white border-0 shadow-lg`}>
