@@ -86,7 +86,7 @@ const HeroSection = () => {
 
           {/* Professional subtitle with typewriter animation */}
           {showDescription && (
-            <Card className="mb-16 max-w-4xl mx-auto bg-card/90 backdrop-blur-xl border border-border hover:border-primary/40 transition-all duration-500 animate-[glowFadeIn_1.2s_ease-out_forwards] opacity-100">
+            <Card className="mb-16 max-w-6xl mx-auto bg-card/90 backdrop-blur-xl border border-border hover:border-primary/40 transition-all duration-500 animate-[glowFadeIn_1.2s_ease-out_forwards] opacity-100">
               <CardContent className="p-8">
                 <p className="text-2xl md:text-3xl font-display font-light text-muted-foreground leading-relaxed">
                   {displayedDescription}
