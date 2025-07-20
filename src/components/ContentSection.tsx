@@ -76,8 +76,8 @@ const ContentSection = () => {
             {topCreators.map((creator) => {
               const Icon = creator.icon;
               return (
-                <Card key={creator.platform} className="bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105">
-                  <CardContent className="p-6 text-center">
+                <Card key={creator.platform} className="bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 h-full">
+                  <CardContent className="p-6 text-center h-full flex flex-col">
                     <div className="mb-4">
                       <div className={`w-16 h-16 mx-auto bg-gradient-to-br ${creator.gradient} rounded-full flex items-center justify-center mb-3`}>
                         <Icon className="w-8 h-8 text-white" />
@@ -89,9 +89,9 @@ const ContentSection = () => {
                     <h4 className="text-xl font-semibold text-foreground mb-1">{creator.name}</h4>
                     <p className="text-sm text-muted-foreground mb-2">{creator.handle}</p>
                     <p className="text-lg font-bold text-primary mb-3">{creator.followers}</p>
-                    <p className="text-sm text-muted-foreground mb-4">{creator.description}</p>
+                    <p className="text-sm text-muted-foreground mb-4 flex-grow">{creator.description}</p>
                     <Button 
-                      className="w-full" 
+                      className="w-full mt-auto" 
                       variant={creator.platform === 'TikTok' ? 'secondary' : 'default'}
                       disabled={creator.platform === 'TikTok'}
                       onClick={() => creator.channelUrl !== '#' && window.open(creator.channelUrl, '_blank')}
