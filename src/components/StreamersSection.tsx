@@ -106,11 +106,11 @@ const StreamersSection = () => {
           {streamers.map((streamer, index) => (
             <Card 
               key={streamer.name} 
-              className="streamer-card bg-card/30 backdrop-blur-sm border-primary/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 group overflow-hidden"
+              className="streamer-card gaming-card hover:border-primary/60 transition-all duration-500 hover:scale-105 group overflow-hidden"
             >
               <CardContent className="p-0">
                 {/* Streamer Header */}
-                <div className="relative p-6 bg-gradient-to-br from-primary/10 to-secondary/10">
+                <div className="relative p-6 bg-gradient-to-br from-primary/10 to-secondary/10 h-full">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center shadow-lg shadow-primary/25">
                       <TwitchIcon className="w-8 h-8 text-white" />
