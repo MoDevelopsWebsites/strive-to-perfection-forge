@@ -64,7 +64,7 @@ const MerchSection = () => {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
             <Zap className="w-8 h-8 text-primary animate-pulse" />
-            <h2 className="text-4xl md:text-6xl font-gaming font-black text-primary glow-text">
+            <h2 className="text-4xl md:text-6xl font-sans font-medium text-primary glow-text">
               OFFICIAL MERCH
             </h2>
             <Zap className="w-8 h-8 text-primary animate-pulse" />
