@@ -55,13 +55,13 @@ const StreamersSection = () => {
   };
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden parallax-bg">
+    <section className="py-20 px-4 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-primary/5" />
       <div className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-20 right-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
       
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-primary to-purple-400 bg-clip-text text-transparent mb-6">
             LIVE STREAMERS

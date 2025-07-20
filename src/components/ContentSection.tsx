@@ -53,14 +53,8 @@ const ContentSection = () => {
   ];
 
   return (
-    <section id="content" className="relative h-screen flex items-center justify-center bg-background overflow-hidden parallax-bg">
-      {/* Background effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 right-20 w-48 h-48 bg-primary/5 rounded-full blur-3xl animate-float-slow"></div>
-        <div className="absolute bottom-20 left-20 w-32 h-32 bg-accent/5 rounded-full blur-3xl animate-float-medium"></div>
-      </div>
-      
-      <div className="container mx-auto px-4 relative z-10">
+    <section id="content" className="py-20 bg-background">
+      <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-gaming font-bold text-primary glow-text mb-6">
