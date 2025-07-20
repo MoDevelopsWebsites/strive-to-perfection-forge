@@ -43,7 +43,7 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-        <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-3">
             <div className="w-12 h-12 rounded-full overflow-hidden bg-gradient-primary p-0.5 purple-glow">
               <img 
                 src="/lovable-uploads/6af2116b-6281-4072-b96b-cec7ad59b43a.png" 
@@ -63,16 +63,19 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="nav-link flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-muted/50 transition-all duration-300"
-              >
-                <item.icon size={16} />
-                <span className="font-display font-medium">{item.name}</span>
-              </button>
-            ))}
+            {navItems.map((item) => {
+              const IconComponent = item.icon;
+              return (
+                <button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href)}
+                  className="nav-link flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-muted/50 transition-all duration-300"
+                >
+                  <IconComponent size={16} />
+                  <span className="font-display font-medium">{item.name}</span>
+                </button>
+              );
+            })}
           </div>
 
           {/* CTA Button */}
@@ -102,16 +105,19 @@ const Navigation = () => {
         {isMenuOpen && (
           <div className="md:hidden animate-slide-in-left">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-card/95 backdrop-blur-md rounded-xl border border-border/50 mt-2">
-              {navItems.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-muted/50 transition-all duration-300 w-full text-left"
-                >
-                  <item.icon size={18} />
-                  <span className="font-display font-medium">{item.name}</span>
-                </button>
-              ))}
+              {navItems.map((item) => {
+                const IconComponent = item.icon;
+                return (
+                  <button
+                    key={item.name}
+                    onClick={() => scrollToSection(item.href)}
+                    className="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-muted/50 transition-all duration-300 w-full text-left"
+                  >
+                    <IconComponent size={18} />
+                    <span className="font-display font-medium">{item.name}</span>
+                  </button>
+                );
+              })}
               <div className="pt-2">
                 <Button 
                   className="esports-button w-full"
