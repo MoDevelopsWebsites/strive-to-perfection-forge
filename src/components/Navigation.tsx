@@ -34,9 +34,24 @@ const Navigation = () => {
       href: '#team', 
       icon: Users,
       dropdown: [
-        { name: 'Leadership', href: '#team' },
-        { name: 'Live Streamers', href: '#streamers' },
-        { name: 'Community', href: '#contact' }
+        { 
+          name: 'Leadership', 
+          href: '#team', 
+          icon: Users,
+          description: 'Meet our core leadership team and executives driving S2PGGs forward'
+        },
+        { 
+          name: 'Live Streamers', 
+          href: '#streamers', 
+          icon: Video,
+          description: 'Watch our talented content creators compete and entertain live on Twitch'
+        },
+        { 
+          name: 'Community', 
+          href: '#contact', 
+          icon: MessageSquare,
+          description: 'Join our growing community and connect with fellow gamers and fans'
+        }
       ]
     },
     { name: 'Content', href: '#content', icon: Video },
@@ -102,19 +117,48 @@ const Navigation = () => {
                     )}
                   </button>
                   
-                  {/* Dropdown Menu */}
+                  {/* Enhanced Professional Dropdown Menu - Stripe Style */}
                   {hasDropdown && hoveredItem === item.name && (
-                    <div className="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-card backdrop-blur-xl border border-border rounded-xl shadow-lg shadow-primary/10 z-50 overflow-hidden">
-                      <div className="py-2">
-                        {item.dropdown.map((dropdownItem) => (
+                    <div className="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 mt-3 w-96 bg-card/98 backdrop-blur-2xl border border-border/60 rounded-2xl shadow-2xl shadow-primary/10 z-50 overflow-hidden">
+                      <div className="p-6">
+                        <div className="mb-4">
+                          <h3 className="text-lg font-gaming font-bold text-primary mb-2">Our Team</h3>
+                          <p className="text-sm text-muted-foreground">Explore different aspects of the S2PGGs organization</p>
+                        </div>
+                        <div className="space-y-2">
+                          {item.dropdown.map((dropdownItem) => {
+                            const DropdownIcon = dropdownItem.icon;
+                            return (
+                              <button
+                                key={dropdownItem.name}
+                                onClick={() => scrollToSection(dropdownItem.href)}
+                                className="w-full text-left group p-4 rounded-xl hover:bg-primary/10 transition-all duration-300 border border-transparent hover:border-primary/20"
+                              >
+                                <div className="flex items-start gap-4">
+                                  <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center group-hover:from-primary/30 group-hover:to-secondary/30 transition-all duration-300">
+                                    <DropdownIcon className="w-5 h-5 text-primary" />
+                                  </div>
+                                  <div className="flex-grow min-w-0">
+                                    <h4 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors duration-200 mb-1">
+                                      {dropdownItem.name}
+                                    </h4>
+                                    <p className="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors duration-200 leading-relaxed">
+                                      {dropdownItem.description}
+                                    </p>
+                                  </div>
+                                </div>
+                              </button>
+                            );
+                          })}
+                        </div>
+                        <div className="mt-6 pt-4 border-t border-border/50">
                           <button
-                            key={dropdownItem.name}
-                            onClick={() => scrollToSection(dropdownItem.href)}
-                            className="w-full text-left px-4 py-3 hover:bg-muted/80 transition-all duration-200 text-sm font-display font-medium text-foreground/90 hover:text-primary"
+                            onClick={() => window.open('https://discord.gg/Hyu6j4RFrp', '_blank')}
+                            className="w-full p-3 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl font-medium"
                           >
-                            {dropdownItem.name}
+                            Join Our Community
                           </button>
-                        ))}
+                        </div>
                       </div>
                     </div>
                   )}
