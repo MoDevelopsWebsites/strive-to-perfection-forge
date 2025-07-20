@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Users, Play, MessageSquare } from 'lucide-react';
+import { Menu, X, Home, Users, Video, Gamepad2, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { scrollToSection } = useSmoothScroll();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,14 +15,22 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
-    scrollToSection(href);
-    setIsMenuOpen(false);
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+      setIsMenuOpen(false);
+    }
   };
 
   const navItems = [
+    { name: 'Home', href: '#hero', icon: Home },
     { name: 'Team', href: '#team', icon: Users },
-    { name: 'Content', href: '#content', icon: Play },
+    { name: 'Streamers', href: '#streamers', icon: Gamepad2 },
+    { name: 'Content', href: '#content', icon: Video },
     { name: 'Contact', href: '#contact', icon: MessageSquare },
   ];
 
@@ -60,7 +66,7 @@ const Navigation = () => {
             {navItems.map((item) => (
               <button
                 key={item.name}
-                onClick={() => handleNavClick(item.href)}
+                onClick={() => scrollToSection(item.href)}
                 className="nav-link flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-muted/50 transition-all duration-300"
               >
                 <item.icon size={16} />
@@ -99,7 +105,7 @@ const Navigation = () => {
               {navItems.map((item) => (
                 <button
                   key={item.name}
-                  onClick={() => handleNavClick(item.href)}
+                  onClick={() => scrollToSection(item.href)}
                   className="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-muted/50 transition-all duration-300 w-full text-left"
                 >
                   <item.icon size={18} />
