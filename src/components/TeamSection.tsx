@@ -62,8 +62,14 @@ const TeamSection = () => {
   ];
 
   return (
-    <section id="team" className="py-20 bg-secondary/20">
-      <div className="container mx-auto px-4">
+    <section id="team" className="relative h-screen flex items-center justify-center bg-secondary/20 overflow-hidden parallax-bg">
+      {/* Background effects */}
+      <div className="absolute inset-0">
+        <div className="absolute top-10 left-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl animate-float-slow"></div>
+        <div className="absolute bottom-10 right-10 w-60 h-60 bg-accent/5 rounded-full blur-3xl animate-float-medium"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-gaming font-bold text-primary glow-text mb-6">
