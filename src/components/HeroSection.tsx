@@ -179,9 +179,9 @@ const HeroSection = () => {
                 <div className="absolute -inset-2 bg-primary/20 rounded-lg blur-xl -z-10"></div>
               </span>
               <span className="text-2xl md:text-4xl lg:text-5xl text-accent font-light">2</span>
-              <span className="text-transparent bg-gradient-to-r from-secondary to-accent bg-clip-text relative">
+              <span className="glow-text text-primary relative">
                 PERFECTION
-                <div className="absolute -inset-2 bg-gradient-to-r from-secondary/20 to-accent/20 rounded-lg blur-xl -z-10"></div>
+                <div className="absolute -inset-2 bg-primary/20 rounded-lg blur-xl -z-10"></div>
               </span>
             </h1>
           </div>
