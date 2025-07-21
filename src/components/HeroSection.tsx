@@ -197,30 +197,68 @@ const HeroSection = () => {
             {/* Right Side - Video Displays */}
             <div className="relative ml-auto overflow-hidden">
               <div className="relative ml-32">
-                {/* Desktop Screen - Moved far right */}
+                {/* Desktop Screen - Realistic laptop design */}
                 <div className="relative group">
-                  <div className="relative bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-xl rounded-2xl p-12 shadow-2xl shadow-primary/10 border border-border/50 transform hover:scale-105 transition-all duration-500 w-full min-w-[700px] max-w-5xl">
+                  {/* Laptop base/body */}
+                  <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 shadow-2xl shadow-black/40 transform hover:scale-105 transition-all duration-500 w-full min-w-[700px] max-w-5xl">
                     {/* Fade effect on right edge */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent rounded-2xl pointer-events-none" 
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent rounded-2xl pointer-events-none z-20" 
                          style={{
                            background: 'linear-gradient(to right, transparent 0%, transparent 85%, rgba(var(--background), 0.3) 95%, rgba(var(--background), 0.8) 100%)'
                          }}></div>
                     
-                    <div className="bg-background/80 rounded-lg p-8 mb-10">
-                      <div className="flex items-center gap-4 mb-6">
-                        <div className="w-6 h-6 bg-red-500 rounded-full"></div>
-                        <div className="w-6 h-6 bg-yellow-500 rounded-full"></div>
-                        <div className="w-6 h-6 bg-green-500 rounded-full"></div>
+                    {/* Screen bezel */}
+                    <div className="bg-black rounded-xl p-3 mb-4">
+                      {/* Screen */}
+                      <div className="relative bg-gradient-to-br from-card/95 to-card/70 backdrop-blur-xl rounded-lg overflow-hidden">
+                        {/* Top bar/menu */}
+                        <div className="bg-background/90 px-4 py-2 flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                          </div>
+                          <div className="bg-muted/50 h-2 rounded-full w-48"></div>
+                          <div className="w-8 h-2 bg-muted/30 rounded"></div>
+                        </div>
+                        
+                        {/* Video content */}
+                        <div className="aspect-video bg-black">
+                          <iframe
+                            src="https://www.youtube.com/embed/videoseries?list=UU_x5XG1OV2P6uZZ5FSM9Ttw&autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1"
+                            className="w-full h-full"
+                            allow="autoplay; encrypted-media"
+                            allowFullScreen
+                          />
+                        </div>
                       </div>
-                      <div className="bg-muted/50 h-4 rounded-full w-full"></div>
                     </div>
-                    <div className="aspect-video bg-black rounded-lg overflow-hidden">
-                      <iframe
-                        src="https://www.youtube.com/embed/videoseries?list=UU_x5XG1OV2P6uZZ5FSM9Ttw&autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1"
-                        className="w-full h-full"
-                        allow="autoplay; encrypted-media"
-                        allowFullScreen
-                      />
+                    
+                    {/* Keyboard area */}
+                    <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-lg p-3">
+                      <div className="grid grid-cols-12 gap-1 mb-2">
+                        {/* First row of keys */}
+                        {Array.from({ length: 12 }).map((_, i) => (
+                          <div key={i} className="bg-slate-600 h-6 rounded-sm"></div>
+                        ))}
+                      </div>
+                      <div className="grid grid-cols-10 gap-1 mb-2">
+                        {/* Second row of keys */}
+                        {Array.from({ length: 10 }).map((_, i) => (
+                          <div key={i} className="bg-slate-600 h-6 rounded-sm"></div>
+                        ))}
+                      </div>
+                      <div className="grid grid-cols-8 gap-1 mb-2">
+                        {/* Third row of keys */}
+                        {Array.from({ length: 8 }).map((_, i) => (
+                          <div key={i} className="bg-slate-600 h-6 rounded-sm"></div>
+                        ))}
+                      </div>
+                      {/* Spacebar */}
+                      <div className="bg-slate-600 h-6 rounded-sm w-1/2 mx-auto"></div>
+                      
+                      {/* Trackpad */}
+                      <div className="bg-slate-500 h-16 w-32 rounded-lg mx-auto mt-3 border border-slate-400/30"></div>
                     </div>
                   </div>
                 </div>
