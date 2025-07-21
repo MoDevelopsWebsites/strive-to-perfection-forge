@@ -198,115 +198,70 @@ const HeroSection = () => {
             <div className="relative ml-auto overflow-hidden">
               <div className="relative ml-32">
                 {/* Desktop Screen - Realistic laptop design */}
-                 <div className="relative group">
-                   {/* Laptop base/body - Ultra realistic with liquid blending */}
-                   <div className="relative bg-gradient-to-br from-slate-100 via-slate-50 to-white rounded-3xl p-3 shadow-2xl shadow-black/20 transform hover:scale-105 transition-all duration-500 w-full min-w-[800px] max-w-6xl border border-slate-300/50">
-                     {/* Liquid blending effects around edges */}
-                     <div className="absolute inset-0 rounded-3xl pointer-events-none z-20 overflow-hidden">
-                       {/* Top edge liquid blend */}
-                       <div className="absolute -top-2 left-1/4 right-1/4 h-8 bg-gradient-to-b from-transparent via-background/20 to-transparent blur-sm animate-[liquidFlow1_8s_ease-in-out_infinite]"></div>
-                       {/* Right edge liquid blend */}
-                       <div className="absolute top-1/4 bottom-1/4 -right-3 w-12 bg-gradient-to-l from-background/60 via-background/30 to-transparent blur-lg animate-[liquidFlow2_12s_ease-in-out_infinite]"></div>
-                       {/* Bottom edge liquid blend */}
-                       <div className="absolute -bottom-3 left-1/3 right-1/3 h-10 bg-gradient-to-t from-background/40 via-background/20 to-transparent blur-md animate-[liquidFlow3_10s_ease-in-out_infinite]"></div>
-                       {/* Left edge liquid blend */}
-                       <div className="absolute top-1/3 bottom-1/3 -left-2 w-8 bg-gradient-to-r from-background/30 via-background/15 to-transparent blur-sm animate-[liquidFlow4_6s_ease-in-out_infinite]"></div>
-                       
-                       {/* Corner liquid effects */}
-                       <div className="absolute -top-1 -right-1 w-16 h-16 bg-gradient-radial from-background/25 to-transparent blur-lg animate-[cornerLiquid1_15s_ease-in-out_infinite]"></div>
-                       <div className="absolute -bottom-2 -left-1 w-20 h-20 bg-gradient-radial from-background/20 to-transparent blur-xl animate-[cornerLiquid2_18s_ease-in-out_infinite]"></div>
-                     </div>
-                     
-                     {/* Screen assembly with realistic bezels */}
-                     <div className="bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 rounded-2xl p-1 mb-3 shadow-inner">
-                       {/* Screen with realistic proportions */}
-                       <div className="relative bg-gradient-to-br from-slate-900 to-black rounded-xl p-2 shadow-2xl shadow-black/60">
-                         {/* Camera notch */}
-                         <div className="absolute top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-slate-700 rounded-full shadow-inner"></div>
-                         
-                         {/* Actual screen area */}
-                         <div className="relative bg-gradient-to-br from-card/95 to-card/70 backdrop-blur-xl rounded-lg overflow-hidden">
-                           {/* macOS-style top bar */}
-                           <div className="bg-gradient-to-r from-slate-100 to-slate-50 px-4 py-2 flex items-center justify-between border-b border-slate-200">
-                             <div className="flex items-center gap-2">
-                               <div className="w-3 h-3 bg-red-500 rounded-full shadow-sm"></div>
-                               <div className="w-3 h-3 bg-yellow-500 rounded-full shadow-sm"></div>
-                               <div className="w-3 h-3 bg-green-500 rounded-full shadow-sm"></div>
-                             </div>
-                             <div className="bg-slate-200 h-6 rounded-full w-64 flex items-center px-3">
-                               <div className="w-3 h-3 bg-slate-400 rounded-full mr-2"></div>
-                               <div className="bg-slate-300 h-2 rounded-full flex-1"></div>
-                             </div>
-                             <div className="flex items-center gap-2">
-                               <div className="w-4 h-2 bg-slate-300 rounded"></div>
-                               <div className="w-4 h-2 bg-slate-300 rounded"></div>
-                               <div className="w-4 h-2 bg-slate-300 rounded"></div>
-                             </div>
-                           </div>
-                           
-                           {/* Video content - Desktop full screen */}
-                           <div className="bg-black h-96 relative overflow-hidden">
-                             {/* Video with subtle overlay */}
-                             <iframe
-                               src="https://www.youtube.com/embed/U6dHTga_rBQ?autoplay=1&mute=1&loop=1&playlist=U6dHTga_rBQ&controls=0&showinfo=0&rel=0&modestbranding=1"
-                               className="w-full h-full"
-                               allow="autoplay; encrypted-media"
-                               allowFullScreen
-                             />
-                             {/* Subtle screen reflection effect */}
-                             <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none"></div>
-                           </div>
-                         </div>
-                       </div>
-                     </div>
-                     
-                     {/* Realistic keyboard area */}
-                     <div className="bg-gradient-to-br from-slate-100 via-slate-50 to-white rounded-xl p-4 shadow-inner border border-slate-200">
-                       {/* Function keys row */}
-                       <div className="grid grid-cols-16 gap-1 mb-2">
-                         {Array.from({ length: 16 }).map((_, i) => (
-                           <div key={i} className="bg-gradient-to-b from-slate-200 to-slate-300 h-4 rounded-sm shadow-sm border border-slate-300 text-xs flex items-center justify-center text-slate-600">
-                             {i < 4 ? '' : i < 16 ? `F${i-3}` : ''}
-                           </div>
-                         ))}
-                       </div>
-                       
-                       {/* Number row */}
-                       <div className="grid grid-cols-14 gap-1 mb-1">
-                         {Array.from({ length: 14 }).map((_, i) => (
-                           <div key={i} className="bg-gradient-to-b from-slate-200 to-slate-300 h-6 rounded-sm shadow-sm border border-slate-300"></div>
-                         ))}
-                       </div>
-                       
-                       {/* QWERTY rows */}
-                       <div className="grid grid-cols-13 gap-1 mb-1">
-                         {Array.from({ length: 13 }).map((_, i) => (
-                           <div key={i} className="bg-gradient-to-b from-slate-200 to-slate-300 h-6 rounded-sm shadow-sm border border-slate-300"></div>
-                         ))}
-                       </div>
-                       
-                       <div className="grid grid-cols-12 gap-1 mb-1">
-                         {Array.from({ length: 12 }).map((_, i) => (
-                           <div key={i} className="bg-gradient-to-b from-slate-200 to-slate-300 h-6 rounded-sm shadow-sm border border-slate-300"></div>
-                         ))}
-                       </div>
-                       
-                       <div className="grid grid-cols-10 gap-1 mb-2">
-                         {Array.from({ length: 10 }).map((_, i) => (
-                           <div key={i} className="bg-gradient-to-b from-slate-200 to-slate-300 h-6 rounded-sm shadow-sm border border-slate-300"></div>
-                         ))}
-                       </div>
-                       
-                       {/* Spacebar */}
-                       <div className="bg-gradient-to-b from-slate-200 to-slate-300 h-6 rounded-sm w-2/3 mx-auto shadow-sm border border-slate-300 mb-3"></div>
-                       
-                       {/* Trackpad with realistic design */}
-                       <div className="bg-gradient-to-br from-slate-100 to-slate-200 h-20 w-40 rounded-xl mx-auto border border-slate-300 shadow-inner relative">
-                         <div className="absolute inset-2 bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg"></div>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
+                <div className="relative group">
+                  {/* Laptop base/body - Light mode */}
+                  <div className="relative bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl p-4 shadow-2xl shadow-black/10 transform hover:scale-105 transition-all duration-500 w-full min-w-[700px] max-w-5xl border border-slate-200">
+                    {/* Fade effect on right edge */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent rounded-2xl pointer-events-none z-20" 
+                         style={{
+                           background: 'linear-gradient(to right, transparent 0%, transparent 85%, rgba(var(--background), 0.3) 95%, rgba(var(--background), 0.8) 100%)'
+                         }}></div>
+                    
+                    {/* Screen bezel - Light mode */}
+                    <div className="bg-gradient-to-br from-slate-300 to-slate-400 rounded-xl p-3 mb-4 shadow-inner">
+                      {/* Screen */}
+                      <div className="relative bg-gradient-to-br from-card/95 to-card/70 backdrop-blur-xl rounded-lg overflow-hidden">
+                        {/* Top bar/menu */}
+                        <div className="bg-background/90 px-4 py-2 flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                          </div>
+                          <div className="bg-muted/50 h-2 rounded-full w-48"></div>
+                          <div className="w-8 h-2 bg-muted/30 rounded"></div>
+                        </div>
+                        
+                        {/* Video content - Desktop full screen */}
+                        <div className="bg-black h-96">
+                          <iframe
+                            src="https://www.youtube.com/embed/U6dHTga_rBQ?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1"
+                            className="w-full h-full"
+                            allow="autoplay; encrypted-media"
+                            allowFullScreen
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Keyboard area - Light mode */}
+                    <div className="bg-gradient-to-br from-slate-200 to-slate-300 rounded-lg p-3 shadow-inner">
+                      <div className="grid grid-cols-12 gap-1 mb-2">
+                        {/* First row of keys */}
+                        {Array.from({ length: 12 }).map((_, i) => (
+                          <div key={i} className="bg-slate-100 h-6 rounded-sm shadow-sm border border-slate-300"></div>
+                        ))}
+                      </div>
+                      <div className="grid grid-cols-10 gap-1 mb-2">
+                        {/* Second row of keys */}
+                        {Array.from({ length: 10 }).map((_, i) => (
+                          <div key={i} className="bg-slate-100 h-6 rounded-sm shadow-sm border border-slate-300"></div>
+                        ))}
+                      </div>
+                      <div className="grid grid-cols-8 gap-1 mb-2">
+                        {/* Third row of keys */}
+                        {Array.from({ length: 8 }).map((_, i) => (
+                          <div key={i} className="bg-slate-100 h-6 rounded-sm shadow-sm border border-slate-300"></div>
+                        ))}
+                      </div>
+                      {/* Spacebar */}
+                      <div className="bg-slate-100 h-6 rounded-sm w-1/2 mx-auto shadow-sm border border-slate-300"></div>
+                      
+                      {/* Trackpad */}
+                      <div className="bg-slate-50 h-16 w-32 rounded-lg mx-auto mt-3 border border-slate-300 shadow-inner"></div>
+                    </div>
+                  </div>
+                </div>
 
                 {/* Mobile Phone - Realistic design, smaller scale, slightly overlapping */}
                 <div className="absolute top-16 -left-20 group w-72 z-10 scale-90">
