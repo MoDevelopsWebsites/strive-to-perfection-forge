@@ -125,7 +125,7 @@ const Shop = () => {
                   <span className="text-sm text-muted-foreground">(4.9)</span>
                 </div>
                 <div className="text-2xl font-bold text-primary">
-                  ${product.price.toFixed(2)}
+                  £{product.price.toFixed(2)}
                 </div>
               </CardContent>
               

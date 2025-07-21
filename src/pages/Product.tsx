@@ -182,7 +182,7 @@ const Product = () => {
               </div>
               <p className="text-muted-foreground mb-4">{product.description}</p>
               <div className="text-3xl font-bold text-primary mb-6">
-                ${product.price.toFixed(2)}
+                £{product.price.toFixed(2)}
               </div>
             </div>
 
@@ -242,7 +242,7 @@ const Product = () => {
                   <div className="flex justify-between items-center mb-4">
                     <span className="text-lg">Total:</span>
                     <span className="text-2xl font-bold text-primary">
-                      ${(product.price * quantity).toFixed(2)}
+                      £{(product.price * quantity).toFixed(2)}
                     </span>
                   </div>
                   

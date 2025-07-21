@@ -50,7 +50,7 @@ const PaymentPending = () => {
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">Total Amount:</span>
-              <span className="font-bold text-primary">${totalAmount}</span>
+              <span className="font-bold text-primary">£{totalAmount}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">Status:</span>
@@ -78,7 +78,7 @@ const PaymentPending = () => {
               <ol className="list-decimal list-inside text-blue-800 dark:text-blue-200 text-sm space-y-1">
                 <li>Join our Discord server</li>
                 <li>Open a support ticket</li>
-                <li>Provide your order details (product: {productName}, total: ${totalAmount})</li>
+                <li>Provide your order details (product: {productName}, total: £{totalAmount})</li>
                 <li>Confirm your shipping address</li>
               </ol>
             </div>
