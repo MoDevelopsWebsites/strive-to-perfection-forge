@@ -81,11 +81,9 @@ const MerchSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-6">
-            <Star className="w-8 h-8 text-primary animate-pulse" />
             <h2 className="text-4xl md:text-6xl font-sans font-medium text-primary glow-text">
               OFFICIAL STORE
             </h2>
-            <Star className="w-8 h-8 text-primary animate-pulse" />
           </div>
           <p className="text-xl md:text-2xl text-muted-foreground font-display max-w-3xl mx-auto mb-4">
             Premium S2P merchandise crafted for champions
