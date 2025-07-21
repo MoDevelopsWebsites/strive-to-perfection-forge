@@ -74,6 +74,72 @@ const HeroSection = () => {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent">
+      {/* Abstract flowing background layer */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        {/* Main flowing shape with gradient */}
+        <div className="absolute inset-0 w-full h-full">
+          <svg 
+            className="absolute inset-0 w-full h-full object-cover animate-[floatSlow_20s_ease-in-out_infinite]" 
+            viewBox="0 0 1200 800" 
+            preserveAspectRatio="xMidYMid slice"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="heroGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.1"/>
+                <stop offset="50%" stopColor="hsl(var(--secondary))" stopOpacity="0.05"/>
+                <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity="0.08"/>
+              </linearGradient>
+              <linearGradient id="heroGradient2" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="hsl(var(--accent))" stopOpacity="0.06"/>
+                <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.04"/>
+              </linearGradient>
+              <filter id="blur1">
+                <feGaussianBlur stdDeviation="8"/>
+              </filter>
+            </defs>
+            
+            {/* Flowing organic shapes */}
+            <path 
+              d="M0,400 C300,200 600,600 1200,300 L1200,0 L0,0 Z" 
+              fill="url(#heroGradient1)"
+              className="animate-[morphShape1_15s_ease-in-out_infinite]"
+            />
+            <path 
+              d="M0,600 C400,300 800,700 1200,400 L1200,800 L0,800 Z" 
+              fill="url(#heroGradient2)"
+              className="animate-[morphShape2_18s_ease-in-out_infinite_reverse]"
+            />
+            
+            {/* Additional floating elements with blur */}
+            <circle 
+              cx="200" 
+              cy="150" 
+              r="80" 
+              fill="hsl(var(--primary))" 
+              fillOpacity="0.03"
+              filter="url(#blur1)"
+              className="animate-[floatBubble1_12s_ease-in-out_infinite]"
+            />
+            <circle 
+              cx="1000" 
+              cy="600" 
+              r="120" 
+              fill="hsl(var(--secondary))" 
+              fillOpacity="0.04"
+              filter="url(#blur1)"
+              className="animate-[floatBubble2_16s_ease-in-out_infinite_reverse]"
+            />
+          </svg>
+        </div>
+        
+        {/* Additional gradient mesh overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 animate-[gradientShift_25s_ease-in-out_infinite]"></div>
+        
+        {/* Subtle noise texture overlay */}
+        <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:32px_32px] animate-[textureFloat_30s_linear_infinite]"></div>
+      </div>
+      
       <div className="relative z-10 w-full px-4 text-center">
         <div className="w-full">
           {/* Professional title with typewriter effect - Full width */}

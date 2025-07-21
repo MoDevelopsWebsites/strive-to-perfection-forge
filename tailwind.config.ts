@@ -136,6 +136,66 @@ export default {
 						transform: 'translateX(0)',
 						opacity: '1'
 					}
+				},
+				'floatSlow': {
+					'0%, 100%': {
+						transform: 'translateY(0px) scale(1)'
+					},
+					'50%': {
+						transform: 'translateY(-20px) scale(1.02)'
+					}
+				},
+				'morphShape1': {
+					'0%, 100%': {
+						d: 'M0,400 C300,200 600,600 1200,300 L1200,0 L0,0 Z'
+					},
+					'50%': {
+						d: 'M0,300 C400,100 700,500 1200,250 L1200,0 L0,0 Z'
+					}
+				},
+				'morphShape2': {
+					'0%, 100%': {
+						d: 'M0,600 C400,300 800,700 1200,400 L1200,800 L0,800 Z'
+					},
+					'50%': {
+						d: 'M0,500 C500,200 900,600 1200,350 L1200,800 L0,800 Z'
+					}
+				},
+				'floatBubble1': {
+					'0%, 100%': {
+						transform: 'translate(0, 0) scale(1)',
+						opacity: '0.03'
+					},
+					'50%': {
+						transform: 'translate(30px, -20px) scale(1.1)',
+						opacity: '0.05'
+					}
+				},
+				'floatBubble2': {
+					'0%, 100%': {
+						transform: 'translate(0, 0) scale(1)',
+						opacity: '0.04'
+					},
+					'50%': {
+						transform: 'translate(-25px, 15px) scale(0.9)',
+						opacity: '0.06'
+					}
+				},
+				'gradientShift': {
+					'0%, 100%': {
+						background: 'linear-gradient(135deg, hsl(var(--primary) / 0.05), transparent, hsl(var(--secondary) / 0.05))'
+					},
+					'50%': {
+						background: 'linear-gradient(135deg, hsl(var(--secondary) / 0.03), transparent, hsl(var(--accent) / 0.07))'
+					}
+				},
+				'textureFloat': {
+					'0%': {
+						transform: 'translate(0, 0)'
+					},
+					'100%': {
+						transform: 'translate(32px, 32px)'
+					}
 				}
 			},
 			animation: {
@@ -144,7 +204,14 @@ export default {
 				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
 				'float': 'float 3s ease-in-out infinite',
 				'slide-in-right': 'slide-in-right 0.5s ease-out',
-				'slide-in-left': 'slide-in-left 0.5s ease-out'
+				'slide-in-left': 'slide-in-left 0.5s ease-out',
+				'floatSlow': 'floatSlow 20s ease-in-out infinite',
+				'morphShape1': 'morphShape1 15s ease-in-out infinite',
+				'morphShape2': 'morphShape2 18s ease-in-out infinite reverse',
+				'floatBubble1': 'floatBubble1 12s ease-in-out infinite',
+				'floatBubble2': 'floatBubble2 16s ease-in-out infinite reverse',
+				'gradientShift': 'gradientShift 25s ease-in-out infinite',
+				'textureFloat': 'textureFloat 30s linear infinite'
 			}
 		}
 	},
