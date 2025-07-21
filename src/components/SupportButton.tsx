@@ -9,18 +9,21 @@ const SupportButton: React.FC = () => {
   return (
     <>
       {/* Floating Support Button */}
-      <div className="fixed bottom-6 right-6 z-40">
+      <div className="fixed bottom-6 right-6 z-40 group">
         <Button
           onClick={() => setIsChatOpen(true)}
-          className="h-14 w-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 bg-primary hover:bg-primary/90"
+          className="h-12 w-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-primary hover:bg-primary/90 relative overflow-hidden"
           size="lg"
         >
-          <MessageCircle className="w-6 h-6" />
+          <MessageCircle className="w-5 h-5" />
+          
+          {/* Subtle indicator dot */}
+          <div className="absolute top-2 right-2 w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
         </Button>
         
-        {/* Support Badge */}
-        <div className="absolute -top-2 -left-2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded-full font-medium shadow-lg animate-pulse">
-          24/7 Support
+        {/* Hover tooltip */}
+        <div className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-foreground text-background text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+          Need help? Chat with us!
         </div>
       </div>
 

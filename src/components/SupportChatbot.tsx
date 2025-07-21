@@ -28,8 +28,10 @@ const SupportChatbot: React.FC<SupportChatbotProps> = ({ isOpen, onClose }) => {
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const [apiKey, setApiKey] = useState('');
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+
+  // Use the provided API key directly
+  const API_KEY = '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';
 
   useEffect(() => {
     if (scrollAreaRef.current) {
@@ -103,15 +105,11 @@ const SupportChatbot: React.FC<SupportChatbotProps> = ({ isOpen, onClose }) => {
   };
 
   const generateAIResponse = async (userMessage: string): Promise<string> => {
-    if (!apiKey) {
-      return findBestResponse(userMessage);
-    }
-
     try {
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${apiKey}`,
+          'Authorization': `Bearer ${API_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -209,31 +207,6 @@ const SupportChatbot: React.FC<SupportChatbotProps> = ({ isOpen, onClose }) => {
             <X className="w-4 h-4" />
           </Button>
         </div>
-
-        {/* API Key Input (if not set) */}
-        {!apiKey && (
-          <div className="p-4 bg-muted/50 border-b border-border">
-            <p className="text-sm text-muted-foreground mb-2">
-              Optional: Add OpenAI API key for enhanced AI responses
-            </p>
-            <div className="flex gap-2">
-              <Input
-                type="password"
-                placeholder="sk-..."
-                value={apiKey}
-                onChange={(e) => setApiKey(e.target.value)}
-                className="text-xs"
-              />
-              <Button
-                size="sm"
-                onClick={() => toast.success('API key saved!')}
-                disabled={!apiKey}
-              >
-                Save
-              </Button>
-            </div>
-          </div>
-        )}
 
         {/* Messages */}
         <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
