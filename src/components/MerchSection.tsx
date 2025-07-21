@@ -65,6 +65,19 @@ const MerchSection = () => {
     return () => observer.disconnect();
   }, []);
 
+  const getProductImage = (product: Product) => {
+    switch (product.name) {
+      case 'S2P Jersey':
+        return '/lovable-uploads/05edfebb-4fc0-4cff-bf02-2ae6f17b7a13.png';
+      case 'S2P Hoodie':
+        return '/lovable-uploads/c31f789f-6d8e-4649-8de3-f34b037722b3.png';
+      case 'S2P Hoodie & Jersey Bundle':
+        return '/lovable-uploads/ab937607-6d1b-46b4-88b5-0eb8849ed32f.png';
+      default:
+        return product.image_url;
+    }
+  };
+
   if (loading) {
     return (
       <section className="relative min-h-screen py-20 backdrop-blur-xl flex items-center justify-center">
@@ -123,21 +136,9 @@ const MerchSection = () => {
                 {/* Image with advanced effects */}
                 <div className="relative z-20 bg-gradient-to-br from-background/50 to-card/50 backdrop-blur-sm">
                   <img
-                    src={product.image_url}
+                    src={getProductImage(product)}
                     alt={product.name}
                     className="w-full h-80 object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
-                    onError={(e) => {
-                      console.error('Image failed to load:', product.image_url);
-                      // Use a solid color background as fallback
-                      e.currentTarget.style.display = 'none';
-                      const parent = e.currentTarget.parentElement;
-                      if (parent && !parent.querySelector('.fallback-bg')) {
-                        const fallback = document.createElement('div');
-                        fallback.className = 'fallback-bg w-full h-80 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center text-2xl font-bold text-primary';
-                        fallback.textContent = product.name;
-                        parent.appendChild(fallback);
-                      }
-                    }}
                   />
                   
                   {/* Floating particles effect */}
