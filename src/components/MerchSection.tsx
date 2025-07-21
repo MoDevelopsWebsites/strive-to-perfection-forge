@@ -25,6 +25,7 @@ const MerchSection = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        console.log('Fetching products...');
         const { data, error } = await supabase
           .from('products')
           .select('*')
@@ -32,6 +33,7 @@ const MerchSection = () => {
           .order('name');
         
         if (error) throw error;
+        console.log('Products fetched:', data);
         setProducts(data || []);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -44,26 +46,13 @@ const MerchSection = () => {
   }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Trigger cards to appear one by one with delays
-            setTimeout(() => setVisibleCards(prev => [true, prev[1], prev[2]]), 200);
-            setTimeout(() => setVisibleCards(prev => [prev[0], true, prev[2]]), 600);
-            setTimeout(() => setVisibleCards(prev => [prev[0], prev[1], true]), 1000);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    // Automatically show cards once products are loaded
+    if (products.length > 0) {
+      setTimeout(() => setVisibleCards([true, false, false]), 200);
+      setTimeout(() => setVisibleCards([true, true, false]), 600);
+      setTimeout(() => setVisibleCards([true, true, true]), 1000);
     }
-
-    return () => observer.disconnect();
-  }, []);
+  }, [products]);
 
   const getProductImage = (product: Product) => {
     switch (product.name) {
