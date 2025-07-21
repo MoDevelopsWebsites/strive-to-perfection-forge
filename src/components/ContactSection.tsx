@@ -115,27 +115,27 @@ const ContactSection = () => {
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16 relative z-10">
-          <h2 className="text-4xl md:text-6xl font-gaming font-bold text-primary glow-text mb-6">
+        <div className="text-center mb-12 lg:mb-16 relative z-10">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-gaming font-bold text-primary glow-text mb-4 lg:mb-6">
             GET IN TOUCH
           </h2>
-          <p className="text-xl text-muted-foreground font-display max-w-3xl mx-auto">
+          <p className="text-lg lg:text-xl text-muted-foreground font-display max-w-3xl mx-auto px-4">
             Ready to join the S2PGGs family or have questions? We'd love to hear from you. 
             Reach out and let's create something amazing together.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
           <Card className="bg-card/30 backdrop-blur-sm border-primary/20 hover:border-primary/40 transition-all duration-300">
-            <CardContent className="p-8">
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold text-foreground mb-2">Send us a Message</h3>
-                <p className="text-muted-foreground">Fill out the form below and we'll get back to you shortly.</p>
+            <CardContent className="p-6 lg:p-8">
+              <div className="mb-4 lg:mb-6">
+                <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-2">Send us a Message</h3>
+                <p className="text-muted-foreground text-sm lg:text-base">Fill out the form below and we'll get back to you shortly.</p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-4">
                   <div>
                     <Label htmlFor="name" className="text-foreground font-medium">Name *</Label>
                     <Input

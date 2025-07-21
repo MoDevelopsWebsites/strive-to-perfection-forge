@@ -103,7 +103,7 @@ const StreamersSection = () => {
         </div>
 
         {/* Streamers Grid */}
-        <div className="streamers-container space-y-12 max-w-7xl mx-auto mb-12">
+        <div className="streamers-container space-y-8 lg:space-y-12 max-w-7xl mx-auto mb-8 lg:mb-12">
           {streamers.map((streamer, index) => (
             <div key={streamer.username} className="streamer-card">
               <Card className="gaming-card border-primary/30 overflow-hidden">
@@ -122,20 +122,20 @@ const StreamersSection = () => {
                     </div>
                     
                     {/* Streamer Info */}
-                    <div className="p-6 bg-gradient-to-br from-primary/10 to-secondary/10 flex flex-col">
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center shadow-lg shadow-primary/25">
-                          <TwitchIcon className="w-8 h-8 text-white" />
+                    <div className="p-4 lg:p-6 bg-gradient-to-br from-primary/10 to-secondary/10 flex flex-col">
+                      <div className="flex items-center gap-3 lg:gap-4 mb-3 lg:mb-4">
+                        <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center shadow-lg shadow-primary/25">
+                          <TwitchIcon className="w-6 h-6 lg:w-8 lg:h-8 text-white" />
                         </div>
                         <div>
-                          <h3 className="text-xl font-bold text-foreground">
+                          <h3 className="text-lg lg:text-xl font-bold text-foreground">
                             {streamer.name}
                           </h3>
-                          <p className="text-sm text-muted-foreground">@{streamer.username}</p>
+                          <p className="text-xs lg:text-sm text-muted-foreground">@{streamer.username}</p>
                         </div>
                       </div>
                       
-                      <div className="flex flex-wrap gap-2 mb-4">
+                      <div className="flex flex-wrap gap-1.5 lg:gap-2 mb-3 lg:mb-4">
                         {streamer.specialties.map((specialty) => (
                           <Badge key={specialty} className="specialty-badge bg-primary/20 text-primary border-primary/30 text-xs">
                             {specialty}
@@ -147,14 +147,14 @@ const StreamersSection = () => {
                         text={streamer.description}
                         speed={30}
                         delay={1000 + (index * 800)}
-                        className="text-sm text-muted-foreground leading-relaxed mb-6 flex-grow"
+                        className="text-xs lg:text-sm text-muted-foreground leading-relaxed mb-4 lg:mb-6 flex-grow"
                       />
 
                       <Button
                         onClick={() => window.open(streamer.twitchUrl, '_blank')}
-                        className="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white shadow-lg shadow-purple-500/25 transition-all duration-300"
+                        className="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white shadow-lg shadow-purple-500/25 transition-all duration-300 text-sm lg:text-base"
                       >
-                        <ExternalLink className="w-4 h-4 mr-2" />
+                        <ExternalLink className="w-3 h-3 lg:w-4 lg:h-4 mr-2" />
                         Open on Twitch
                       </Button>
                     </div>

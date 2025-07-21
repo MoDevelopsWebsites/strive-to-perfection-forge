@@ -72,8 +72,8 @@ const Footer = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Main Footer Content */}
-        <div className="py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="py-12 lg:py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {/* Brand Section */}
             <div className="lg:col-span-1">
               <div className="flex items-center space-x-3 mb-6">
@@ -85,11 +85,11 @@ const Footer = () => {
                   />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-primary">S2PGGs</h3>
-                  <p className="text-sm text-muted-foreground">Strive 2 Perfection</p>
+                  <h3 className="text-lg lg:text-xl font-bold text-primary">S2PGGs</h3>
+                  <p className="text-xs lg:text-sm text-muted-foreground">Strive 2 Perfection</p>
                 </div>
               </div>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+              <p className="text-muted-foreground text-xs lg:text-sm leading-relaxed mb-4 lg:mb-6">
                 Premier Fortnite esports team and content creators dedicated to excellence, 
                 community building, and the relentless pursuit of perfection.
               </p>
@@ -115,13 +115,13 @@ const Footer = () => {
 
             {/* Navigation Links */}
             <div>
-              <h4 className="text-lg font-semibold text-foreground mb-6">Navigation</h4>
-              <ul className="space-y-3">
+              <h4 className="text-base lg:text-lg font-semibold text-foreground mb-4 lg:mb-6">Navigation</h4>
+              <ul className="space-y-2 lg:space-y-3">
                 {navigationLinks.map((link) => (
                   <li key={link.name}>
                     <button
                       onClick={link.action}
-                      className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm"
+                      className="text-muted-foreground hover:text-primary transition-colors duration-300 text-xs lg:text-sm"
                     >
                       {link.name}
                     </button>
@@ -132,23 +132,23 @@ const Footer = () => {
 
             {/* Legal & Support */}
             <div>
-              <h4 className="text-lg font-semibold text-foreground mb-6">Legal & Support</h4>
-              <ul className="space-y-3">
+              <h4 className="text-base lg:text-lg font-semibold text-foreground mb-4 lg:mb-6">Legal & Support</h4>
+              <ul className="space-y-2 lg:space-y-3">
                 {legalLinks.map((link) => (
                   <li key={link.name}>
                     <Link
                       to={link.path}
-                      className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm flex items-center gap-1"
+                      className="text-muted-foreground hover:text-primary transition-colors duration-300 text-xs lg:text-sm flex items-center gap-1"
                     >
                       {link.name}
-                      <ExternalLink className="w-3 h-3" />
+                      <ExternalLink className="w-2 h-2 lg:w-3 lg:h-3" />
                     </Link>
                   </li>
                 ))}
                 <li>
                   <button
                     onClick={() => scrollToSection('contact')}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-xs lg:text-sm"
                   >
                     Contact Support
                   </button>
@@ -158,19 +158,19 @@ const Footer = () => {
 
             {/* Contact Information */}
             <div>
-              <h4 className="text-lg font-semibold text-foreground mb-6">Contact</h4>
-              <ul className="space-y-3">
+              <h4 className="text-base lg:text-lg font-semibold text-foreground mb-4 lg:mb-6">Contact</h4>
+              <ul className="space-y-2 lg:space-y-3">
                 {contactInfo.map((contact, index) => {
                   const Icon = contact.icon;
                   return (
                     <li key={index}>
                       <div 
-                        className={`flex items-center gap-3 text-sm text-muted-foreground ${
+                        className={`flex items-center gap-2 lg:gap-3 text-xs lg:text-sm text-muted-foreground ${
                           contact.action ? 'cursor-pointer hover:text-primary transition-colors duration-300' : ''
                         }`}
                         onClick={contact.action || undefined}
                       >
-                        <Icon className="w-4 h-4" />
+                        <Icon className="w-3 h-3 lg:w-4 lg:h-4" />
                         <span>{contact.text}</span>
                       </div>
                     </li>
@@ -179,14 +179,14 @@ const Footer = () => {
               </ul>
               
               {/* Partnership Inquiry */}
-              <div className="mt-6">
+              <div className="mt-4 lg:mt-6">
                 <Button
                   variant="outline"
                   size="sm"
-                  className="border-primary/30 text-primary hover:bg-primary/10 transition-all duration-300"
+                  className="border-primary/30 text-primary hover:bg-primary/10 transition-all duration-300 text-xs lg:text-sm w-full sm:w-auto"
                   onClick={() => window.open('mailto:partnerships@s2pggs.com')}
                 >
-                  <Mail className="w-4 h-4 mr-2" />
+                  <Mail className="w-3 h-3 lg:w-4 lg:h-4 mr-1 lg:mr-2" />
                   Partnership Inquiries
                 </Button>
               </div>
@@ -197,13 +197,13 @@ const Footer = () => {
         <Separator className="border-primary/10" />
 
         {/* Footer Bottom */}
-        <div className="py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-sm text-muted-foreground">
+        <div className="py-4 lg:py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3 lg:gap-4">
+            <div className="text-xs lg:text-sm text-muted-foreground">
               © {currentYear} S2PGGs Holdings Ltd. All Rights Reserved.
             </div>
             
-            <div className="flex items-center gap-6 text-xs text-muted-foreground">
+            <div className="flex items-center gap-4 lg:gap-6 text-xs text-muted-foreground">
               <span>Made with ❤️ for the gaming community</span>
               <span>United Kingdom 🇬🇧</span>
             </div>

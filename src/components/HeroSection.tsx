@@ -149,12 +149,12 @@ const HeroSection = () => {
       
       <div className="relative z-10 w-full px-4 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center min-h-[80vh]">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 xl:gap-24 items-center min-h-[80vh]">
             {/* Left Side - Content */}
             <div className={`text-left transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               {/* Title with typewriter effect */}
-              <div className="mb-8">
-                <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-sans font-medium text-primary glow-text leading-none tracking-tight">
+              <div className="mb-6 lg:mb-8">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-sans font-medium text-primary glow-text leading-none tracking-tight">
                   {displayedText}
                   <span className="animate-pulse">|</span>
                 </h1>
@@ -162,26 +162,26 @@ const HeroSection = () => {
 
               {/* Description */}
               {showDescription && (
-                <div className="mb-12">
-                  <p className="text-lg md:text-xl lg:text-2xl font-light text-muted-foreground leading-relaxed max-w-xl">
+                <div className="mb-8 lg:mb-12">
+                  <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-light text-muted-foreground leading-relaxed max-w-xl">
                     {displayedDescription}
                     {displayedDescription.length < descriptionText.length && <span className="animate-pulse">|</span>}
                   </p>
-                  <p className="text-primary font-semibold glow-text mt-4 text-lg">
+                  <p className="text-primary font-semibold glow-text mt-3 lg:mt-4 text-base lg:text-lg">
                     Building champions since 2023.
                   </p>
                 </div>
               )}
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 {showFirstButton && (
                   <Button 
                     size="lg" 
-                    className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:scale-105 text-lg px-8 py-6 font-semibold rounded-lg"
+                    className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:scale-105 text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 font-semibold rounded-lg"
                     onClick={() => window.open('https://discord.gg/Hyu6j4RFrp', '_blank')}
                   >
-                    <Users className="w-5 h-5 mr-2" />
+                    <Users className="w-4 h-4 lg:w-5 lg:h-5 mr-2" />
                     {displayedButton1}
                     {displayedButton1.length < button1Text.length && <span className="animate-pulse">|</span>}
                   </Button>
@@ -190,10 +190,10 @@ const HeroSection = () => {
                   <Button 
                     size="lg" 
                     variant="outline" 
-                    className="border-2 border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:scale-105 transition-all duration-300 text-lg px-8 py-6 font-semibold backdrop-blur-sm bg-background/20 shadow-lg rounded-lg"
+                    className="border-2 border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:scale-105 transition-all duration-300 text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 font-semibold backdrop-blur-sm bg-background/20 shadow-lg rounded-lg"
                     onClick={() => window.open('https://www.youtube.com/@S2PGGs', '_blank')}
                   >
-                    <Play className="w-5 h-5 mr-2" />
+                    <Play className="w-4 h-4 lg:w-5 lg:h-5 mr-2" />
                     {displayedButton2}
                     {displayedButton2.length < button2Text.length && <span className="animate-pulse">|</span>}
                   </Button>
@@ -202,35 +202,35 @@ const HeroSection = () => {
             </div>
 
             {/* Right Side - Video Displays */}
-            <div className="relative ml-auto overflow-hidden">
-              <div className="relative ml-32">
+            <div className="relative ml-auto overflow-hidden order-first lg:order-last">
+              <div className="relative lg:ml-32">
                 {/* Desktop Screen - Realistic laptop design */}
                 <div className={`relative group transition-all duration-1200 ${isLoaded ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-16 scale-95'}`} style={{ transitionDelay: '400ms' }}>
                   {/* Laptop base/body - Light mode */}
-                  <div className="relative bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl p-4 shadow-2xl shadow-black/10 transform hover:scale-105 transition-all duration-500 w-full min-w-[700px] max-w-5xl border border-slate-200">
+                  <div className="relative bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl lg:rounded-2xl p-2 lg:p-4 shadow-2xl shadow-black/10 transform hover:scale-105 transition-all duration-500 w-full min-w-[280px] sm:min-w-[400px] lg:min-w-[700px] max-w-5xl border border-slate-200">
                     {/* Fade effect on right edge */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent rounded-2xl pointer-events-none z-20" 
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent rounded-xl lg:rounded-2xl pointer-events-none z-20" 
                          style={{
                            background: 'linear-gradient(to right, transparent 0%, transparent 85%, rgba(var(--background), 0.3) 95%, rgba(var(--background), 0.8) 100%)'
                          }}></div>
                     
                     {/* Screen bezel - Light mode */}
-                    <div className="bg-gradient-to-br from-slate-300 to-slate-400 rounded-xl p-3 mb-4 shadow-inner">
+                    <div className="bg-gradient-to-br from-slate-300 to-slate-400 rounded-lg lg:rounded-xl p-1.5 lg:p-3 mb-2 lg:mb-4 shadow-inner">
                       {/* Screen */}
-                      <div className="relative bg-gradient-to-br from-card/95 to-card/70 backdrop-blur-xl rounded-lg overflow-hidden">
+                      <div className="relative bg-gradient-to-br from-card/95 to-card/70 backdrop-blur-xl rounded-md lg:rounded-lg overflow-hidden">
                         {/* Top bar/menu */}
-                        <div className="bg-background/90 px-4 py-2 flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                            <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                        <div className="bg-background/90 px-2 lg:px-4 py-1 lg:py-2 flex items-center justify-between">
+                          <div className="flex items-center gap-1 lg:gap-2">
+                            <div className="w-2 h-2 lg:w-3 lg:h-3 bg-red-500 rounded-full"></div>
+                            <div className="w-2 h-2 lg:w-3 lg:h-3 bg-yellow-500 rounded-full"></div>
+                            <div className="w-2 h-2 lg:w-3 lg:h-3 bg-green-500 rounded-full"></div>
                           </div>
-                          <div className="bg-muted/50 h-2 rounded-full w-48"></div>
-                          <div className="w-8 h-2 bg-muted/30 rounded"></div>
+                          <div className="bg-muted/50 h-1 lg:h-2 rounded-full w-24 lg:w-48"></div>
+                          <div className="w-4 lg:w-8 h-1 lg:h-2 bg-muted/30 rounded"></div>
                         </div>
                         
                         {/* Video content - Desktop full screen */}
-                        <div className="bg-black h-96">
+                        <div className="bg-black h-48 sm:h-64 lg:h-96">
                           <iframe
                             src="https://www.youtube.com/embed/U6dHTga_rBQ?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1"
                             className="w-full h-full"
@@ -242,68 +242,68 @@ const HeroSection = () => {
                     </div>
                     
                     {/* Keyboard area - Light mode */}
-                    <div className="bg-gradient-to-br from-slate-200 to-slate-300 rounded-lg p-3 shadow-inner">
-                      <div className="grid grid-cols-12 gap-1 mb-2">
+                    <div className="bg-gradient-to-br from-slate-200 to-slate-300 rounded-md lg:rounded-lg p-1.5 lg:p-3 shadow-inner">
+                      <div className="grid grid-cols-12 gap-0.5 lg:gap-1 mb-1 lg:mb-2">
                         {/* First row of keys */}
                         {Array.from({ length: 12 }).map((_, i) => (
-                          <div key={i} className="bg-slate-100 h-6 rounded-sm shadow-sm border border-slate-300"></div>
+                          <div key={i} className="bg-slate-100 h-3 lg:h-6 rounded-sm shadow-sm border border-slate-300"></div>
                         ))}
                       </div>
-                      <div className="grid grid-cols-10 gap-1 mb-2">
+                      <div className="grid grid-cols-10 gap-0.5 lg:gap-1 mb-1 lg:mb-2">
                         {/* Second row of keys */}
                         {Array.from({ length: 10 }).map((_, i) => (
-                          <div key={i} className="bg-slate-100 h-6 rounded-sm shadow-sm border border-slate-300"></div>
+                          <div key={i} className="bg-slate-100 h-3 lg:h-6 rounded-sm shadow-sm border border-slate-300"></div>
                         ))}
                       </div>
-                      <div className="grid grid-cols-8 gap-1 mb-2">
+                      <div className="grid grid-cols-8 gap-0.5 lg:gap-1 mb-1 lg:mb-2">
                         {/* Third row of keys */}
                         {Array.from({ length: 8 }).map((_, i) => (
-                          <div key={i} className="bg-slate-100 h-6 rounded-sm shadow-sm border border-slate-300"></div>
+                          <div key={i} className="bg-slate-100 h-3 lg:h-6 rounded-sm shadow-sm border border-slate-300"></div>
                         ))}
                       </div>
                       {/* Spacebar */}
-                      <div className="bg-slate-100 h-6 rounded-sm w-1/2 mx-auto shadow-sm border border-slate-300"></div>
+                      <div className="bg-slate-100 h-3 lg:h-6 rounded-sm w-1/2 mx-auto shadow-sm border border-slate-300"></div>
                       
                       {/* Trackpad */}
-                      <div className="bg-slate-50 h-16 w-32 rounded-lg mx-auto mt-3 border border-slate-300 shadow-inner"></div>
+                      <div className="bg-slate-50 h-8 lg:h-16 w-16 lg:w-32 rounded-lg mx-auto mt-1.5 lg:mt-3 border border-slate-300 shadow-inner"></div>
                     </div>
                   </div>
                 </div>
 
                 {/* Mobile Phone - Realistic design, smaller scale, slightly overlapping */}
-                <div className={`absolute top-16 -left-20 group w-72 z-10 scale-90 transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0 scale-90' : 'opacity-0 translate-y-12 scale-75'}`} style={{ transitionDelay: '800ms' }}>
+                <div className={`absolute top-8 lg:top-16 -left-8 lg:-left-20 group w-48 sm:w-56 lg:w-72 z-10 scale-75 sm:scale-85 lg:scale-90 transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0 scale-75 sm:scale-85 lg:scale-90' : 'opacity-0 translate-y-12 scale-50'}`} style={{ transitionDelay: '800ms' }}>
                   <div className="relative">
                     {/* Phone outer frame - Light mode */}
-                    <div className="bg-gradient-to-br from-slate-100 to-slate-200 rounded-[3rem] p-2 shadow-2xl shadow-black/20 border border-slate-300">
+                    <div className="bg-gradient-to-br from-slate-100 to-slate-200 rounded-[2rem] lg:rounded-[3rem] p-1 lg:p-2 shadow-2xl shadow-black/20 border border-slate-300">
                       {/* Phone inner frame */}
-                      <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-[2.5rem] p-1">
+                      <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-[1.5rem] lg:rounded-[2.5rem] p-0.5 lg:p-1">
                         {/* Screen area */}
-                        <div className="relative bg-gradient-to-br from-card/95 to-card/70 backdrop-blur-xl rounded-[2.2rem] overflow-hidden">
+                        <div className="relative bg-gradient-to-br from-card/95 to-card/70 backdrop-blur-xl rounded-[1.3rem] lg:rounded-[2.2rem] overflow-hidden">
                           {/* Notch */}
-                          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-slate-800 rounded-b-2xl z-20"></div>
+                          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-20 lg:w-32 h-4 lg:h-6 bg-slate-800 rounded-b-xl lg:rounded-b-2xl z-20"></div>
                           
                           {/* Status bar */}
-                          <div className="relative pt-8 px-6 pb-2">
-                            <div className="flex justify-between items-center text-foreground text-sm">
-                              <div className="flex items-center gap-1">
-                                <div className="w-1 h-1 bg-foreground rounded-full"></div>
-                                <div className="w-1 h-1 bg-foreground rounded-full"></div>
-                                <div className="w-1 h-1 bg-foreground/50 rounded-full"></div>
-                                <span className="text-xs ml-1">S2P</span>
+                          <div className="relative pt-6 lg:pt-8 px-3 lg:px-6 pb-1 lg:pb-2">
+                            <div className="flex justify-between items-center text-foreground text-xs lg:text-sm">
+                              <div className="flex items-center gap-0.5 lg:gap-1">
+                                <div className="w-0.5 h-0.5 lg:w-1 lg:h-1 bg-foreground rounded-full"></div>
+                                <div className="w-0.5 h-0.5 lg:w-1 lg:h-1 bg-foreground rounded-full"></div>
+                                <div className="w-0.5 h-0.5 lg:w-1 lg:h-1 bg-foreground/50 rounded-full"></div>
+                                <span className="text-[10px] lg:text-xs ml-0.5 lg:ml-1">S2P</span>
                               </div>
-                              <div className="flex items-center gap-1">
-                                <div className="w-6 h-3 border border-foreground/50 rounded-sm">
-                                  <div className="w-4 h-1 bg-green-500 rounded-full mt-0.5 ml-0.5"></div>
+                              <div className="flex items-center gap-0.5 lg:gap-1">
+                                <div className="w-4 lg:w-6 h-2 lg:h-3 border border-foreground/50 rounded-sm">
+                                  <div className="w-3 lg:w-4 h-0.5 lg:h-1 bg-green-500 rounded-full mt-0.25 lg:mt-0.5 ml-0.25 lg:ml-0.5"></div>
                                 </div>
                               </div>
                             </div>
                           </div>
                           
                           {/* Video content */}
-                          <div className="px-4 pb-6">
-                            <div className="aspect-[9/16] bg-black rounded-2xl overflow-hidden relative">
+                          <div className="px-2 lg:px-4 pb-3 lg:pb-6">
+                            <div className="aspect-[9/16] bg-black rounded-xl lg:rounded-2xl overflow-hidden relative">
                               {/* Fade effect on edges */}
-                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent rounded-2xl pointer-events-none z-10" 
+                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent rounded-xl lg:rounded-2xl pointer-events-none z-10" 
                                    style={{
                                      background: 'radial-gradient(ellipse at center, transparent 70%, rgba(var(--background), 0.2) 85%, rgba(var(--background), 0.6) 100%)'
                                    }}></div>
@@ -318,7 +318,7 @@ const HeroSection = () => {
                           </div>
                           
                           {/* Home indicator */}
-                          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-foreground/30 rounded-full"></div>
+                          <div className="absolute bottom-1 lg:bottom-2 left-1/2 transform -translate-x-1/2 w-20 lg:w-32 h-0.5 lg:h-1 bg-foreground/30 rounded-full"></div>
                         </div>
                       </div>
                     </div>

@@ -97,7 +97,7 @@ const MerchSection = () => {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto mb-8 lg:mb-12">
           {products.slice(0, 3).map((product, index) => (
             <Card
               key={product.id}
@@ -125,7 +125,7 @@ const MerchSection = () => {
                   <img
                     src={getProductImage(product)}
                     alt={product.name}
-                    className="w-full h-80 object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
+                    className="w-full h-64 lg:h-80 object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
                   />
                   
                   {/* Floating particles effect */}
@@ -137,27 +137,27 @@ const MerchSection = () => {
                 </div>
               </div>
 
-              <CardContent className="p-6 relative z-20">
+              <CardContent className="p-4 lg:p-6 relative z-20">
                 <div className="mb-2">
-                  <span className="inline-block px-3 py-1 bg-primary/20 text-primary text-sm font-semibold rounded-full border border-primary/30">
+                  <span className="inline-block px-2 lg:px-3 py-1 bg-primary/20 text-primary text-xs lg:text-sm font-semibold rounded-full border border-primary/30">
                     {product.category}
                   </span>
                 </div>
                 
-                <h3 className="text-xl font-gaming font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-lg lg:text-xl font-gaming font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
                   {product.name}
                 </h3>
                 
-                <p className="text-muted-foreground mb-4 font-display line-clamp-2">
+                <p className="text-muted-foreground mb-3 lg:mb-4 font-display line-clamp-2 text-sm lg:text-base">
                   {product.description}
                 </p>
                 
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-primary glow-text">
+                  <span className="text-xl lg:text-2xl font-bold text-primary glow-text">
                     £{product.price}
                   </span>
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <ShoppingBag className="w-6 h-6 text-primary animate-bounce" />
+                    <ShoppingBag className="w-5 h-5 lg:w-6 lg:h-6 text-primary animate-bounce" />
                   </div>
                 </div>
               </CardContent>
@@ -176,12 +176,12 @@ const MerchSection = () => {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-2xl shadow-primary/25 hover:shadow-primary/40 transition-all duration-500 hover:scale-110 hover:-translate-y-2 text-xl px-12 py-6 font-semibold rounded-xl group"
+                    className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-2xl shadow-primary/25 hover:shadow-primary/40 transition-all duration-500 hover:scale-110 hover:-translate-y-2 text-lg lg:text-xl px-8 lg:px-12 py-4 lg:py-6 font-semibold rounded-xl group"
                     onClick={() => navigate('/shop')}
                   >
-                    <ShoppingBag className="w-6 h-6 mr-3 group-hover:animate-bounce" />
+                    <ShoppingBag className="w-5 h-5 lg:w-6 lg:h-6 mr-2 lg:mr-3 group-hover:animate-bounce" />
                     View Full Store
-                    <Zap className="w-5 h-5 ml-3 group-hover:animate-pulse" />
+                    <Zap className="w-4 h-4 lg:w-5 lg:h-5 ml-2 lg:ml-3 group-hover:animate-pulse" />
                   </Button>
                   <div className="text-sm text-muted-foreground flex items-center gap-2">
                     <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
