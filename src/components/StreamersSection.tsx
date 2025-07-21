@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { Play, Users, ExternalLink, Twitch as TwitchIcon } from 'lucide-react';
+import TypewriterEffect from './TypewriterEffect';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -142,9 +143,12 @@ const StreamersSection = () => {
                         ))}
                       </div>
                       
-                      <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-grow">
-                        {streamer.description}
-                      </p>
+                      <TypewriterEffect
+                        text={streamer.description}
+                        speed={30}
+                        delay={1000 + (index * 800)}
+                        className="text-sm text-muted-foreground leading-relaxed mb-6 flex-grow"
+                      />
 
                       <Button
                         onClick={() => window.open(streamer.twitchUrl, '_blank')}
