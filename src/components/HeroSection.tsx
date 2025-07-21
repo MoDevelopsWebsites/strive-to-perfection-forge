@@ -199,16 +199,16 @@ const HeroSection = () => {
               <div className="relative ml-32">
                 {/* Desktop Screen - Realistic laptop design */}
                 <div className="relative group">
-                  {/* Laptop base/body */}
-                  <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 shadow-2xl shadow-black/40 transform hover:scale-105 transition-all duration-500 w-full min-w-[700px] max-w-5xl">
+                  {/* Laptop base/body - Light mode */}
+                  <div className="relative bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl p-4 shadow-2xl shadow-black/10 transform hover:scale-105 transition-all duration-500 w-full min-w-[700px] max-w-5xl border border-slate-200">
                     {/* Fade effect on right edge */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent rounded-2xl pointer-events-none z-20" 
                          style={{
                            background: 'linear-gradient(to right, transparent 0%, transparent 85%, rgba(var(--background), 0.3) 95%, rgba(var(--background), 0.8) 100%)'
                          }}></div>
                     
-                    {/* Screen bezel */}
-                    <div className="bg-black rounded-xl p-3 mb-4">
+                    {/* Screen bezel - Light mode */}
+                    <div className="bg-gradient-to-br from-slate-300 to-slate-400 rounded-xl p-3 mb-4 shadow-inner">
                       {/* Screen */}
                       <div className="relative bg-gradient-to-br from-card/95 to-card/70 backdrop-blur-xl rounded-lg overflow-hidden">
                         {/* Top bar/menu */}
@@ -234,31 +234,31 @@ const HeroSection = () => {
                       </div>
                     </div>
                     
-                    {/* Keyboard area */}
-                    <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-lg p-3">
+                    {/* Keyboard area - Light mode */}
+                    <div className="bg-gradient-to-br from-slate-200 to-slate-300 rounded-lg p-3 shadow-inner">
                       <div className="grid grid-cols-12 gap-1 mb-2">
                         {/* First row of keys */}
                         {Array.from({ length: 12 }).map((_, i) => (
-                          <div key={i} className="bg-slate-600 h-6 rounded-sm"></div>
+                          <div key={i} className="bg-slate-100 h-6 rounded-sm shadow-sm border border-slate-300"></div>
                         ))}
                       </div>
                       <div className="grid grid-cols-10 gap-1 mb-2">
                         {/* Second row of keys */}
                         {Array.from({ length: 10 }).map((_, i) => (
-                          <div key={i} className="bg-slate-600 h-6 rounded-sm"></div>
+                          <div key={i} className="bg-slate-100 h-6 rounded-sm shadow-sm border border-slate-300"></div>
                         ))}
                       </div>
                       <div className="grid grid-cols-8 gap-1 mb-2">
                         {/* Third row of keys */}
                         {Array.from({ length: 8 }).map((_, i) => (
-                          <div key={i} className="bg-slate-600 h-6 rounded-sm"></div>
+                          <div key={i} className="bg-slate-100 h-6 rounded-sm shadow-sm border border-slate-300"></div>
                         ))}
                       </div>
                       {/* Spacebar */}
-                      <div className="bg-slate-600 h-6 rounded-sm w-1/2 mx-auto"></div>
+                      <div className="bg-slate-100 h-6 rounded-sm w-1/2 mx-auto shadow-sm border border-slate-300"></div>
                       
                       {/* Trackpad */}
-                      <div className="bg-slate-500 h-16 w-32 rounded-lg mx-auto mt-3 border border-slate-400/30"></div>
+                      <div className="bg-slate-50 h-16 w-32 rounded-lg mx-auto mt-3 border border-slate-300 shadow-inner"></div>
                     </div>
                   </div>
                 </div>
@@ -266,26 +266,26 @@ const HeroSection = () => {
                 {/* Mobile Phone - Realistic design, smaller scale, slightly overlapping */}
                 <div className="absolute top-16 -left-20 group w-72 z-10 scale-90">
                   <div className="relative">
-                    {/* Phone outer frame */}
-                    <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-[3rem] p-2 shadow-2xl shadow-black/40">
+                    {/* Phone outer frame - Light mode */}
+                    <div className="bg-gradient-to-br from-slate-100 to-slate-200 rounded-[3rem] p-2 shadow-2xl shadow-black/20 border border-slate-300">
                       {/* Phone inner frame */}
-                      <div className="bg-black rounded-[2.5rem] p-1">
+                      <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-[2.5rem] p-1">
                         {/* Screen area */}
                         <div className="relative bg-gradient-to-br from-card/95 to-card/70 backdrop-blur-xl rounded-[2.2rem] overflow-hidden">
                           {/* Notch */}
-                          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl z-20"></div>
+                          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-slate-800 rounded-b-2xl z-20"></div>
                           
                           {/* Status bar */}
                           <div className="relative pt-8 px-6 pb-2">
-                            <div className="flex justify-between items-center text-white text-sm">
+                            <div className="flex justify-between items-center text-foreground text-sm">
                               <div className="flex items-center gap-1">
-                                <div className="w-1 h-1 bg-white rounded-full"></div>
-                                <div className="w-1 h-1 bg-white rounded-full"></div>
-                                <div className="w-1 h-1 bg-white/50 rounded-full"></div>
+                                <div className="w-1 h-1 bg-foreground rounded-full"></div>
+                                <div className="w-1 h-1 bg-foreground rounded-full"></div>
+                                <div className="w-1 h-1 bg-foreground/50 rounded-full"></div>
                                 <span className="text-xs ml-1">S2P</span>
                               </div>
                               <div className="flex items-center gap-1">
-                                <div className="w-6 h-3 border border-white/50 rounded-sm">
+                                <div className="w-6 h-3 border border-foreground/50 rounded-sm">
                                   <div className="w-4 h-1 bg-green-500 rounded-full mt-0.5 ml-0.5"></div>
                                 </div>
                               </div>
@@ -311,7 +311,7 @@ const HeroSection = () => {
                           </div>
                           
                           {/* Home indicator */}
-                          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-white/30 rounded-full"></div>
+                          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-foreground/30 rounded-full"></div>
                         </div>
                       </div>
                     </div>
