@@ -11,6 +11,7 @@ const HeroSection = () => {
   const [showDescription, setShowDescription] = useState(false);
   const [showFirstButton, setShowFirstButton] = useState(false);
   const [showSecondButton, setShowSecondButton] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   
   const fullText = 'STRIVE 2 PERFECTION';
   const descriptionText = 'Premier Fortnite esports organization competing at the highest level.';
@@ -18,10 +19,15 @@ const HeroSection = () => {
   const button2Text = 'Watch Highlights';
 
   useEffect(() => {
-    let currentIndex = 0;
+    // Start page load animations
+    setIsLoaded(true);
     
-    // Title typewriter
-    const typewriterInterval = setInterval(() => {
+    // Delay text animations slightly for smooth page entry
+    setTimeout(() => {
+      let currentIndex = 0;
+      
+      // Title typewriter
+      const typewriterInterval = setInterval(() => {
       if (currentIndex <= fullText.length) {
         setDisplayedText(fullText.slice(0, currentIndex));
         currentIndex++;
@@ -69,7 +75,8 @@ const HeroSection = () => {
       }
     }, 100);
 
-    return () => clearInterval(typewriterInterval);
+      return () => clearInterval(typewriterInterval);
+    }, 800); // 800ms delay for smooth page entry
   }, []);
 
   return (
@@ -144,7 +151,7 @@ const HeroSection = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center min-h-[80vh]">
             {/* Left Side - Content */}
-            <div className="text-left">
+            <div className={`text-left transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               {/* Title with typewriter effect */}
               <div className="mb-8">
                 <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-sans font-medium text-primary glow-text leading-none tracking-tight">
@@ -198,7 +205,7 @@ const HeroSection = () => {
             <div className="relative ml-auto overflow-hidden">
               <div className="relative ml-32">
                 {/* Desktop Screen - Realistic laptop design */}
-                <div className="relative group">
+                <div className={`relative group transition-all duration-1200 ${isLoaded ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-16 scale-95'}`} style={{ transitionDelay: '400ms' }}>
                   {/* Laptop base/body - Light mode */}
                   <div className="relative bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl p-4 shadow-2xl shadow-black/10 transform hover:scale-105 transition-all duration-500 w-full min-w-[700px] max-w-5xl border border-slate-200">
                     {/* Fade effect on right edge */}
@@ -264,7 +271,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Mobile Phone - Realistic design, smaller scale, slightly overlapping */}
-                <div className="absolute top-16 -left-20 group w-72 z-10 scale-90">
+                <div className={`absolute top-16 -left-20 group w-72 z-10 scale-90 transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0 scale-90' : 'opacity-0 translate-y-12 scale-75'}`} style={{ transitionDelay: '800ms' }}>
                   <div className="relative">
                     {/* Phone outer frame - Light mode */}
                     <div className="bg-gradient-to-br from-slate-100 to-slate-200 rounded-[3rem] p-2 shadow-2xl shadow-black/20 border border-slate-300">
@@ -320,8 +327,8 @@ const HeroSection = () => {
               </div>
 
               {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 w-12 h-12 bg-primary/20 rounded-full blur-xl animate-pulse"></div>
-              <div className="absolute bottom-8 -left-8 w-16 h-16 bg-secondary/20 rounded-full blur-xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <div className={`absolute -top-4 -right-4 w-12 h-12 bg-primary/20 rounded-full blur-xl animate-pulse transition-all duration-1000 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`} style={{ transitionDelay: '1200ms' }}></div>
+              <div className={`absolute bottom-8 -left-8 w-16 h-16 bg-secondary/20 rounded-full blur-xl animate-pulse transition-all duration-1000 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`} style={{ animationDelay: '1s', transitionDelay: '1400ms' }}></div>
             </div>
           </div>
         </div>
