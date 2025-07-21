@@ -199,7 +199,7 @@ const HeroSection = () => {
               <div className="relative ml-16">
                 {/* Desktop Screen - 3x larger, extending off screen */}
                 <div className="relative group">
-                  <div className="relative bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-xl rounded-2xl p-16 shadow-2xl shadow-primary/10 border border-border/50 transform hover:scale-105 transition-all duration-500 w-full min-w-[1800px] max-w-none">
+                  <div className="relative bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-xl rounded-2xl p-12 shadow-2xl shadow-primary/10 border border-border/50 transform hover:scale-105 transition-all duration-500 w-full min-w-[700px] max-w-5xl">
                     {/* Fade effect on right edge */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent rounded-2xl pointer-events-none" 
                          style={{
