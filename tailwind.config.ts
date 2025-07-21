@@ -196,6 +196,30 @@ export default {
 					'100%': {
 						transform: 'translate(32px, 32px)'
 					}
+				},
+				'liquidFlow1': {
+					'0%, 100%': { transform: 'translateY(0) scaleX(1)', opacity: '0.2' },
+					'50%': { transform: 'translateY(-4px) scaleX(1.1)', opacity: '0.4' }
+				},
+				'liquidFlow2': {
+					'0%, 100%': { transform: 'translateX(0) scaleY(1)', opacity: '0.3' },
+					'50%': { transform: 'translateX(-6px) scaleY(0.9)', opacity: '0.6' }
+				},
+				'liquidFlow3': {
+					'0%, 100%': { transform: 'translateY(0) scaleX(1)', opacity: '0.25' },
+					'50%': { transform: 'translateY(4px) scaleX(1.2)', opacity: '0.5' }
+				},
+				'liquidFlow4': {
+					'0%, 100%': { transform: 'translateX(0) scaleY(1)', opacity: '0.2' },
+					'50%': { transform: 'translateX(3px) scaleY(1.1)', opacity: '0.4' }
+				},
+				'cornerLiquid1': {
+					'0%, 100%': { transform: 'scale(1) rotate(0deg)', opacity: '0.15' },
+					'50%': { transform: 'scale(1.3) rotate(180deg)', opacity: '0.3' }
+				},
+				'cornerLiquid2': {
+					'0%, 100%': { transform: 'scale(1) rotate(0deg)', opacity: '0.1' },
+					'50%': { transform: 'scale(0.8) rotate(-180deg)', opacity: '0.25' }
 				}
 			},
 			animation: {
