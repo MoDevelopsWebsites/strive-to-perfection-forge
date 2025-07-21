@@ -73,19 +73,19 @@ export const TeamCarousel = () => {
     gsap.fromTo(cards, 
       { 
         opacity: 0, 
-        y: 100,
-        scale: 0.8
+        y: 60,
+        scale: 0.9
       },
       {
         opacity: 1,
         y: 0,
         scale: 1,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power3.out",
+        duration: 0.4,
+        stagger: 0.08,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: '.team-carousel',
-          start: 'top 80%',
+          start: 'top 85%',
         }
       }
     );
