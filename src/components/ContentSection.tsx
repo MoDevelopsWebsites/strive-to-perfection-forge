@@ -23,7 +23,7 @@ const topCreators = [
     platform: 'Twitch',
     name: 'S2PGGs Live',
     handle: 's2pggs',
-    followers: '25K+',
+    followers: '1K+',
     avatar: '/placeholder-avatar.png',
     channelUrl: 'https://twitch.tv/s2pggs',
     description: 'Live gaming streams and tournaments',
