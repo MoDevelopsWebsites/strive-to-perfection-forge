@@ -140,55 +140,107 @@ const HeroSection = () => {
         <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:32px_32px] animate-[textureFloat_30s_linear_infinite]"></div>
       </div>
       
-      <div className="relative z-10 w-full px-4 text-center">
-        <div className="w-full">
-          {/* Professional title with typewriter effect - Full width */}
-          <div className="mb-12 w-full">
-            <h1 className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] 2xl:text-[14rem] font-sans font-medium text-primary glow-text leading-none tracking-tighter text-center w-full">
-              {displayedText}
-              <span className="animate-pulse">|</span>
-            </h1>
-          </div>
+      <div className="relative z-10 w-full px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center min-h-[80vh]">
+            {/* Left Side - Content */}
+            <div className="text-left">
+              {/* Title with typewriter effect */}
+              <div className="mb-8">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-sans font-medium text-primary glow-text leading-none tracking-tight">
+                  {displayedText}
+                  <span className="animate-pulse">|</span>
+                </h1>
+              </div>
 
-          {/* Professional subtitle with typewriter animation */}
-          {showDescription && (
-            <Card className="mb-16 max-w-6xl mx-auto bg-card/90 backdrop-blur-xl border border-border hover:border-primary/40 transition-all duration-500 animate-[glowFadeIn_1.2s_ease-out_forwards] opacity-100">
-              <CardContent className="p-8">
-                <p className="text-2xl md:text-3xl font-display font-light text-muted-foreground leading-relaxed">
-                  {displayedDescription}
-                  {displayedDescription.length < descriptionText.length && <span className="animate-pulse">|</span>}
-                  <br />
-                  <span className="text-primary font-semibold glow-text">Building champions since 2023.</span>
-                </p>
-              </CardContent>
-            </Card>
-          )}
+              {/* Description */}
+              {showDescription && (
+                <div className="mb-12">
+                  <p className="text-lg md:text-xl lg:text-2xl font-light text-muted-foreground leading-relaxed max-w-xl">
+                    {displayedDescription}
+                    {displayedDescription.length < descriptionText.length && <span className="animate-pulse">|</span>}
+                  </p>
+                  <p className="text-primary font-semibold glow-text mt-4 text-lg">
+                    Building champions since 2023.
+                  </p>
+                </div>
+              )}
 
-          {/* Professional CTA Buttons with typewriter animations */}
-          <div className="flex flex-col sm:flex-row gap-8 justify-center">
-            {showFirstButton && (
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-2xl shadow-primary/25 hover:shadow-primary/40 transition-all duration-500 hover:scale-110 hover:-translate-y-2 text-xl px-12 py-8 font-semibold rounded-xl animate-[bounceInLeft_0.8s_ease-out_forwards] opacity-100 transform hover:rotate-1"
-                onClick={() => window.open('https://discord.gg/Hyu6j4RFrp', '_blank')}
-              >
-                <Users className="w-6 h-6 mr-3 animate-[iconFloat_2s_ease-in-out_infinite]" />
-                {displayedButton1}
-                {displayedButton1.length < button1Text.length && <span className="animate-pulse">|</span>}
-              </Button>
-            )}
-            {showSecondButton && (
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-2 border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:scale-110 hover:-translate-y-2 transition-all duration-500 text-xl px-12 py-8 font-semibold backdrop-blur-sm bg-background/20 shadow-lg shadow-primary/10 rounded-xl animate-[bounceInRight_0.8s_ease-out_forwards] opacity-100 transform hover:-rotate-1"
-                onClick={() => window.open('https://www.youtube.com/@S2PGGs', '_blank')}
-              >
-                <Play className="w-6 h-6 mr-3 animate-[iconSpin_3s_ease-in-out_infinite]" />
-                {displayedButton2}
-                {displayedButton2.length < button2Text.length && <span className="animate-pulse">|</span>}
-              </Button>
-            )}
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                {showFirstButton && (
+                  <Button 
+                    size="lg" 
+                    className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:scale-105 text-lg px-8 py-6 font-semibold rounded-lg"
+                    onClick={() => window.open('https://discord.gg/Hyu6j4RFrp', '_blank')}
+                  >
+                    <Users className="w-5 h-5 mr-2" />
+                    {displayedButton1}
+                    {displayedButton1.length < button1Text.length && <span className="animate-pulse">|</span>}
+                  </Button>
+                )}
+                {showSecondButton && (
+                  <Button 
+                    size="lg" 
+                    variant="outline" 
+                    className="border-2 border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:scale-105 transition-all duration-300 text-lg px-8 py-6 font-semibold backdrop-blur-sm bg-background/20 shadow-lg rounded-lg"
+                    onClick={() => window.open('https://www.youtube.com/@S2PGGs', '_blank')}
+                  >
+                    <Play className="w-5 h-5 mr-2" />
+                    {displayedButton2}
+                    {displayedButton2.length < button2Text.length && <span className="animate-pulse">|</span>}
+                  </Button>
+                )}
+              </div>
+            </div>
+
+            {/* Right Side - Video Displays */}
+            <div className="relative">
+              <div className="grid gap-8">
+                {/* Desktop Screen */}
+                <div className="relative group">
+                  <div className="bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-xl rounded-2xl p-6 shadow-2xl shadow-primary/10 border border-border/50 transform hover:scale-105 transition-all duration-500">
+                    <div className="bg-background/80 rounded-lg p-3 mb-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                      </div>
+                      <div className="bg-muted/50 h-1 rounded-full w-full"></div>
+                    </div>
+                    <div className="aspect-video bg-black rounded-lg overflow-hidden">
+                      <iframe
+                        src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ&controls=0&showinfo=0&rel=0&modestbranding=1"
+                        className="w-full h-full"
+                        allow="autoplay; encrypted-media"
+                        allowFullScreen
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mobile Phone */}
+                <div className="relative ml-auto w-48 group">
+                  <div className="bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-xl rounded-3xl p-4 shadow-2xl shadow-primary/10 border border-border/50 transform hover:scale-105 transition-all duration-500">
+                    <div className="bg-background/80 rounded-2xl p-3">
+                      <div className="bg-muted/50 h-6 rounded-full w-20 mx-auto mb-2"></div>
+                      <div className="aspect-[9/16] bg-black rounded-xl overflow-hidden">
+                        <iframe
+                          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ&controls=0&showinfo=0&rel=0&modestbranding=1"
+                          className="w-full h-full"
+                          allow="autoplay; encrypted-media"
+                          allowFullScreen
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Elements */}
+              <div className="absolute -top-4 -right-4 w-12 h-12 bg-primary/20 rounded-full blur-xl animate-pulse"></div>
+              <div className="absolute bottom-8 -left-8 w-16 h-16 bg-secondary/20 rounded-full blur-xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+            </div>
           </div>
         </div>
       </div>
