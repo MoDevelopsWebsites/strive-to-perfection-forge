@@ -128,7 +128,15 @@ const MerchSection = () => {
                     className="w-full h-80 object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
                     onError={(e) => {
                       console.error('Image failed to load:', product.image_url);
-                      e.currentTarget.src = '/placeholder.svg';
+                      // Use a solid color background as fallback
+                      e.currentTarget.style.display = 'none';
+                      const parent = e.currentTarget.parentElement;
+                      if (parent && !parent.querySelector('.fallback-bg')) {
+                        const fallback = document.createElement('div');
+                        fallback.className = 'fallback-bg w-full h-80 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center text-2xl font-bold text-primary';
+                        fallback.textContent = product.name;
+                        parent.appendChild(fallback);
+                      }
                     }}
                   />
                   
