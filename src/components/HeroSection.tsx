@@ -92,7 +92,7 @@ const HeroSection = () => {
                   {displayedDescription}
                   {displayedDescription.length < descriptionText.length && <span className="animate-pulse">|</span>}
                   <br />
-                  <span className="text-primary font-semibold glow-text">Building champions since 2020.</span>
+                  <span className="text-primary font-semibold glow-text">Building champions since 2023.</span>
                 </p>
               </CardContent>
             </Card>
