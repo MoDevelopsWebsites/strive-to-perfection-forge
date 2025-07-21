@@ -102,174 +102,63 @@ const StreamersSection = () => {
         </div>
 
         {/* Streamers Grid */}
-        <div className="streamers-container grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
-          {/* FrusiWIN Card */}
-          <Card 
-            className="streamer-card gaming-card hover:border-primary/60 transition-all duration-500 hover:scale-105 group overflow-hidden"
-          >
-            <CardContent className="p-0 h-full">
-              <div className="relative p-6 bg-gradient-to-br from-primary/10 to-secondary/10 min-h-full flex flex-col">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center shadow-lg shadow-primary/25">
-                    <TwitchIcon className="w-8 h-8 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                      FrusiWIN
-                    </h3>
-                    <p className="text-sm text-muted-foreground">@frusiwin</p>
-                  </div>
-                </div>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <Badge className="specialty-badge bg-primary/20 text-primary border-primary/30 text-xs">
-                    Building Master
-                  </Badge>
-                  <Badge className="specialty-badge bg-primary/20 text-primary border-primary/30 text-xs">
-                    Competitive Play
-                  </Badge>
-                  <Badge className="specialty-badge bg-primary/20 text-primary border-primary/30 text-xs">
-                    Strategy
-                  </Badge>
-                </div>
-                
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-                  Competitive Fortnite player and content creator with exceptional building skills
-                </p>
+        <div className="streamers-container space-y-12 max-w-7xl mx-auto mb-12">
+          {streamers.map((streamer, index) => (
+            <div key={streamer.username} className="streamer-card">
+              <Card className="gaming-card border-primary/30 overflow-hidden">
+                <CardContent className="p-0">
+                  <div className="grid lg:grid-cols-3 gap-0">
+                    {/* Stream Embed */}
+                    <div className="lg:col-span-2 aspect-video bg-muted/20">
+                      <iframe
+                        src={`https://player.twitch.tv/?channel=${streamer.username}&parent=${window.location.hostname}&autoplay=false&muted=true`}
+                        height="100%"
+                        width="100%"
+                        allowFullScreen
+                        className="w-full h-full"
+                        title={`${streamer.name}'s Twitch Stream`}
+                      ></iframe>
+                    </div>
+                    
+                    {/* Streamer Info */}
+                    <div className="p-6 bg-gradient-to-br from-primary/10 to-secondary/10 flex flex-col">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center shadow-lg shadow-primary/25">
+                          <TwitchIcon className="w-8 h-8 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold text-foreground">
+                            {streamer.name}
+                          </h3>
+                          <p className="text-sm text-muted-foreground">@{streamer.username}</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {streamer.specialties.map((specialty) => (
+                          <Badge key={specialty} className="specialty-badge bg-primary/20 text-primary border-primary/30 text-xs">
+                            {specialty}
+                          </Badge>
+                        ))}
+                      </div>
+                      
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-grow">
+                        {streamer.description}
+                      </p>
 
-                <div className="space-y-3 mt-auto">
-                  <Button
-                    onClick={() => openStream(streamers[0])}
-                    className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-lg shadow-primary/25 transition-all duration-300"
-                  >
-                    <Play className="w-4 h-4 mr-2" />
-                    Watch Stream
-                  </Button>
-                  
-                  <Button
-                    variant="outline"
-                    onClick={() => window.open('https://twitch.tv/frusiwin', '_blank')}
-                    className="w-full border-purple-500/50 text-purple-500 hover:bg-purple-500/10 hover:border-purple-500 transition-all duration-300"
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Open on Twitch
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Colin Card - Exact Copy of FrusiWIN */}
-          <Card 
-            className="streamer-card gaming-card hover:border-primary/60 transition-all duration-500 hover:scale-105 group overflow-hidden"
-          >
-            <CardContent className="p-0 h-full">
-              <div className="relative p-6 bg-gradient-to-br from-primary/10 to-secondary/10 min-h-full flex flex-col">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center shadow-lg shadow-primary/25">
-                    <TwitchIcon className="w-8 h-8 text-white" />
+                      <Button
+                        onClick={() => window.open(streamer.twitchUrl, '_blank')}
+                        className="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white shadow-lg shadow-purple-500/25 transition-all duration-300"
+                      >
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Open on Twitch
+                      </Button>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                      Colin
-                    </h3>
-                    <p className="text-sm text-muted-foreground">@s2pcolin</p>
-                  </div>
-                </div>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <Badge className="specialty-badge bg-primary/20 text-primary border-primary/30 text-xs">
-                    Entertainment
-                  </Badge>
-                  <Badge className="specialty-badge bg-primary/20 text-primary border-primary/30 text-xs">
-                    Community
-                  </Badge>
-                  <Badge className="specialty-badge bg-primary/20 text-primary border-primary/30 text-xs">
-                    Highlights
-                  </Badge>
-                </div>
-                
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-                  High-energy streamer known for incredible gameplay and community engagement
-                </p>
-
-                <div className="space-y-3 mt-auto">
-                  <Button
-                    onClick={() => openStream(streamers[1])}
-                    className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-lg shadow-primary/25 transition-all duration-300"
-                  >
-                    <Play className="w-4 h-4 mr-2" />
-                    Watch Stream
-                  </Button>
-                  
-                  <Button
-                    variant="outline"
-                    onClick={() => window.open('https://twitch.tv/s2pcolin', '_blank')}
-                    className="w-full border-purple-500/50 text-purple-500 hover:bg-purple-500/10 hover:border-purple-500 transition-all duration-300"
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Open on Twitch
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Misq Card - Exact Copy of FrusiWIN */}
-          <Card 
-            className="streamer-card gaming-card hover:border-primary/60 transition-all duration-500 hover:scale-105 group overflow-hidden"
-          >
-            <CardContent className="p-0 h-full">
-              <div className="relative p-6 bg-gradient-to-br from-primary/10 to-secondary/10 min-h-full flex flex-col">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center shadow-lg shadow-primary/25">
-                    <TwitchIcon className="w-8 h-8 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                      Misq
-                    </h3>
-                    <p className="text-sm text-muted-foreground">@misqiwnl</p>
-                  </div>
-                </div>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <Badge className="specialty-badge bg-primary/20 text-primary border-primary/30 text-xs">
-                    Strategy
-                  </Badge>
-                  <Badge className="specialty-badge bg-primary/20 text-primary border-primary/30 text-xs">
-                    Analysis
-                  </Badge>
-                  <Badge className="specialty-badge bg-primary/20 text-primary border-primary/30 text-xs">
-                    Teaching
-                  </Badge>
-                </div>
-                
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-                  Strategic mastermind with years of competitive gaming experience
-                </p>
-
-                <div className="space-y-3 mt-auto">
-                  <Button
-                    onClick={() => openStream(streamers[2])}
-                    className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-lg shadow-primary/25 transition-all duration-300"
-                  >
-                    <Play className="w-4 h-4 mr-2" />
-                    Watch Stream
-                  </Button>
-                  
-                  <Button
-                    variant="outline"
-                    onClick={() => window.open('https://twitch.tv/misqiwnl', '_blank')}
-                    className="w-full border-purple-500/50 text-purple-500 hover:bg-purple-500/10 hover:border-purple-500 transition-all duration-300"
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Open on Twitch
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+                </CardContent>
+              </Card>
+            </div>
+          ))}
         </div>
 
         {/* CTA Section */}
@@ -292,38 +181,6 @@ const StreamersSection = () => {
             </CardContent>
           </Card>
         </div>
-
-        {/* Stream Modal */}
-        {selectedStreamer && (
-          <Dialog open={!!selectedStreamer} onOpenChange={() => setSelectedStreamer(null)}>
-            <DialogContent className="max-w-4xl w-full p-0 bg-background border-primary/20">
-              <div className="relative">
-                <div className="p-4 border-b border-primary/20 bg-gradient-to-r from-primary/10 to-secondary/10">
-                  <h3 className="text-lg font-bold text-foreground">{selectedStreamer.name}'s Stream</h3>
-                  <p className="text-sm text-muted-foreground">Live on Twitch</p>
-                </div>
-                <div className="aspect-video bg-muted/20">
-                  <iframe
-                    src={`https://player.twitch.tv/?channel=${selectedStreamer.username}&parent=${window.location.hostname}&autoplay=false`}
-                    height="100%"
-                    width="100%"
-                    allowFullScreen
-                    className="w-full h-full"
-                  ></iframe>
-                </div>
-                <div className="p-4 bg-gradient-to-r from-primary/5 to-secondary/5">
-                  <Button
-                    onClick={() => window.open(selectedStreamer.twitchUrl, '_blank')}
-                    className="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white"
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Watch Full Screen on Twitch
-                  </Button>
-                </div>
-              </div>
-            </DialogContent>
-          </Dialog>
-        )}
       </div>
     </section>
   );
