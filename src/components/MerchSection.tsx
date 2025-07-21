@@ -3,6 +3,7 @@ import { ShoppingBag, ExternalLink, Zap, Star, Tag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { supabase } from '@/integrations/supabase/client';
+import { useNavigate } from 'react-router-dom';
 
 interface Product {
   id: string;
@@ -19,6 +20,7 @@ const MerchSection = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const sectionRef = useRef<HTMLElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -108,7 +110,7 @@ const MerchSection = () => {
               }`}
               onMouseEnter={() => setHoveredItem(index)}
               onMouseLeave={() => setHoveredItem(null)}
-              onClick={() => window.location.href = `/product/${product.id}`}
+              onClick={() => navigate(`/product/${product.id}`)}
             >
               {/* Enhanced glow effect that appears on scroll */}
               <div className={`absolute -inset-4 bg-gradient-to-r from-primary/30 via-secondary/30 to-primary/30 rounded-xl blur-xl transition-all duration-1000 ${
@@ -124,6 +126,10 @@ const MerchSection = () => {
                     src={product.image_url}
                     alt={product.name}
                     className="w-full h-80 object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
+                    onError={(e) => {
+                      console.error('Image failed to load:', product.image_url);
+                      e.currentTarget.src = '/placeholder.svg';
+                    }}
                   />
                   
                   {/* Floating particles effect */}
@@ -175,7 +181,7 @@ const MerchSection = () => {
                   <Button
                     size="lg"
                     className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-2xl shadow-primary/25 hover:shadow-primary/40 transition-all duration-500 hover:scale-110 hover:-translate-y-2 text-xl px-12 py-6 font-semibold rounded-xl group"
-                    onClick={() => window.location.href = '/shop'}
+                    onClick={() => navigate('/shop')}
                   >
                     <ShoppingBag className="w-6 h-6 mr-3 group-hover:animate-bounce" />
                     View Full Store
