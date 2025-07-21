@@ -205,7 +205,7 @@ const Footer = () => {
             
             <div className="flex items-center gap-6 text-xs text-muted-foreground">
               <span>Made with ❤️ for the gaming community</span>
-              <span>Germany 🇩🇪</span>
+              <span>United Kingdom 🇬🇧</span>
             </div>
           </div>
         </div>
