@@ -68,11 +68,11 @@ const MerchSection = () => {
   const getProductImage = (product: Product) => {
     switch (product.name) {
       case 'S2P Jersey':
-        return '/lovable-uploads/05edfebb-4fc0-4cff-bf02-2ae6f17b7a13.png';
+        return '/lovable-uploads/6ffcd167-a35a-4525-a433-71d35bbcbf75.png';
       case 'S2P Hoodie':
-        return '/lovable-uploads/c31f789f-6d8e-4649-8de3-f34b037722b3.png';
+        return '/lovable-uploads/0443d5b0-7a21-4503-a12a-dd28026a206c.png';
       case 'S2P Hoodie & Jersey Bundle':
-        return '/lovable-uploads/ab937607-6d1b-46b4-88b5-0eb8849ed32f.png';
+        return '/lovable-uploads/ab9ae4a2-d781-4232-96f6-c6d3ecefc679.png';
       default:
         return product.image_url;
     }
