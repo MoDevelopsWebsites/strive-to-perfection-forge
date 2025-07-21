@@ -76,48 +76,21 @@ const Product = () => {
     setProcessing(true);
 
     try {
-      // Create order in database
-      const { data: orderData, error: orderError } = await supabase
-        .from('orders')
-        .insert([{
-          customer_email: customerEmail,
-          customer_name: customerName,
-          total_amount: product.price * quantity,
-          shipping_address: { address: shippingAddress },
-          status: 'pending'
-        }])
-        .select()
-        .single();
-
-      if (orderError) throw orderError;
-
-      // Create order item
-      const { error: itemError } = await supabase
-        .from('order_items')
-        .insert([{
-          order_id: orderData.id,
-          product_id: product.id,
-          quantity: quantity,
-          price: product.price
-        }]);
-
-      if (itemError) throw itemError;
-
-      // Redirect to PayPal
+      // Calculate total and redirect directly to PayPal
       const totalAmount = (product.price * quantity).toFixed(2);
       const paypalUrl = `https://www.paypal.me/Goku515/${totalAmount}`;
       
       // Open PayPal in new tab
       window.open(paypalUrl, '_blank');
       
-      // Redirect to confirmation page
-      navigate(`/payment-pending/${orderData.id}`);
+      // Redirect to confirmation page with product info
+      navigate(`/payment-pending?product=${product.name}&total=${totalAmount}&email=${customerEmail}`);
 
     } catch (error) {
-      console.error('Error creating order:', error);
+      console.error('Error processing payment:', error);
       toast({
         title: "Error",
-        description: "Failed to process order. Please try again.",
+        description: "Failed to process payment. Please try again.",
         variant: "destructive"
       });
     } finally {

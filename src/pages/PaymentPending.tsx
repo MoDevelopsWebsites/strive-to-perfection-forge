@@ -1,64 +1,19 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { supabase } from '@/integrations/supabase/client';
+import { useSearchParams } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Clock, MessageCircle, Users } from 'lucide-react';
 
-interface Order {
-  id: string;
-  customer_name: string;
-  customer_email: string;
-  total_amount: number;
-  status: string;
-  created_at: string;
-}
-
 const PaymentPending = () => {
-  const { orderId } = useParams();
-  const [order, setOrder] = useState<Order | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (orderId) {
-      fetchOrder();
-    }
-  }, [orderId]);
-
-  const fetchOrder = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('orders')
-        .select('*')
-        .eq('id', orderId)
-        .single();
-
-      if (error) throw error;
-      setOrder(data);
-    } catch (error) {
-      console.error('Error fetching order:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [searchParams] = useSearchParams();
+  const productName = searchParams.get('product') || 'S2P Product';
+  const totalAmount = searchParams.get('total') || '0.00';
+  const customerEmail = searchParams.get('email') || '';
 
   const handleJoinDiscord = () => {
     window.open('https://discord.gg/s2p', '_blank');
   };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-background">
-        <Navigation />
-        <div className="container mx-auto px-4 py-8">
-          <div className="text-center">Loading order details...</div>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -77,38 +32,32 @@ const PaymentPending = () => {
         </div>
 
         {/* Order Details */}
-        {order && (
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Clock className="w-5 h-5" />
-                Order Details
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Order ID:</span>
-                <span className="font-mono text-sm">{order.id}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Customer:</span>
-                <span>{order.customer_name}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Email:</span>
-                <span>{order.customer_email}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Total Amount:</span>
-                <span className="font-bold text-primary">${order.total_amount.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Status:</span>
-                <span className="capitalize font-medium">{order.status}</span>
-              </div>
-            </CardContent>
-          </Card>
-        )}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Clock className="w-5 h-5" />
+              Order Details
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">Product:</span>
+              <span className="font-medium">{productName}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">Email:</span>
+              <span>{customerEmail}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">Total Amount:</span>
+              <span className="font-bold text-primary">${totalAmount}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">Status:</span>
+              <span className="capitalize font-medium">Pending</span>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Next Steps */}
         <Card className="mb-8">
@@ -129,7 +78,7 @@ const PaymentPending = () => {
               <ol className="list-decimal list-inside text-blue-800 dark:text-blue-200 text-sm space-y-1">
                 <li>Join our Discord server</li>
                 <li>Open a support ticket</li>
-                <li>Provide your order ID: <code className="bg-blue-100 dark:bg-blue-900 px-1 rounded">{orderId}</code></li>
+                <li>Provide your order details (product: {productName}, total: ${totalAmount})</li>
                 <li>Confirm your shipping address</li>
               </ol>
             </div>
