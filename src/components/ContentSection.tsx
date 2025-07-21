@@ -12,7 +12,7 @@ const topCreators = [
     platform: 'YouTube',
     name: 'S2PGGs Main Channel',
     handle: '@S2PGGs',
-    subscribers: '50K+',
+    subscribers: '5K+',
     avatar: '/placeholder-avatar.png',
     channelUrl: 'https://youtube.com/@s2pggs',
     description: 'Main gaming content and highlights',
@@ -22,10 +22,10 @@ const topCreators = [
   {
     platform: 'Twitch',
     name: 'S2PGGs Live',
-    handle: 'S2PGGs_Official',
+    handle: 's2pggs',
     followers: '25K+',
     avatar: '/placeholder-avatar.png',
-    channelUrl: 'https://twitch.tv/s2pggs_official',
+    channelUrl: 'https://twitch.tv/s2pggs',
     description: 'Live gaming streams and tournaments',
     icon: Twitch,
     gradient: 'from-purple-500 to-purple-600'
