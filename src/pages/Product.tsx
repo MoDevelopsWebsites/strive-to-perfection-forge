@@ -63,6 +63,19 @@ const Product = () => {
     }
   };
 
+  const getProductImage = (product: Product) => {
+    switch (product.name) {
+      case 'S2P Jersey':
+        return '/lovable-uploads/6ffcd167-a35a-4525-a433-71d35bbcbf75.png';
+      case 'S2P Hoodie':
+        return '/lovable-uploads/0443d5b0-7a21-4503-a12a-dd28026a206c.png';
+      case 'S2P Hoodie & Jersey Bundle':
+        return '/lovable-uploads/ab9ae4a2-d781-4232-96f6-c6d3ecefc679.png';
+      default:
+        return product.image_url;
+    }
+  };
+
   const handlePurchase = async () => {
     if (!product || !customerName || !customerEmail || !shippingAddress) {
       toast({
@@ -143,7 +156,7 @@ const Product = () => {
             <Card>
               <CardContent className="p-0">
                 <img
-                  src={product.image_url}
+                  src={getProductImage(product)}
                   alt={product.name}
                   className="w-full h-96 object-cover rounded-lg"
                 />
