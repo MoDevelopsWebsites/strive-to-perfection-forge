@@ -68,8 +68,8 @@ const PaymentPending = () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 dark:bg-blue-950/20 dark:border-blue-800">
-              <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">
+            <div className="bg-black-50 border border-black-200 rounded-lg p-4 dark:bg-black-950/20 dark:border-blue-800">
+              <h3 className="font-semibold text-black-900 dark:text-black-100 mb-2">
                 Important: Final Step Required
               </h3>
               <p className="text-blue-800 dark:text-blue-200 text-sm mb-3">
