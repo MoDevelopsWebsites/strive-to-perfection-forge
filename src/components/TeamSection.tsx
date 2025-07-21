@@ -2,6 +2,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Users, Trophy, Target, Zap } from 'lucide-react';
 import { TeamCarousel } from '@/components/TeamCarousel';
+import NumberCounter from '@/components/NumberCounter';
 
 const TeamSection = () => {
   const teamStats = [
@@ -88,9 +89,11 @@ const TeamSection = () => {
               >
                 <CardContent className="p-6 text-center">
                   <Icon className="w-8 h-8 text-primary mx-auto mb-3" />
-                  <div className="text-3xl font-gaming font-bold text-primary mb-2">
-                    {stat.value}
-                  </div>
+                  <NumberCounter
+                    targetValue={stat.value}
+                    duration={2000}
+                    className="text-3xl font-gaming font-bold text-primary mb-2"
+                  />
                   <div className="text-sm text-muted-foreground font-display">
                     {stat.label}
                   </div>
