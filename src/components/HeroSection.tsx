@@ -196,34 +196,17 @@ const HeroSection = () => {
 
             {/* Right Side - Video Displays */}
             <div className="relative">
-              <div className="flex gap-8 items-center justify-center h-full">
-                {/* Mobile Phone - LEFT position */}
-                <div className="relative group w-72">
-                  <div className="bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-xl rounded-3xl p-4 shadow-2xl shadow-primary/10 border border-border/50 transform hover:scale-105 transition-all duration-500">
-                    <div className="bg-background/80 rounded-2xl p-4">
-                      <div className="bg-muted/50 h-6 rounded-full w-24 mx-auto mb-3"></div>
-                      <div className="aspect-[9/16] bg-black rounded-xl overflow-hidden">
-                        <iframe
-                          src="https://www.youtube.com/embed/videoseries?list=UU_x5XG1OV2P6uZZ5FSM9Ttw&autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1"
-                          className="w-full h-full"
-                          allow="autoplay; encrypted-media"
-                          allowFullScreen
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Desktop Screen - RIGHT position */}
-                <div className="relative group flex-1 max-w-lg">
-                  <div className="bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-xl rounded-2xl p-6 shadow-2xl shadow-primary/10 border border-border/50 transform hover:scale-105 transition-all duration-500">
-                    <div className="bg-background/80 rounded-lg p-4 mb-4">
+              <div className="relative">
+                {/* Desktop Screen - Full width, larger */}
+                <div className="relative group">
+                  <div className="bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-xl rounded-2xl p-8 shadow-2xl shadow-primary/10 border border-border/50 transform hover:scale-105 transition-all duration-500 w-full max-w-2xl">
+                    <div className="bg-background/80 rounded-lg p-4 mb-6">
                       <div className="flex items-center gap-2 mb-3">
-                        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                        <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                        <div className="w-4 h-4 bg-red-500 rounded-full"></div>
+                        <div className="w-4 h-4 bg-yellow-500 rounded-full"></div>
+                        <div className="w-4 h-4 bg-green-500 rounded-full"></div>
                       </div>
-                      <div className="bg-muted/50 h-1 rounded-full w-full"></div>
+                      <div className="bg-muted/50 h-2 rounded-full w-full"></div>
                     </div>
                     <div className="aspect-video bg-black rounded-lg overflow-hidden">
                       <iframe
@@ -232,6 +215,23 @@ const HeroSection = () => {
                         allow="autoplay; encrypted-media"
                         allowFullScreen
                       />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mobile Phone - Overlapping the desktop */}
+                <div className="absolute -top-8 -left-16 group w-80 z-10">
+                  <div className="bg-gradient-to-br from-card/95 to-card/70 backdrop-blur-xl rounded-3xl p-5 shadow-2xl shadow-primary/20 border border-border/50 transform hover:scale-105 transition-all duration-500">
+                    <div className="bg-background/90 rounded-2xl p-4">
+                      <div className="bg-muted/50 h-6 rounded-full w-28 mx-auto mb-3"></div>
+                      <div className="aspect-[9/16] bg-black rounded-xl overflow-hidden">
+                        <iframe
+                          src="https://www.youtube.com/embed/videoseries?list=UU_x5XG1OV2P6uZZ5FSM9Ttw&autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1"
+                          className="w-full h-full"
+                          allow="autoplay; encrypted-media"
+                          allowFullScreen
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
