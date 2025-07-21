@@ -46,7 +46,7 @@ const Privacy = () => {
                   Our Commitment to Privacy
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  At S2PGGs Holding GmbH, we respect your privacy and are committed to protecting your personal data. 
+                  At S2PGGs Holdings Ltd, we respect your privacy and are committed to protecting your personal data. 
                   This Privacy Policy explains how we collect, use, and safeguard your information when you visit our 
                   website or use our services.
                 </p>
@@ -174,9 +174,9 @@ const Privacy = () => {
                   If you have questions about this Privacy Policy or wish to exercise your rights, contact us:
                 </p>
                 <div className="mt-4 p-4 bg-primary/5 rounded-lg border border-primary/20">
-                  <p className="text-foreground font-medium">S2PGGs Holding GmbH</p>
+                  <p className="text-foreground font-medium">S2PGGs Holdings Ltd</p>
                   <p className="text-muted-foreground">Email: privacy@s2pggs.com</p>
-                  <p className="text-muted-foreground">Location: Germany</p>
+                  <p className="text-muted-foreground">Location: United Kingdom</p>
                 </div>
               </section>
 

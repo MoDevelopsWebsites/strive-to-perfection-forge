@@ -57,7 +57,7 @@ const Footer = () => {
     },
     {
       icon: MapPin,
-      text: 'Germany',
+      text: 'United Kingdom',
       action: null
     }
   ];
@@ -200,7 +200,7 @@ const Footer = () => {
         <div className="py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-sm text-muted-foreground">
-              © {currentYear} S2PGGs Holding GmbH. All Rights Reserved.
+              © {currentYear} S2PGGs Holdings Ltd. All Rights Reserved.
             </div>
             
             <div className="flex items-center gap-6 text-xs text-muted-foreground">

@@ -47,7 +47,7 @@ const Terms = () => {
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
                   Welcome to S2PGGs ("we," "us," or "our"). These Terms of Service ("Terms") govern your use of our website, 
-                  services, and any related content provided by S2PGGs Holding GmbH. By accessing or using our services, 
+                  services, and any related content provided by S2PGGs Holdings Ltd. By accessing or using our services, 
                   you agree to be bound by these Terms.
                 </p>
               </section>
@@ -88,7 +88,7 @@ const Terms = () => {
                 <h2 className="text-2xl font-bold text-foreground mb-4">Intellectual Property</h2>
                 <p className="text-muted-foreground leading-relaxed">
                   All content, trademarks, logos, and intellectual property on our website and services are owned by 
-                  S2PGGs Holding GmbH or our licensors. You may not use, reproduce, or distribute our content without 
+                  S2PGGs Holdings Ltd or our licensors. You may not use, reproduce, or distribute our content without 
                   explicit written permission.
                 </p>
               </section>
@@ -107,7 +107,7 @@ const Terms = () => {
               <section>
                 <h2 className="text-2xl font-bold text-foreground mb-4">Limitation of Liability</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  To the maximum extent permitted by law, S2PGGs Holding GmbH shall not be liable for any indirect, 
+                  To the maximum extent permitted by law, S2PGGs Holdings Ltd shall not be liable for any indirect, 
                   incidental, special, or consequential damages arising from your use of our services.
                 </p>
               </section>
@@ -116,8 +116,8 @@ const Terms = () => {
               <section>
                 <h2 className="text-2xl font-bold text-foreground mb-4">Governing Law</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  These Terms are governed by and construed in accordance with the laws of Germany. Any disputes 
-                  shall be resolved in the competent courts of Germany.
+                  These Terms are governed by and construed in accordance with the laws of the United Kingdom. Any disputes 
+                  shall be resolved in the competent courts of the United Kingdom.
                 </p>
               </section>
 
@@ -128,9 +128,9 @@ const Terms = () => {
                   If you have any questions about these Terms, please contact us at:
                 </p>
                 <div className="mt-4 p-4 bg-primary/5 rounded-lg border border-primary/20">
-                  <p className="text-foreground font-medium">S2PGGs Holding GmbH</p>
+                  <p className="text-foreground font-medium">S2PGGs Holdings Ltd</p>
                   <p className="text-muted-foreground">Email: legal@s2pggs.com</p>
-                  <p className="text-muted-foreground">Location: Germany</p>
+                  <p className="text-muted-foreground">Location: United Kingdom</p>
                 </div>
               </section>
 
