@@ -195,18 +195,24 @@ const HeroSection = () => {
             </div>
 
             {/* Right Side - Video Displays */}
-            <div className="relative ml-auto">
+            <div className="relative ml-auto overflow-hidden">
               <div className="relative ml-16">
-                {/* Desktop Screen - Much larger, shifted right */}
+                {/* Desktop Screen - 3x larger, extending off screen */}
                 <div className="relative group">
-                  <div className="bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-xl rounded-2xl p-10 shadow-2xl shadow-primary/10 border border-border/50 transform hover:scale-105 transition-all duration-500 w-full min-w-[600px] max-w-4xl">
-                    <div className="bg-background/80 rounded-lg p-6 mb-8">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-5 h-5 bg-red-500 rounded-full"></div>
-                        <div className="w-5 h-5 bg-yellow-500 rounded-full"></div>
-                        <div className="w-5 h-5 bg-green-500 rounded-full"></div>
+                  <div className="relative bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-xl rounded-2xl p-16 shadow-2xl shadow-primary/10 border border-border/50 transform hover:scale-105 transition-all duration-500 w-full min-w-[1800px] max-w-none">
+                    {/* Fade effect on right edge */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent rounded-2xl pointer-events-none" 
+                         style={{
+                           background: 'linear-gradient(to right, transparent 0%, transparent 85%, rgba(var(--background), 0.3) 95%, rgba(var(--background), 0.8) 100%)'
+                         }}></div>
+                    
+                    <div className="bg-background/80 rounded-lg p-10 mb-12">
+                      <div className="flex items-center gap-4 mb-6">
+                        <div className="w-6 h-6 bg-red-500 rounded-full"></div>
+                        <div className="w-6 h-6 bg-yellow-500 rounded-full"></div>
+                        <div className="w-6 h-6 bg-green-500 rounded-full"></div>
                       </div>
-                      <div className="bg-muted/50 h-3 rounded-full w-full"></div>
+                      <div className="bg-muted/50 h-4 rounded-full w-full"></div>
                     </div>
                     <div className="aspect-video bg-black rounded-lg overflow-hidden">
                       <iframe
@@ -219,9 +225,15 @@ const HeroSection = () => {
                   </div>
                 </div>
 
-                {/* Mobile Phone - Overlapping the desktop, shifted right */}
-                <div className="absolute -top-12 left-8 group w-96 z-10">
-                  <div className="bg-gradient-to-br from-card/95 to-card/70 backdrop-blur-xl rounded-3xl p-6 shadow-2xl shadow-primary/20 border border-border/50 transform hover:scale-105 transition-all duration-500">
+                {/* Mobile Phone - Slightly overlapping desktop, with fade */}
+                <div className="absolute -top-12 -left-8 group w-96 z-10">
+                  <div className="relative bg-gradient-to-br from-card/95 to-card/70 backdrop-blur-xl rounded-3xl p-6 shadow-2xl shadow-primary/20 border border-border/50 transform hover:scale-105 transition-all duration-500">
+                    {/* Fade effect on edges */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent rounded-3xl pointer-events-none" 
+                         style={{
+                           background: 'radial-gradient(ellipse at center, transparent 70%, rgba(var(--background), 0.2) 85%, rgba(var(--background), 0.6) 100%)'
+                         }}></div>
+                    
                     <div className="bg-background/90 rounded-2xl p-5">
                       <div className="bg-muted/50 h-7 rounded-full w-32 mx-auto mb-4"></div>
                       <div className="aspect-[9/16] bg-black rounded-xl overflow-hidden">
