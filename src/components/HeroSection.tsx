@@ -195,18 +195,18 @@ const HeroSection = () => {
             </div>
 
             {/* Right Side - Video Displays */}
-            <div className="relative">
-              <div className="relative">
-                {/* Desktop Screen - Full width, larger */}
+            <div className="relative ml-auto">
+              <div className="relative ml-16">
+                {/* Desktop Screen - Much larger, shifted right */}
                 <div className="relative group">
-                  <div className="bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-xl rounded-2xl p-8 shadow-2xl shadow-primary/10 border border-border/50 transform hover:scale-105 transition-all duration-500 w-full max-w-2xl">
-                    <div className="bg-background/80 rounded-lg p-4 mb-6">
-                      <div className="flex items-center gap-2 mb-3">
-                        <div className="w-4 h-4 bg-red-500 rounded-full"></div>
-                        <div className="w-4 h-4 bg-yellow-500 rounded-full"></div>
-                        <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                  <div className="bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-xl rounded-2xl p-10 shadow-2xl shadow-primary/10 border border-border/50 transform hover:scale-105 transition-all duration-500 w-full min-w-[600px] max-w-4xl">
+                    <div className="bg-background/80 rounded-lg p-6 mb-8">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-5 h-5 bg-red-500 rounded-full"></div>
+                        <div className="w-5 h-5 bg-yellow-500 rounded-full"></div>
+                        <div className="w-5 h-5 bg-green-500 rounded-full"></div>
                       </div>
-                      <div className="bg-muted/50 h-2 rounded-full w-full"></div>
+                      <div className="bg-muted/50 h-3 rounded-full w-full"></div>
                     </div>
                     <div className="aspect-video bg-black rounded-lg overflow-hidden">
                       <iframe
@@ -219,11 +219,11 @@ const HeroSection = () => {
                   </div>
                 </div>
 
-                {/* Mobile Phone - Overlapping the desktop */}
-                <div className="absolute -top-8 -left-16 group w-80 z-10">
-                  <div className="bg-gradient-to-br from-card/95 to-card/70 backdrop-blur-xl rounded-3xl p-5 shadow-2xl shadow-primary/20 border border-border/50 transform hover:scale-105 transition-all duration-500">
-                    <div className="bg-background/90 rounded-2xl p-4">
-                      <div className="bg-muted/50 h-6 rounded-full w-28 mx-auto mb-3"></div>
+                {/* Mobile Phone - Overlapping the desktop, shifted right */}
+                <div className="absolute -top-12 left-8 group w-96 z-10">
+                  <div className="bg-gradient-to-br from-card/95 to-card/70 backdrop-blur-xl rounded-3xl p-6 shadow-2xl shadow-primary/20 border border-border/50 transform hover:scale-105 transition-all duration-500">
+                    <div className="bg-background/90 rounded-2xl p-5">
+                      <div className="bg-muted/50 h-7 rounded-full w-32 mx-auto mb-4"></div>
                       <div className="aspect-[9/16] bg-black rounded-xl overflow-hidden">
                         <iframe
                           src="https://www.youtube.com/embed/videoseries?list=UU_x5XG1OV2P6uZZ5FSM9Ttw&autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1"
