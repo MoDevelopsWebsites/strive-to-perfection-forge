@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface TypewriterEffectProps {
   text: string;
@@ -11,14 +11,37 @@ const TypewriterEffect = ({ text, speed = 50, delay = 0, className = "" }: Typew
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [started, setStarted] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const elementRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !isVisible) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
     const startTimer = setTimeout(() => {
       setStarted(true);
     }, delay);
 
     return () => clearTimeout(startTimer);
-  }, [delay]);
+  }, [delay, isVisible]);
 
   useEffect(() => {
     if (!started) return;
@@ -34,9 +57,11 @@ const TypewriterEffect = ({ text, speed = 50, delay = 0, className = "" }: Typew
   }, [currentIndex, text, speed, started]);
 
   return (
-    <p className={className}>
+    <p ref={elementRef} className={className}>
       {displayText}
-      <span className="opacity-100 animate-pulse">|</span>
+      {started && currentIndex < text.length && (
+        <span className="opacity-100 animate-pulse">|</span>
+      )}
     </p>
   );
 };
