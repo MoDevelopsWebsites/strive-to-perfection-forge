@@ -222,8 +222,8 @@ const HeroSection = () => {
                           <div className="w-8 h-2 bg-muted/30 rounded"></div>
                         </div>
                         
-                        {/* Video content */}
-                        <div className="aspect-video bg-black">
+                        {/* Video content - Desktop full screen */}
+                        <div className="bg-black h-96">
                           <iframe
                             src="https://www.youtube.com/embed/videoseries?list=UU_x5XG1OV2P6uZZ5FSM9Ttw&autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1"
                             className="w-full h-full"
