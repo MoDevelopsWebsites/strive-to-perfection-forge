@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Home, Users, Video, Gamepad2, MessageSquare, ChevronDown, ShoppingBag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,22 +20,33 @@ const Navigation = () => {
 
   const handleNavClick = (href: string, external?: boolean) => {
     if (external) {
-      window.location.href = href;
+      window.open(href, '_blank');
       setIsMenuOpen(false);
-    } else {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'start'
-        });
-        setIsMenuOpen(false);
+    } else if (href.startsWith('/')) {
+      // It's a route, use React Router navigation
+      navigate(href);
+      setIsMenuOpen(false);
+    } else if (href.startsWith('#')) {
+      // It's an anchor link
+      if (location.pathname !== '/') {
+        // If not on home page, navigate to home first then scroll
+        navigate('/' + href);
+      } else {
+        // If on home page, just scroll to element
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
       }
+      setIsMenuOpen(false);
     }
   };
 
   const navItems = [
-    { name: 'Home', href: '#hero', icon: Home },
+    { name: 'Home', href: '/', icon: Home, route: true },
     { 
       name: 'Team', 
       href: '#team', 
@@ -60,7 +74,7 @@ const Navigation = () => {
     },
     { name: 'Content', href: '#content', icon: Video },
     { name: 'Merch', href: '#merch', icon: Gamepad2 },
-    { name: 'Shop', href: '/shop', icon: ShoppingBag, external: true },
+    { name: 'Shop', href: '/shop', icon: ShoppingBag, route: true },
     { name: 'Contact', href: '#contact', icon: MessageSquare },
   ];
 
@@ -75,7 +89,10 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <div 
+            className="flex items-center space-x-3 cursor-pointer"
+            onClick={() => navigate('/')}
+          >
             <div className="w-12 h-12 rounded-full overflow-hidden bg-gradient-primary p-0.5 purple-glow">
               <img 
                 src="/lovable-uploads/6af2116b-6281-4072-b96b-cec7ad59b43a.png" 
