@@ -196,9 +196,9 @@ const HeroSection = () => {
 
             {/* Right Side - Video Displays */}
             <div className="relative">
-              <div className="grid gap-8">
+              <div className="flex gap-6 items-start justify-center h-full">
                 {/* Desktop Screen */}
-                <div className="relative group">
+                <div className="relative group flex-1 max-w-md">
                   <div className="bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-xl rounded-2xl p-6 shadow-2xl shadow-primary/10 border border-border/50 transform hover:scale-105 transition-all duration-500">
                     <div className="bg-background/80 rounded-lg p-3 mb-4">
                       <div className="flex items-center gap-2 mb-2">
@@ -210,7 +210,7 @@ const HeroSection = () => {
                     </div>
                     <div className="aspect-video bg-black rounded-lg overflow-hidden">
                       <iframe
-                        src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ&controls=0&showinfo=0&rel=0&modestbranding=1"
+                        src="https://www.youtube.com/embed/videoseries?list=UU_x5XG1OV2P6uZZ5FSM9Ttw&autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1"
                         className="w-full h-full"
                         allow="autoplay; encrypted-media"
                         allowFullScreen
@@ -220,13 +220,13 @@ const HeroSection = () => {
                 </div>
 
                 {/* Mobile Phone */}
-                <div className="relative ml-auto w-48 group">
+                <div className="relative group w-64">
                   <div className="bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-xl rounded-3xl p-4 shadow-2xl shadow-primary/10 border border-border/50 transform hover:scale-105 transition-all duration-500">
                     <div className="bg-background/80 rounded-2xl p-3">
                       <div className="bg-muted/50 h-6 rounded-full w-20 mx-auto mb-2"></div>
                       <div className="aspect-[9/16] bg-black rounded-xl overflow-hidden">
                         <iframe
-                          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ&controls=0&showinfo=0&rel=0&modestbranding=1"
+                          src="https://www.youtube.com/embed/videoseries?list=UU_x5XG1OV2P6uZZ5FSM9Ttw&autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1"
                           className="w-full h-full"
                           allow="autoplay; encrypted-media"
                           allowFullScreen
