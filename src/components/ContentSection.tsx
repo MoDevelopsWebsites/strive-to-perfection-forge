@@ -12,7 +12,7 @@ const topCreators = [
     platform: 'YouTube',
     name: 'S2PGGs Main Channel',
     handle: '@S2PGGs',
-    subscribers: '5K+',
+    followers: '5K+',
     avatar: '/placeholder-avatar.png',
     channelUrl: 'https://youtube.com/@s2pggs',
     description: 'Main gaming content and highlights',
