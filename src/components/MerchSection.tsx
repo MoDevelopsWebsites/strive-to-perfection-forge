@@ -151,18 +151,18 @@ const MerchSection = () => {
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-2xl shadow-primary/25 hover:shadow-primary/40 transition-all duration-500 hover:scale-110 hover:-translate-y-2 text-xl px-12 py-8 font-semibold rounded-xl group"
-                  onClick={() => window.open('https://www.manatee.gg/collections/s2p', '_blank')}
+                  onClick={() => window.location.href = '/shop'}
                 >
                   <ShoppingBag className="w-6 h-6 mr-3 group-hover:animate-bounce" />
                   Shop Official Merch
-                  <ExternalLink className="w-5 h-5 ml-3 group-hover:animate-pulse" />
+                  <Zap className="w-5 h-5 ml-3 group-hover:animate-pulse" />
                 </Button>
               </CardContent>
             </Card>
           </div>
           
           <p className="text-sm text-muted-foreground/60 font-display">
-            Powered by Manatee.gg • Free shipping on orders over $75
+            Powered by S2P • Secure PayPal checkout • Discord support
           </p>
         </div>
       </div>

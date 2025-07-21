@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Home, Users, Video, Gamepad2, MessageSquare, ChevronDown } from 'lucide-react';
+import { Menu, X, Home, Users, Video, Gamepad2, MessageSquare, ChevronDown, ShoppingBag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navigation = () => {
@@ -15,14 +15,19 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
+  const handleNavClick = (href: string, external?: boolean) => {
+    if (external) {
+      window.location.href = href;
       setIsMenuOpen(false);
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+        setIsMenuOpen(false);
+      }
     }
   };
 
@@ -55,6 +60,7 @@ const Navigation = () => {
     },
     { name: 'Content', href: '#content', icon: Video },
     { name: 'Merch', href: '#merch', icon: Gamepad2 },
+    { name: 'Shop', href: '/shop', icon: ShoppingBag, external: true },
     { name: 'Contact', href: '#contact', icon: MessageSquare },
   ];
 
@@ -101,7 +107,7 @@ const Navigation = () => {
                   onMouseLeave={() => setHoveredItem(null)}
                 >
                   <button
-                    onClick={() => scrollToSection(item.href)}
+                    onClick={() => handleNavClick(item.href, (item as any).external)}
                     className="nav-link flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-muted/50 transition-all duration-300"
                   >
                     <IconComponent size={16} />
@@ -130,7 +136,7 @@ const Navigation = () => {
                             return (
                               <button
                                 key={dropdownItem.name}
-                                onClick={() => scrollToSection(dropdownItem.href)}
+                                onClick={() => handleNavClick(dropdownItem.href)}
                                 className="w-full text-left group p-4 rounded-xl hover:bg-primary/10 transition-all duration-300 border border-transparent hover:border-primary/20"
                               >
                                 <div className="flex items-start gap-4">
@@ -198,7 +204,7 @@ const Navigation = () => {
                 return (
                   <button
                     key={item.name}
-                    onClick={() => scrollToSection(item.href)}
+                    onClick={() => handleNavClick(item.href, (item as any).external)}
                     className="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-muted/50 transition-all duration-300 w-full text-left"
                   >
                     <IconComponent size={18} />
