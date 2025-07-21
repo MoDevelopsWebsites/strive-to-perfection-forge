@@ -12,7 +12,7 @@ const PaymentPending = () => {
   const customerEmail = searchParams.get('email') || '';
 
   const handleJoinDiscord = () => {
-    window.open('https://discord.gg/s2p', '_blank');
+    window.open('https://discord.gg/Hyu6j4RFrp', '_blank');
   };
 
   return (
