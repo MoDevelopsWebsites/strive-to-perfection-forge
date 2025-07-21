@@ -5,6 +5,7 @@ import StreamersSection from '@/components/StreamersSection';
 import ContentSection from '@/components/ContentSection';
 import MerchSection from '@/components/MerchSection';
 import ContactSection from '@/components/ContactSection';
+import Footer from '@/components/Footer';
 
 const Index = () => {
   return (
@@ -22,6 +23,8 @@ const Index = () => {
         <MerchSection />
         <ContactSection />
       </main>
+      
+      <Footer />
     </div>
   );
 };
