@@ -196,8 +196,8 @@ const HeroSection = () => {
 
             {/* Right Side - Video Displays */}
             <div className="relative ml-auto overflow-hidden">
-              <div className="relative ml-16">
-                {/* Desktop Screen - 3x larger, extending off screen */}
+              <div className="relative ml-32">
+                {/* Desktop Screen - Moved far right */}
                 <div className="relative group">
                   <div className="relative bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-xl rounded-2xl p-12 shadow-2xl shadow-primary/10 border border-border/50 transform hover:scale-105 transition-all duration-500 w-full min-w-[700px] max-w-5xl">
                     {/* Fade effect on right edge */}
@@ -206,7 +206,7 @@ const HeroSection = () => {
                            background: 'linear-gradient(to right, transparent 0%, transparent 85%, rgba(var(--background), 0.3) 95%, rgba(var(--background), 0.8) 100%)'
                          }}></div>
                     
-                    <div className="bg-background/80 rounded-lg p-10 mb-12">
+                    <div className="bg-background/80 rounded-lg p-8 mb-10">
                       <div className="flex items-center gap-4 mb-6">
                         <div className="w-6 h-6 bg-red-500 rounded-full"></div>
                         <div className="w-6 h-6 bg-yellow-500 rounded-full"></div>
@@ -225,24 +225,56 @@ const HeroSection = () => {
                   </div>
                 </div>
 
-                {/* Mobile Phone - Slightly overlapping desktop, with fade */}
-                <div className="absolute -top-12 -left-8 group w-96 z-10">
-                  <div className="relative bg-gradient-to-br from-card/95 to-card/70 backdrop-blur-xl rounded-3xl p-6 shadow-2xl shadow-primary/20 border border-border/50 transform hover:scale-105 transition-all duration-500">
-                    {/* Fade effect on edges */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent rounded-3xl pointer-events-none" 
-                         style={{
-                           background: 'radial-gradient(ellipse at center, transparent 70%, rgba(var(--background), 0.2) 85%, rgba(var(--background), 0.6) 100%)'
-                         }}></div>
-                    
-                    <div className="bg-background/90 rounded-2xl p-5">
-                      <div className="bg-muted/50 h-7 rounded-full w-32 mx-auto mb-4"></div>
-                      <div className="aspect-[9/16] bg-black rounded-xl overflow-hidden">
-                        <iframe
-                          src="https://www.youtube.com/embed/videoseries?list=UU_x5XG1OV2P6uZZ5FSM9Ttw&autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1"
-                          className="w-full h-full"
-                          allow="autoplay; encrypted-media"
-                          allowFullScreen
-                        />
+                {/* Mobile Phone - Realistic design, smaller scale, slightly overlapping */}
+                <div className="absolute top-16 -left-20 group w-72 z-10 scale-90">
+                  <div className="relative">
+                    {/* Phone outer frame */}
+                    <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-[3rem] p-2 shadow-2xl shadow-black/40">
+                      {/* Phone inner frame */}
+                      <div className="bg-black rounded-[2.5rem] p-1">
+                        {/* Screen area */}
+                        <div className="relative bg-gradient-to-br from-card/95 to-card/70 backdrop-blur-xl rounded-[2.2rem] overflow-hidden">
+                          {/* Notch */}
+                          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl z-20"></div>
+                          
+                          {/* Status bar */}
+                          <div className="relative pt-8 px-6 pb-2">
+                            <div className="flex justify-between items-center text-white text-sm">
+                              <div className="flex items-center gap-1">
+                                <div className="w-1 h-1 bg-white rounded-full"></div>
+                                <div className="w-1 h-1 bg-white rounded-full"></div>
+                                <div className="w-1 h-1 bg-white/50 rounded-full"></div>
+                                <span className="text-xs ml-1">S2P</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <div className="w-6 h-3 border border-white/50 rounded-sm">
+                                  <div className="w-4 h-1 bg-green-500 rounded-full mt-0.5 ml-0.5"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          {/* Video content */}
+                          <div className="px-4 pb-6">
+                            <div className="aspect-[9/16] bg-black rounded-2xl overflow-hidden relative">
+                              {/* Fade effect on edges */}
+                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent rounded-2xl pointer-events-none z-10" 
+                                   style={{
+                                     background: 'radial-gradient(ellipse at center, transparent 70%, rgba(var(--background), 0.2) 85%, rgba(var(--background), 0.6) 100%)'
+                                   }}></div>
+                              
+                              <iframe
+                                src="https://www.youtube.com/embed/videoseries?list=UU_x5XG1OV2P6uZZ5FSM9Ttw&autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1"
+                                className="w-full h-full"
+                                allow="autoplay; encrypted-media"
+                                allowFullScreen
+                              />
+                            </div>
+                          </div>
+                          
+                          {/* Home indicator */}
+                          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-white/30 rounded-full"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
