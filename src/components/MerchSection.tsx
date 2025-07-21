@@ -1,12 +1,45 @@
 import { useState, useEffect, useRef } from 'react';
-import { ShoppingBag, ExternalLink, Zap } from 'lucide-react';
+import { ShoppingBag, ExternalLink, Zap, Star, Tag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { supabase } from '@/integrations/supabase/client';
+
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  image_url: string;
+  category: string;
+}
 
 const MerchSection = () => {
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const [visibleCards, setVisibleCards] = useState<boolean[]>([false, false, false]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
   const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('products')
+          .select('*')
+          .eq('in_stock', true)
+          .order('name');
+        
+        if (error) throw error;
+        setProducts(data || []);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,53 +63,42 @@ const MerchSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  const merchItems = [
-    {
-      id: 1,
-      name: "S2PGGs Gaming Jersey",
-      description: "Premium esports jersey with signature purple design",
-      image: "/lovable-uploads/d84d4bbd-8083-4b11-ad0b-42850856a57f.png",
-      price: "From $45",
-      category: "Jersey"
-    },
-    {
-      id: 2,
-      name: "Custom Gamertag Jersey",
-      description: "Personalized jersey with your gamertag - Strive 2 Perfection",
-      image: "/lovable-uploads/217da5cf-f539-4bd2-9e98-da82d4ae1c1e.png",
-      price: "From $50",
-      category: "Custom Jersey"
-    },
-    {
-      id: 3,
-      name: "S2PGGs Apparel Collection",
-      description: "Complete collection featuring jersey and hoodie combo",
-      image: "/lovable-uploads/6c6abcc5-cdb4-419a-9113-483835517d96.png",
-      price: "From $80",
-      category: "Bundle"
-    }
-  ];
+  if (loading) {
+    return (
+      <section className="relative min-h-screen py-20 backdrop-blur-xl flex items-center justify-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
+      </section>
+    );
+  }
 
   return (
     <section ref={sectionRef} id="merch" className="relative min-h-screen py-20 backdrop-blur-xl">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-3 mb-4">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <Star className="w-8 h-8 text-primary animate-pulse" />
             <h2 className="text-4xl md:text-6xl font-sans font-medium text-primary glow-text">
-              OFFICIAL MERCH
+              OFFICIAL STORE
             </h2>
+            <Star className="w-8 h-8 text-primary animate-pulse" />
           </div>
-          <p className="text-xl md:text-2xl text-muted-foreground font-display max-w-3xl mx-auto">
-            Rep the squad with our exclusive S2PGGs merchandise collection
+          <p className="text-xl md:text-2xl text-muted-foreground font-display max-w-3xl mx-auto mb-4">
+            Premium S2P merchandise crafted for champions
           </p>
+          <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+            <Tag className="w-4 h-4" />
+            <span>Free shipping on orders over £50</span>
+            <span className="mx-2">•</span>
+            <span>Secure PayPal checkout</span>
+          </div>
         </div>
 
-        {/* Merch Grid */}
+        {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
-          {merchItems.map((item, index) => (
+          {products.slice(0, 3).map((product, index) => (
             <Card
-              key={item.id}
+              key={product.id}
               className={`group gaming-card hover:border-primary/60 transition-all duration-700 cursor-pointer overflow-hidden relative ${
                 hoveredItem === index ? 'scale-105 -translate-y-4' : ''
               } ${
@@ -86,6 +108,7 @@ const MerchSection = () => {
               }`}
               onMouseEnter={() => setHoveredItem(index)}
               onMouseLeave={() => setHoveredItem(null)}
+              onClick={() => window.location.href = `/product/${product.id}`}
             >
               {/* Enhanced glow effect that appears on scroll */}
               <div className={`absolute -inset-4 bg-gradient-to-r from-primary/30 via-secondary/30 to-primary/30 rounded-xl blur-xl transition-all duration-1000 ${
@@ -98,8 +121,8 @@ const MerchSection = () => {
                 {/* Image with advanced effects */}
                 <div className="relative z-20 bg-gradient-to-br from-background/50 to-card/50 backdrop-blur-sm">
                   <img
-                    src={item.image}
-                    alt={item.name}
+                    src={product.image_url}
+                    alt={product.name}
                     className="w-full h-80 object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
                   />
                   
@@ -115,21 +138,21 @@ const MerchSection = () => {
               <CardContent className="p-6 relative z-20">
                 <div className="mb-2">
                   <span className="inline-block px-3 py-1 bg-primary/20 text-primary text-sm font-semibold rounded-full border border-primary/30">
-                    {item.category}
+                    {product.category}
                   </span>
                 </div>
                 
                 <h3 className="text-xl font-gaming font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
-                  {item.name}
+                  {product.name}
                 </h3>
                 
-                <p className="text-muted-foreground mb-4 font-display">
-                  {item.description}
+                <p className="text-muted-foreground mb-4 font-display line-clamp-2">
+                  {product.description}
                 </p>
                 
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold text-primary glow-text">
-                    {item.price}
+                    £{product.price}
                   </span>
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <ShoppingBag className="w-6 h-6 text-primary animate-bounce" />
@@ -144,26 +167,43 @@ const MerchSection = () => {
         <div className="text-center">
           <div className="mb-8">
             <Card className="inline-block bg-card/40 backdrop-blur-xl border border-primary/30 hover:border-primary/60 transition-all duration-500">
-              <CardContent className="p-6">
-                <p className="text-lg text-muted-foreground font-display mb-4">
-                  Ready to join the squad?
+              <CardContent className="p-8">
+                <p className="text-lg text-muted-foreground font-display mb-6">
+                  Explore our complete collection of premium S2P merchandise
                 </p>
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-2xl shadow-primary/25 hover:shadow-primary/40 transition-all duration-500 hover:scale-110 hover:-translate-y-2 text-xl px-12 py-8 font-semibold rounded-xl group"
-                  onClick={() => window.location.href = '/shop'}
-                >
-                  <ShoppingBag className="w-6 h-6 mr-3 group-hover:animate-bounce" />
-                  Shop Official Merch
-                  <Zap className="w-5 h-5 ml-3 group-hover:animate-pulse" />
-                </Button>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-2xl shadow-primary/25 hover:shadow-primary/40 transition-all duration-500 hover:scale-110 hover:-translate-y-2 text-xl px-12 py-6 font-semibold rounded-xl group"
+                    onClick={() => window.location.href = '/shop'}
+                  >
+                    <ShoppingBag className="w-6 h-6 mr-3 group-hover:animate-bounce" />
+                    View Full Store
+                    <Zap className="w-5 h-5 ml-3 group-hover:animate-pulse" />
+                  </Button>
+                  <div className="text-sm text-muted-foreground flex items-center gap-2">
+                    <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    {products.length} items in stock
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>
           
-          <p className="text-sm text-muted-foreground/60 font-display">
-            Powered by S2P • Secure PayPal checkout • Discord support
-          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto text-sm text-muted-foreground/80">
+            <div className="flex items-center justify-center gap-2">
+              <ShoppingBag className="w-4 h-4 text-primary" />
+              <span>Secure PayPal Checkout</span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <Zap className="w-4 h-4 text-primary" />
+              <span>Fast Worldwide Shipping</span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <Star className="w-4 h-4 text-primary" />
+              <span>Premium Quality</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
