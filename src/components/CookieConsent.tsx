@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { X, Cookie } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const CookieConsent = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Check if user has already made a choice
@@ -49,7 +51,10 @@ const CookieConsent = () => {
                 <div className="flex-1">
                   <p className="text-foreground font-medium mb-2">
                     This website uses cookies to ensure you get the best experience on our website.{' '}
-                    <button className="text-primary hover:text-primary/80 underline transition-colors">
+                    <button 
+                      className="text-primary hover:text-primary/80 underline transition-colors"
+                      onClick={() => navigate('/privacy')}
+                    >
                       Privacy Policy
                     </button>
                   </p>
