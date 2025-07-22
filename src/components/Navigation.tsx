@@ -198,7 +198,7 @@ const Navigation = () => {
                 >
                   <button
                     onClick={() => handleNavClick(item.href, (item as any).external)}
-                    className="nav-link flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-muted/50 transition-all duration-300"
+                    className="nav-link flex items-center space-x-2 px-4 py-3 rounded-lg hover:bg-muted/50 transition-all duration-300"
                   >
                     <IconComponent size={16} />
                     <span className="font-display font-medium">{item.name}</span>
@@ -214,7 +214,11 @@ const Navigation = () => {
                   
                   {/* Superside-Style Multi-Column Card Mega Menu */}
                   {hasDropdown && hoveredItem === item.name && (
-                    <div className="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 mt-3 bg-white/98 backdrop-blur-xl border border-gray-200/60 rounded-2xl shadow-2xl z-50 overflow-hidden animate-fade-in">
+                    <div 
+                      className="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-white/98 backdrop-blur-xl border border-gray-200/60 rounded-2xl shadow-2xl z-50 overflow-hidden animate-fade-in"
+                      onMouseEnter={() => setHoveredItem(item.name)}
+                      onMouseLeave={() => setHoveredItem(null)}
+                    >
                       <div className="p-8 min-w-[680px] max-w-4xl">
                         {/* Header Section */}
                         <div className="mb-8">
@@ -235,10 +239,13 @@ const Navigation = () => {
                             return (
                               <div
                                 key={dropdownItem.name}
-                                className={`group relative bg-gray-50/50 hover:bg-white border border-gray-200/60 hover:border-gray-300 rounded-xl p-6 transition-all duration-300 hover:shadow-lg cursor-pointer ${
+                                className={`group relative bg-gray-50/50 hover:bg-white border border-gray-200/60 hover:border-gray-300 rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer ${
                                   isFeatured ? 'col-span-2' : ''
                                 }`}
-                                onClick={() => handleNavClick(dropdownItem.href)}
+                                onClick={() => {
+                                  handleNavClick(dropdownItem.href);
+                                  setHoveredItem(null);
+                                }}
                               >
                                 {/* Featured Card with Image */}
                                 {isFeatured && dropdownItem.image && (
@@ -247,7 +254,7 @@ const Navigation = () => {
                                       <img 
                                         src={dropdownItem.image}
                                         alt={dropdownItem.name}
-                                        className="w-24 h-24 rounded-lg object-cover"
+                                        className="w-24 h-24 rounded-lg object-cover shadow-md"
                                       />
                                     </div>
                                     <div className="flex-grow">
@@ -263,7 +270,7 @@ const Navigation = () => {
                                         {dropdownItem.description}
                                       </p>
                                       <div className="mt-4">
-                                        <span className="inline-flex items-center text-sm font-medium text-primary group-hover:text-primary/80">
+                                        <span className="inline-flex items-center text-sm font-medium text-primary group-hover:text-primary/80 transition-colors">
                                           Learn more →
                                         </span>
                                       </div>
@@ -285,7 +292,7 @@ const Navigation = () => {
                                     <p className="text-gray-600 leading-relaxed mb-4">
                                       {dropdownItem.description}
                                     </p>
-                                    <span className="inline-flex items-center text-sm font-medium text-primary group-hover:text-primary/80">
+                                    <span className="inline-flex items-center text-sm font-medium text-primary group-hover:text-primary/80 transition-colors">
                                       Explore →
                                     </span>
                                   </div>
@@ -319,8 +326,9 @@ const Navigation = () => {
                                 } else if (item.name === 'Our Team') {
                                   window.open('https://discord.gg/Hyu6j4RFrp', '_blank');
                                 }
+                                setHoveredItem(null);
                               }}
-                              className="px-6 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-lg transition-all duration-200 font-medium whitespace-nowrap"
+                              className="px-6 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-lg transition-all duration-200 font-medium whitespace-nowrap hover:scale-105"
                             >
                               {item.name === 'Merch' && 'Shop Now'}
                               {item.name === 'Content' && 'View All'}
