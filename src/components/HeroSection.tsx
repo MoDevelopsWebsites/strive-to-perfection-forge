@@ -245,6 +245,11 @@ const HeroSection = () => {
                               alt="Radiant Studios"
                               className="w-12 h-12 object-contain opacity-60"
                             />
+                            <img
+                              src="/lovable-uploads/866683c9-6ba6-488d-93ed-5b444e83f6e6.png"
+                              alt="MANATEE.GG"
+                              className="w-20 h-8 object-contain opacity-60"
+                            />
                           </div>
                         ))}
                       </div>
