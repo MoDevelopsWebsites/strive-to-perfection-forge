@@ -59,7 +59,8 @@ const leadership = [
     icon: Globe,
     description: 'Strategic partnerships and growth initiatives',
     achievements: ['Strategic partnerships', 'Market expansion', 'Community relations'],
-    gradient: 'from-cyan-500 to-blue-500'
+    gradient: 'from-cyan-500 to-blue-500',
+    image: '/lovable-uploads/725196aa-7e0b-4eb2-a512-0a5581d9cb0e.png'
   }
 ];
 
