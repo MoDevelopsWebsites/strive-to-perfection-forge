@@ -10,24 +10,24 @@ interface YouTubeVideo {
 
 const FALLBACK_VIDEOS = [
   {
-    id: 'hQAA7k7aYY8',
+    id: 'U6dHTga_rBQ',
     title: 'Latest S2PGGs Highlights',
     publishedAt: '2024-01-15T10:00:00Z',
-    viewCount: '25000',
-    thumbnail: 'https://img.youtube.com/vi/hQAA7k7aYY8/maxresdefault.jpg'
+    viewCount: '1000',
+    thumbnail: 'https://img.youtube.com/vi/U6dHTga_rBQ/maxresdefault.jpg'
   },
   {
     id: '4AvT8Cn-FdE',
     title: 'Tournament Victory',
     publishedAt: '2024-01-10T14:30:00Z',
-    viewCount: '18000',
+    viewCount: '400',
     thumbnail: 'https://img.youtube.com/vi/4AvT8Cn-FdE/maxresdefault.jpg'
   },
   {
     id: 'FHEv_O8XgwI',
     title: 'Pro Tips & Strategy',
     publishedAt: '2024-01-05T16:45:00Z',
-    viewCount: '12000',
+    viewCount: '600',
     thumbnail: 'https://img.youtube.com/vi/FHEv_O8XgwI/maxresdefault.jpg'
   }
 ];

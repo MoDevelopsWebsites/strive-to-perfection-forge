@@ -12,9 +12,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 const streamers = [
   {
-    name: 'FrusiWIN',
-    username: 'frusiwin',
-    twitchUrl: 'https://twitch.tv/frusiwin',
+    name: 'Rinzy',
+    username: 'rinzy10',
+    twitchUrl: 'https://twitch.tv/rinzy10',
     description: 'Competitive Fortnite player and content creator with exceptional building skills',
     specialties: ['Building Master', 'Competitive Play', 'Strategy'],
     avatar: '/placeholder-streamer1.png'
