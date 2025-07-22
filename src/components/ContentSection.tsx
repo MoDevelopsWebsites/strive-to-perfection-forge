@@ -54,10 +54,12 @@ const ContentSection = () => {
 
   return (
     <section className="py-20 relative">
-      {/* Floating background elements matching hero */}
+      {/* Enhanced Floating background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/3 left-1/3 w-72 h-72 bg-blue-500/2 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/3 right-1/3 w-64 h-64 bg-secondary/2 rounded-full blur-3xl animate-pulse delay-500"></div>
+        <div className="floating-element-1 absolute top-1/3 left-1/3 w-72 h-72 bg-blue-500/2 rounded-full blur-3xl"></div>
+        <div className="floating-element-2 absolute bottom-1/3 right-1/3 w-64 h-64 bg-secondary/2 rounded-full blur-3xl"></div>
+        <div className="floating-element-3 absolute top-1/5 right-1/5 w-44 h-44 bg-cyan-500/2 rounded-full blur-2xl"></div>
+        <div className="floating-element-4 absolute bottom-1/5 left-1/5 w-40 h-40 bg-teal-500/2 rounded-full blur-2xl"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">

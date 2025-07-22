@@ -14,10 +14,12 @@ const TeamSection = () => {
 
   return (
     <section className="py-16 lg:py-20 relative">
-      {/* Floating background elements matching hero */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-60 lg:w-80 h-60 lg:h-80 bg-secondary/4 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-56 lg:w-72 h-56 lg:h-72 bg-primary/3 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      {/* Enhanced Floating background elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="floating-element-1 absolute top-1/4 left-1/4 w-60 lg:w-80 h-60 lg:h-80 bg-secondary/4 rounded-full blur-3xl"></div>
+        <div className="floating-element-2 absolute bottom-1/4 right-1/4 w-56 lg:w-72 h-56 lg:h-72 bg-primary/3 rounded-full blur-3xl"></div>
+        <div className="floating-element-3 absolute top-1/2 right-1/6 w-40 h-40 bg-purple-500/2 rounded-full blur-2xl"></div>
+        <div className="floating-element-4 absolute bottom-1/6 left-1/6 w-32 h-32 bg-blue-500/2 rounded-full blur-2xl"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">

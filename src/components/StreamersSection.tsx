@@ -85,10 +85,12 @@ const StreamersSection = () => {
 
   return (
     <section id="streamers" className="py-20 relative">
-      {/* Floating background elements matching hero */}
+      {/* Enhanced Floating background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/3 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-primary/2 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="floating-element-1 absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/3 rounded-full blur-3xl"></div>
+        <div className="floating-element-2 absolute bottom-1/4 left-1/4 w-80 h-80 bg-primary/2 rounded-full blur-3xl"></div>
+        <div className="floating-element-3 absolute top-1/6 left-1/3 w-48 h-48 bg-pink-500/2 rounded-full blur-2xl"></div>
+        <div className="floating-element-4 absolute bottom-1/6 right-1/3 w-36 h-36 bg-indigo-500/2 rounded-full blur-2xl"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
