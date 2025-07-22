@@ -12,21 +12,21 @@ const FALLBACK_VIDEOS = [
   {
     id: 'U6dHTga_rBQ',
     title: 'Latest S2PGGs Highlights',
-    publishedAt: '2024-01-15T10:00:00Z',
+    publishedAt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(), // 1 day ago
     viewCount: '1000',
     thumbnail: 'https://img.youtube.com/vi/U6dHTga_rBQ/maxresdefault.jpg'
   },
   {
     id: '4AvT8Cn-FdE',
     title: 'Tournament Victory',
-    publishedAt: '2024-01-10T14:30:00Z',
+    publishedAt: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString(), // 2 weeks ago
     viewCount: '400',
     thumbnail: 'https://img.youtube.com/vi/4AvT8Cn-FdE/maxresdefault.jpg'
   },
   {
     id: 'FHEv_O8XgwI',
     title: 'Pro Tips & Strategy',
-    publishedAt: '2024-01-05T16:45:00Z',
+    publishedAt: new Date(Date.now() - 21 * 24 * 60 * 60 * 1000).toISOString(), // 3 weeks ago
     viewCount: '600',
     thumbnail: 'https://img.youtube.com/vi/FHEv_O8XgwI/maxresdefault.jpg'
   }
