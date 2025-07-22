@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Home, Users, Video, Gamepad2, MessageSquare, ChevronDown, ShoppingBag } from 'lucide-react';
+import { Menu, X, Home, Users, Video, Gamepad2, MessageSquare, ChevronDown, ShoppingBag, Shirt, Package, Sticker, BookOpen, PlayCircle, FileText, Heart, Briefcase, Target } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -48,33 +48,81 @@ const Navigation = () => {
   const navItems = [
     { name: 'Home', href: '/', icon: Home, route: true },
     { 
-      name: 'Team', 
+      name: 'Merch', 
+      href: '#merch', 
+      icon: ShoppingBag,
+      dropdown: [
+        { 
+          name: 'T-Shirts', 
+          href: '/shop?category=tshirts', 
+          icon: Shirt,
+          description: 'Premium quality with custom designs'
+        },
+        { 
+          name: 'Hoodies', 
+          href: '/shop?category=hoodies', 
+          icon: Package,
+          description: 'Cozy & minimal styles'
+        },
+        { 
+          name: 'Stickers', 
+          href: '/shop?category=stickers', 
+          icon: Sticker,
+          description: 'Brand your space, gear, or tech'
+        }
+      ]
+    },
+    { 
+      name: 'Content', 
+      href: '#content', 
+      icon: Video,
+      dropdown: [
+        { 
+          name: 'Blog', 
+          href: '/blog', 
+          icon: BookOpen,
+          description: 'Insights, updates, and behind-the-scenes'
+        },
+        { 
+          name: 'Videos', 
+          href: '#content', 
+          icon: PlayCircle,
+          description: 'Dynamic content about our journey'
+        },
+        { 
+          name: 'Guides', 
+          href: '/guides', 
+          icon: FileText,
+          description: 'Helpful how-tos and resources'
+        }
+      ]
+    },
+    { 
+      name: 'Our Team', 
       href: '#team', 
       icon: Users,
       dropdown: [
         { 
-          name: 'Leadership', 
+          name: 'About Us', 
           href: '#team', 
           icon: Users,
-          description: 'Meet our core leadership team and executives driving S2PGGs forward'
+          description: 'Meet the faces behind the mission'
         },
         { 
-          name: 'Live Streamers', 
-          href: '#streamers', 
-          icon: Video,
-          description: 'Watch our talented content creators compete and entertain live on Twitch'
+          name: 'Culture', 
+          href: '/culture', 
+          icon: Heart,
+          description: 'What drives us every day'
         },
         { 
-          name: 'Community', 
-          href: '#contact', 
-          icon: MessageSquare,
-          description: 'Join our growing community and connect with fellow gamers and fans'
+          name: 'Careers', 
+          href: '/careers', 
+          icon: Briefcase,
+          description: 'Join our growing team'
         }
       ]
     },
-    { name: 'Content', href: '#content', icon: Video },
-    { name: 'Merch', href: '#merch', icon: Gamepad2 },
-    { name: 'Shop', href: '/shop', icon: ShoppingBag, route: true },
+    { name: 'Shop', href: '/shop', icon: Target, route: true },
     { name: 'Contact', href: '#contact', icon: MessageSquare },
   ];
 
@@ -139,32 +187,39 @@ const Navigation = () => {
                     )}
                   </button>
                   
-                  {/* Enhanced Professional Dropdown Menu - Stripe Style */}
+                  {/* Modern Mega Menu Dropdown - Superside Inspired */}
                   {hasDropdown && hoveredItem === item.name && (
-                    <div className="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 mt-3 w-96 bg-card/98 backdrop-blur-2xl border border-border/60 rounded-2xl shadow-2xl shadow-primary/10 z-50 overflow-hidden">
-                      <div className="p-6">
-                        <div className="mb-4">
-                          <h3 className="text-lg font-gaming font-bold text-primary mb-2">Our Team</h3>
-                          <p className="text-sm text-muted-foreground">Explore different aspects of the S2PGGs organization</p>
+                    <div className="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-white/98 backdrop-blur-xl border border-gray-200/60 rounded-xl shadow-xl z-50 overflow-hidden animate-fade-in">
+                      <div className="p-8 min-w-[400px]">
+                        {/* Header */}
+                        <div className="mb-6">
+                          <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.name}</h3>
+                          <p className="text-sm text-gray-600">
+                            {item.name === 'Merch' && 'Premium branded merchandise for the S2PGGs community'}
+                            {item.name === 'Content' && 'Stay updated with our latest content and insights'}
+                            {item.name === 'Our Team' && 'Learn more about the people driving S2PGGs forward'}
+                          </p>
                         </div>
-                        <div className="space-y-2">
+                        
+                        {/* Menu Items Grid */}
+                        <div className="grid grid-cols-1 gap-1">
                           {item.dropdown.map((dropdownItem) => {
                             const DropdownIcon = dropdownItem.icon;
                             return (
                               <button
                                 key={dropdownItem.name}
                                 onClick={() => handleNavClick(dropdownItem.href)}
-                                className="w-full text-left group p-4 rounded-xl hover:bg-primary/10 transition-all duration-300 border border-transparent hover:border-primary/20"
+                                className="group p-4 rounded-lg hover:bg-gray-50 transition-all duration-200 text-left w-full"
                               >
                                 <div className="flex items-start gap-4">
-                                  <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center group-hover:from-primary/30 group-hover:to-secondary/30 transition-all duration-300">
-                                    <DropdownIcon className="w-5 h-5 text-primary" />
+                                  <div className="flex-shrink-0 w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-200">
+                                    <DropdownIcon className="w-5 h-5 text-gray-600 group-hover:text-primary" />
                                   </div>
-                                  <div className="flex-grow min-w-0">
-                                    <h4 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors duration-200 mb-1">
+                                  <div className="flex-grow">
+                                    <h4 className="font-semibold text-gray-900 group-hover:text-primary transition-colors duration-200 mb-1">
                                       {dropdownItem.name}
                                     </h4>
-                                    <p className="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors duration-200 leading-relaxed">
+                                    <p className="text-sm text-gray-600 leading-relaxed">
                                       {dropdownItem.description}
                                     </p>
                                   </div>
@@ -173,12 +228,24 @@ const Navigation = () => {
                             );
                           })}
                         </div>
-                        <div className="mt-6 pt-4 border-t border-border/50">
+                        
+                        {/* Footer CTA */}
+                        <div className="mt-8 pt-6 border-t border-gray-200">
                           <button
-                            onClick={() => window.open('https://discord.gg/Hyu6j4RFrp', '_blank')}
-                            className="w-full p-3 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white rounded-xl transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl font-medium"
+                            onClick={() => {
+                              if (item.name === 'Merch') {
+                                handleNavClick('/shop');
+                              } else if (item.name === 'Content') {
+                                handleNavClick('#content');
+                              } else if (item.name === 'Our Team') {
+                                window.open('https://discord.gg/Hyu6j4RFrp', '_blank');
+                              }
+                            }}
+                            className="w-full px-4 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-lg transition-all duration-200 font-medium text-sm"
                           >
-                            Join Our Community
+                            {item.name === 'Merch' && 'Browse All Products'}
+                            {item.name === 'Content' && 'View All Content'}
+                            {item.name === 'Our Team' && 'Join Our Community'}
                           </button>
                         </div>
                       </div>
@@ -212,21 +279,53 @@ const Navigation = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Enhanced Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden animate-slide-in-left">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-card/95 backdrop-blur-md rounded-xl border border-border/50 mt-2">
+          <div className="md:hidden animate-fade-in">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-md rounded-xl border border-gray-200/50 mt-2 shadow-lg">
               {navItems.map((item) => {
                 const IconComponent = item.icon;
+                const hasDropdown = item.dropdown && item.dropdown.length > 0;
+                
                 return (
-                  <button
-                    key={item.name}
-                    onClick={() => handleNavClick(item.href, (item as any).external)}
-                    className="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-muted/50 transition-all duration-300 w-full text-left"
-                  >
-                    <IconComponent size={18} />
-                    <span className="font-display font-medium">{item.name}</span>
-                  </button>
+                  <div key={item.name} className="space-y-1">
+                    <button
+                      onClick={() => !hasDropdown && handleNavClick(item.href, (item as any).external)}
+                      className="nav-link flex items-center justify-between space-x-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition-all duration-300 w-full text-left"
+                    >
+                      <div className="flex items-center space-x-3">
+                        <IconComponent size={18} className="text-gray-600" />
+                        <span className="font-medium text-gray-900">{item.name}</span>
+                      </div>
+                      {hasDropdown && (
+                        <ChevronDown size={16} className="text-gray-400" />
+                      )}
+                    </button>
+                    
+                    {/* Mobile Dropdown Items */}
+                    {hasDropdown && (
+                      <div className="ml-4 space-y-1">
+                        {item.dropdown.map((dropdownItem) => {
+                          const DropdownIcon = dropdownItem.icon;
+                          return (
+                            <button
+                              key={dropdownItem.name}
+                              onClick={() => handleNavClick(dropdownItem.href)}
+                              className="w-full text-left p-3 rounded-lg hover:bg-gray-50 transition-all duration-200"
+                            >
+                              <div className="flex items-start gap-3">
+                                <DropdownIcon className="w-4 h-4 text-gray-500 mt-0.5" />
+                                <div>
+                                  <div className="font-medium text-gray-900 text-sm">{dropdownItem.name}</div>
+                                  <div className="text-xs text-gray-600 mt-1">{dropdownItem.description}</div>
+                                </div>
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
                 );
               })}
               <div className="pt-2">
