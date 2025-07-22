@@ -197,9 +197,56 @@ const HeroSection = () => {
                     {displayedButton2}
                     {displayedButton2.length < button2Text.length && <span className="animate-pulse">|</span>}
                   </Button>
+                  )}
+                </div>
+
+                {/* Brand showcase - Stripe.com style */}
+                {showSecondButton && (
+                  <div className="mt-12 lg:mt-16 opacity-0 animate-fade-in" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
+                    <div className="text-center mb-8">
+                      <p className="text-sm text-muted-foreground/70 font-medium uppercase tracking-widest">
+                        Trusted by Gaming Communities
+                      </p>
+                    </div>
+                    
+                    <div className="relative overflow-hidden">
+                      {/* Gradient fade edges */}
+                      <div className="absolute left-0 top-0 w-8 h-full bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none"></div>
+                      <div className="absolute right-0 top-0 w-8 h-full bg-gradient-to-l from-background via-background/80 to-transparent z-10 pointer-events-none"></div>
+                      
+                      {/* Infinite scrolling brand logos */}
+                      <div className="flex items-center space-x-12 animate-marquee hover:animate-marquee-paused">
+                        {/* Duplicate brands for seamless loop */}
+                        {[...Array(6)].map((_, setIndex) => (
+                          <div key={setIndex} className="flex items-center space-x-12 flex-shrink-0">
+                            <div className="flex items-center justify-center w-16 h-16 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-110 group">
+                              <img
+                                src="/lovable-uploads/874518e7-8c84-4f76-9bfb-529ce4635d31.png"
+                                alt="Colosseum Gaming"
+                                className="w-10 h-10 object-contain opacity-60 group-hover:opacity-80 transition-opacity duration-300"
+                              />
+                            </div>
+                            <div className="flex items-center justify-center w-20 h-16 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-110 group">
+                              <img
+                                src="/lovable-uploads/14b1cdc0-4b6b-45c6-a014-47b08199cd63.png"
+                                alt="KinxeGaming"
+                                className="w-14 h-8 object-contain opacity-60 group-hover:opacity-80 transition-opacity duration-300"
+                              />
+                            </div>
+                            <div className="flex items-center justify-center w-16 h-16 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-110 group">
+                              <img
+                                src="/lovable-uploads/5a5e6737-f9a7-483c-a442-b7009a75240a.png"
+                                alt="Radiant Studios"
+                                className="w-10 h-10 object-contain opacity-60 group-hover:opacity-80 transition-opacity duration-300"
+                              />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 )}
               </div>
-            </div>
 
             {/* Right Side - Video Displays */}
             <div className="relative ml-auto overflow-hidden order-first lg:order-last">
