@@ -91,7 +91,7 @@ const HeroSection = () => {
         {/* Main flowing shape with gradient */}
         <div className="absolute inset-0 w-full h-full">
           <svg 
-            className="absolute inset-0 w-full h-full object-cover animate-[floatSlow_20s_ease-in-out_infinite]" 
+            className="absolute inset-0 w-full h-full object-cover animate-[floatSlow_20s_ease-in-out_infinite] will-change-transform" 
             viewBox="0 0 1200 800" 
             preserveAspectRatio="xMidYMid slice"
             xmlns="http://www.w3.org/2000/svg"
@@ -152,14 +152,14 @@ const HeroSection = () => {
         <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:32px_32px] animate-[textureFloat_30s_linear_infinite]"></div>
       </div>
       
-      <div className="relative z-10 w-full px-4 lg:px-8">
+      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 xl:gap-24 items-center min-h-[80vh]">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 xl:gap-24 items-center min-h-[80vh] lg:min-h-screen">
             {/* Left Side - Content */}
             <div className={`text-left transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               {/* Title with typewriter effect */}
-              <div className="mb-6 lg:mb-8">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-sans font-medium text-primary glow-text leading-none tracking-tight">
+              <div className="mb-4 sm:mb-6 lg:mb-8">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-sans font-medium text-primary glow-text leading-tight sm:leading-none tracking-tight">
                   {displayedText}
                   <span className="animate-pulse">|</span>
                 </h1>
@@ -167,27 +167,27 @@ const HeroSection = () => {
 
               {/* Description */}
               {showDescription && (
-                <div className="mb-8 lg:mb-12">
-                  <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-light text-muted-foreground leading-relaxed max-w-xl">
+                <div className="mb-6 sm:mb-8 lg:mb-12">
+                  <p className="text-sm sm:text-base md:text-lg lg:text-xl font-light text-muted-foreground leading-relaxed max-w-xl">
                     {displayedDescription}
                     {displayedDescription.length < descriptionText.length && <span className="animate-pulse">|</span>}
                   </p>
-                  <p className="text-primary font-semibold glow-text mt-3 lg:mt-4 text-base lg:text-lg">
+                  <p className="text-primary font-semibold glow-text mt-2 sm:mt-3 lg:mt-4 text-sm sm:text-base lg:text-lg">
                     Building champions since 2023.
                   </p>
                 </div>
               )}
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              {/* CTA Buttons - Mobile optimized */}
+              <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
                 {showFirstButton && (
                   <Button 
                     size="lg" 
-                    className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:scale-105 text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 font-semibold rounded-lg"
+                    className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:scale-105 active:scale-95 text-sm sm:text-base lg:text-lg px-6 sm:px-6 lg:px-8 py-3 sm:py-4 lg:py-6 font-semibold rounded-lg min-h-[48px] touch-manipulation"
                     onClick={() => window.open('https://discord.gg/Hyu6j4RFrp', '_blank')}
                   >
-                    <Users className="w-4 h-4 lg:w-5 lg:h-5 mr-2" />
-                    {displayedButton1}
+                    <Users className="w-4 h-4 lg:w-5 lg:h-5 mr-2 flex-shrink-0" />
+                    <span className="truncate">{displayedButton1}</span>
                     {displayedButton1.length < button1Text.length && <span className="animate-pulse">|</span>}
                   </Button>
                 )}
@@ -195,60 +195,64 @@ const HeroSection = () => {
                   <Button 
                     size="lg" 
                     variant="outline" 
-                    className="border-2 border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:scale-105 transition-all duration-300 text-base lg:text-lg px-6 lg:px-8 py-4 lg:py-6 font-semibold backdrop-blur-sm bg-background/20 shadow-lg rounded-lg"
+                    className="border-2 border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:scale-105 active:scale-95 transition-all duration-300 text-sm sm:text-base lg:text-lg px-6 sm:px-6 lg:px-8 py-3 sm:py-4 lg:py-6 font-semibold backdrop-blur-sm bg-background/20 shadow-lg rounded-lg min-h-[48px] touch-manipulation"
                     onClick={() => window.open('https://www.youtube.com/@S2PGGs', '_blank')}
                   >
-                    <Play className="w-4 h-4 lg:w-5 lg:h-5 mr-2" />
-                    {displayedButton2}
+                    <Play className="w-4 h-4 lg:w-5 lg:h-5 mr-2 flex-shrink-0" />
+                    <span className="truncate">{displayedButton2}</span>
                     {displayedButton2.length < button2Text.length && <span className="animate-pulse">|</span>}
                   </Button>
                   )}
                 </div>
 
-                {/* Brand showcase - Stripe.com style */}
+                {/* Brand showcase - Mobile optimized */}
                 {showSecondButton && (
                   <div 
-                    className="mt-12 lg:mt-16 transition-all duration-1000 ease-out" 
+                    className="mt-8 sm:mt-10 lg:mt-16 transition-all duration-1000 ease-out" 
                     style={{ 
                       opacity: showBrandShowcase ? 1 : 0, 
                       transform: showBrandShowcase ? 'translateY(0)' : 'translateY(20px)'
                     }}
                   >
-                    <div className="text-center mb-8">
-                      <p className="text-sm text-muted-foreground/70 font-medium uppercase tracking-widest">
+                    <div className="text-center mb-6 sm:mb-8">
+                      <p className="text-xs sm:text-sm text-muted-foreground/70 font-medium uppercase tracking-widest">
                         Trusted by Gaming Communities
                       </p>
                     </div>
                     
                     <div className="relative overflow-hidden">
-                      {/* Gradient fade edges */}
-                      <div className="absolute left-0 top-0 w-8 h-full bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none"></div>
-                      <div className="absolute right-0 top-0 w-8 h-full bg-gradient-to-l from-background via-background/80 to-transparent z-10 pointer-events-none"></div>
+                      {/* Gradient fade edges - Responsive */}
+                      <div className="absolute left-0 top-0 w-4 sm:w-8 h-full bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none"></div>
+                      <div className="absolute right-0 top-0 w-4 sm:w-8 h-full bg-gradient-to-l from-background via-background/80 to-transparent z-10 pointer-events-none"></div>
                       
-                      {/* Infinite scrolling brand logos */}
-                      <div className="flex items-center space-x-12 animate-marquee hover:animate-marquee-paused">
+                      {/* Infinite scrolling brand logos - Mobile optimized */}
+                      <div className="flex items-center space-x-6 sm:space-x-8 lg:space-x-12 animate-marquee hover:animate-marquee-paused will-change-transform">
                         {/* Duplicate brands for seamless loop */}
                         {[...Array(6)].map((_, setIndex) => (
-                          <div key={setIndex} className="flex items-center space-x-12 flex-shrink-0">
+                          <div key={setIndex} className="flex items-center space-x-6 sm:space-x-8 lg:space-x-12 flex-shrink-0">
                             <img
                               src="/lovable-uploads/874518e7-8c84-4f76-9bfb-529ce4635d31.png"
                               alt="Colosseum Gaming"
-                              className="w-12 h-12 object-contain opacity-60"
+                              className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 object-contain opacity-60"
+                              loading="lazy"
                             />
                             <img
                               src="/lovable-uploads/14b1cdc0-4b6b-45c6-a014-47b08199cd63.png"
                               alt="KinxeGaming"
-                              className="w-16 h-10 object-contain opacity-60"
+                              className="w-12 h-6 sm:w-14 sm:h-8 lg:w-16 lg:h-10 object-contain opacity-60"
+                              loading="lazy"
                             />
                             <img
                               src="/lovable-uploads/5a5e6737-f9a7-483c-a442-b7009a75240a.png"
                               alt="Radiant Studios"
-                              className="w-12 h-12 object-contain opacity-60"
+                              className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 object-contain opacity-60"
+                              loading="lazy"
                             />
                             <img
                               src="/lovable-uploads/866683c9-6ba6-488d-93ed-5b444e83f6e6.png"
                               alt="MANATEE.GG"
-                              className="w-20 h-8 object-contain opacity-60"
+                              className="w-14 h-6 sm:w-16 sm:h-7 lg:w-20 lg:h-8 object-contain opacity-60"
+                              loading="lazy"
                             />
                           </div>
                         ))}
@@ -260,11 +264,11 @@ const HeroSection = () => {
 
             {/* Right Side - Video Displays */}
             <div className="relative ml-auto overflow-hidden order-first lg:order-last">
-              <div className="relative lg:ml-32">
-                {/* Desktop Screen - Realistic laptop design */}
+              <div className="relative sm:ml-8 lg:ml-32">
+                {/* Desktop Screen - Mobile optimized laptop design */}
                 <div className={`relative group transition-all duration-1200 ${isLoaded ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-16 scale-95'}`} style={{ transitionDelay: '400ms' }}>
-                  {/* Laptop base/body - Light mode */}
-                  <div className="relative bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl lg:rounded-2xl p-2 lg:p-4 shadow-2xl shadow-black/10 transform hover:scale-105 transition-all duration-500 w-full min-w-[280px] sm:min-w-[400px] lg:min-w-[700px] max-w-5xl border border-slate-200">
+                  {/* Laptop base/body - Mobile responsive */}
+                  <div className="relative bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg sm:rounded-xl lg:rounded-2xl p-1.5 sm:p-2 lg:p-4 shadow-2xl shadow-black/10 transform hover:scale-105 transition-all duration-500 w-full min-w-[240px] sm:min-w-[320px] md:min-w-[400px] lg:min-w-[700px] max-w-5xl border border-slate-200 will-change-transform">
                     {/* Fade effect on right edge */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent rounded-xl lg:rounded-2xl pointer-events-none z-20" 
                          style={{
@@ -327,42 +331,42 @@ const HeroSection = () => {
                   </div>
                 </div>
 
-                {/* Mobile Phone - Realistic design, smaller scale, slightly overlapping */}
-                <div className={`absolute top-8 lg:top-16 -left-8 lg:-left-20 group w-48 sm:w-56 lg:w-72 z-10 scale-75 sm:scale-85 lg:scale-90 transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0 scale-75 sm:scale-85 lg:scale-90' : 'opacity-0 translate-y-12 scale-50'}`} style={{ transitionDelay: '800ms' }}>
+                {/* Mobile Phone - Mobile optimized design */}
+                <div className={`absolute top-4 sm:top-6 lg:top-16 -left-6 sm:-left-8 lg:-left-20 group w-36 sm:w-48 md:w-56 lg:w-72 z-10 scale-75 sm:scale-85 lg:scale-90 transition-all duration-1000 will-change-transform ${isLoaded ? 'opacity-100 translate-y-0 scale-75 sm:scale-85 lg:scale-90' : 'opacity-0 translate-y-12 scale-50'}`} style={{ transitionDelay: '800ms' }}>
                   <div className="relative">
-                    {/* Phone outer frame - Light mode */}
-                    <div className="bg-gradient-to-br from-slate-100 to-slate-200 rounded-[2rem] lg:rounded-[3rem] p-1 lg:p-2 shadow-2xl shadow-black/20 border border-slate-300">
+                    {/* Phone outer frame - Mobile responsive */}
+                    <div className="bg-gradient-to-br from-slate-100 to-slate-200 rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[3rem] p-0.5 sm:p-1 lg:p-2 shadow-2xl shadow-black/20 border border-slate-300">
                       {/* Phone inner frame */}
-                      <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-[1.5rem] lg:rounded-[2.5rem] p-0.5 lg:p-1">
+                      <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-[1.2rem] sm:rounded-[1.5rem] lg:rounded-[2.5rem] p-0.5 lg:p-1">
                         {/* Screen area */}
-                        <div className="relative bg-gradient-to-br from-card/95 to-card/70 backdrop-blur-xl rounded-[1.3rem] lg:rounded-[2.2rem] overflow-hidden">
-                          {/* Notch */}
-                          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-20 lg:w-32 h-4 lg:h-6 bg-slate-800 rounded-b-xl lg:rounded-b-2xl z-20"></div>
+                        <div className="relative bg-gradient-to-br from-card/95 to-card/70 backdrop-blur-xl rounded-[1rem] sm:rounded-[1.3rem] lg:rounded-[2.2rem] overflow-hidden">
+                          {/* Notch - Mobile responsive */}
+                          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 lg:w-32 h-3 sm:h-4 lg:h-6 bg-slate-800 rounded-b-lg sm:rounded-b-xl lg:rounded-b-2xl z-20"></div>
                           
-                          {/* Status bar */}
-                          <div className="relative pt-6 lg:pt-8 px-3 lg:px-6 pb-1 lg:pb-2">
-                            <div className="flex justify-between items-center text-foreground text-xs lg:text-sm">
+                          {/* Status bar - Mobile responsive */}
+                          <div className="relative pt-4 sm:pt-6 lg:pt-8 px-2 sm:px-3 lg:px-6 pb-1 lg:pb-2">
+                            <div className="flex justify-between items-center text-foreground text-[8px] sm:text-xs lg:text-sm">
                               <div className="flex items-center gap-0.5 lg:gap-1">
                                 <div className="w-0.5 h-0.5 lg:w-1 lg:h-1 bg-foreground rounded-full"></div>
                                 <div className="w-0.5 h-0.5 lg:w-1 lg:h-1 bg-foreground rounded-full"></div>
                                 <div className="w-0.5 h-0.5 lg:w-1 lg:h-1 bg-foreground/50 rounded-full"></div>
-                                <span className="text-[10px] lg:text-xs ml-0.5 lg:ml-1">S2P</span>
+                                <span className="text-[8px] sm:text-[10px] lg:text-xs ml-0.5 lg:ml-1">S2P</span>
                               </div>
                               <div className="flex items-center gap-0.5 lg:gap-1">
-                                <div className="w-4 lg:w-6 h-2 lg:h-3 border border-foreground/50 rounded-sm">
-                                  <div className="w-3 lg:w-4 h-0.5 lg:h-1 bg-green-500 rounded-full mt-0.25 lg:mt-0.5 ml-0.25 lg:ml-0.5"></div>
+                                <div className="w-3 sm:w-4 lg:w-6 h-1.5 sm:h-2 lg:h-3 border border-foreground/50 rounded-sm">
+                                  <div className="w-2 sm:w-3 lg:w-4 h-0.5 lg:h-1 bg-green-500 rounded-full mt-0.25 lg:mt-0.5 ml-0.25 lg:ml-0.5"></div>
                                 </div>
                               </div>
                             </div>
                           </div>
                           
-                          {/* Video content */}
-                          <div className="px-2 lg:px-4 pb-3 lg:pb-6">
-                            <div className="aspect-[9/16] bg-black rounded-xl lg:rounded-2xl overflow-hidden relative">
-                              {/* Fade effect on edges */}
-                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent rounded-xl lg:rounded-2xl pointer-events-none z-10" 
+                          {/* Video content - Mobile optimized */}
+                          <div className="px-1.5 sm:px-2 lg:px-4 pb-2 sm:pb-3 lg:pb-6">
+                            <div className="aspect-[9/16] bg-black rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden relative">
+                              {/* Fade effect on edges - Reduced for mobile */}
+                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent rounded-lg sm:rounded-xl lg:rounded-2xl pointer-events-none z-10" 
                                    style={{
-                                     background: 'radial-gradient(ellipse at center, transparent 70%, rgba(var(--background), 0.2) 85%, rgba(var(--background), 0.6) 100%)'
+                                     background: 'radial-gradient(ellipse at center, transparent 75%, rgba(var(--background), 0.15) 90%, rgba(var(--background), 0.4) 100%)'
                                    }}></div>
                               
                               <iframe
@@ -370,12 +374,13 @@ const HeroSection = () => {
                                 className="w-full h-full"
                                 allow="autoplay; encrypted-media"
                                 allowFullScreen
+                                loading="lazy"
                               />
                             </div>
                           </div>
                           
-                          {/* Home indicator */}
-                          <div className="absolute bottom-1 lg:bottom-2 left-1/2 transform -translate-x-1/2 w-20 lg:w-32 h-0.5 lg:h-1 bg-foreground/30 rounded-full"></div>
+                          {/* Home indicator - Mobile responsive */}
+                          <div className="absolute bottom-0.5 sm:bottom-1 lg:bottom-2 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 lg:w-32 h-0.5 lg:h-1 bg-foreground/30 rounded-full"></div>
                         </div>
                       </div>
                     </div>
