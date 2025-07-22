@@ -461,4 +461,23 @@
     animation: floatSideways 15s ease-in-out infinite;
     animation-delay: -6s;
   }
+
+  /* Marquee Animation for Brand Carousel */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-25%);
+    }
+  }
+
+  /* Marquee paused state */
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  .animate-marquee-paused {
+    animation: marquee 60s linear infinite;
+  }
 }
