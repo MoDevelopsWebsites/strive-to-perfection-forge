@@ -212,129 +212,134 @@ const Navigation = () => {
                     )}
                   </button>
                   
-                  {/* Superside-Style Multi-Column Card Mega Menu */}
+                  {/* Superside-Style Vertical Mega Menu */}
                   {hasDropdown && hoveredItem === item.name && (
                     <div 
                       className="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-white/98 backdrop-blur-xl border border-gray-200/60 rounded-2xl shadow-2xl z-50 overflow-hidden animate-fade-in"
                       onMouseEnter={() => setHoveredItem(item.name)}
                       onMouseLeave={() => setHoveredItem(null)}
                     >
-                      <div className="p-8 min-w-[680px] max-w-4xl">
+                      <div className="p-8 min-w-[480px] max-w-2xl">
                         {/* Header Section */}
-                        <div className="mb-8">
-                          <h3 className="text-2xl font-bold text-gray-900 mb-3">{item.name}</h3>
-                          <p className="text-gray-600 text-lg">
+                        <div className="mb-6">
+                          <h3 className="text-xl font-bold text-gray-900 mb-2">{item.name}</h3>
+                          <p className="text-sm text-gray-600">
                             {item.name === 'Merch' && 'Premium branded merchandise designed for the S2PGGs community'}
                             {item.name === 'Content' && 'Stay updated with our latest content, streams, and insights'}
                             {item.name === 'Our Team' && 'Discover the talented people driving S2PGGs forward'}
                           </p>
                         </div>
                         
-                        {/* Multi-Column Card Grid */}
-                        <div className="grid grid-cols-2 gap-6 mb-8">
-                          {item.dropdown.map((dropdownItem, index) => {
+                        {/* Featured Item */}
+                        {item.dropdown.find(item => item.featured) && (
+                          <div className="mb-6">
+                            {(() => {
+                              const featuredItem = item.dropdown.find(item => item.featured);
+                              if (!featuredItem) return null;
+                              const FeaturedIcon = featuredItem.icon;
+                              
+                              return (
+                                <div
+                                  className="group relative bg-gradient-to-r from-gray-50 to-gray-100/50 hover:from-white hover:to-gray-50 border border-gray-200/60 hover:border-gray-300 rounded-xl p-6 transition-all duration-300 hover:shadow-lg cursor-pointer"
+                                  onClick={() => {
+                                    handleNavClick(featuredItem.href);
+                                    setHoveredItem(null);
+                                  }}
+                                >
+                                  <div className="flex items-center gap-4">
+                                    {featuredItem.image && (
+                                      <div className="flex-shrink-0">
+                                        <img 
+                                          src={featuredItem.image}
+                                          alt={featuredItem.name}
+                                          className="w-16 h-16 rounded-lg object-cover shadow-md"
+                                        />
+                                      </div>
+                                    )}
+                                    <div className="flex-grow">
+                                      <div className="flex items-center gap-3 mb-2">
+                                        <div className="w-8 h-8 bg-gray-200 group-hover:bg-primary/10 rounded-lg flex items-center justify-center transition-colors">
+                                          <FeaturedIcon className="w-4 h-4 text-gray-600 group-hover:text-primary" />
+                                        </div>
+                                        <h4 className="text-lg font-semibold text-gray-900 group-hover:text-primary transition-colors">
+                                          {featuredItem.name}
+                                        </h4>
+                                        <span className="ml-auto text-xs font-medium bg-primary/10 text-primary px-2 py-1 rounded-full">
+                                          Featured
+                                        </span>
+                                      </div>
+                                      <p className="text-sm text-gray-600 leading-relaxed">
+                                        {featuredItem.description}
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              );
+                            })()}
+                          </div>
+                        )}
+                        
+                        {/* Vertical Menu Items List */}
+                        <div className="space-y-2 mb-6">
+                          {item.dropdown.filter(item => !item.featured).map((dropdownItem) => {
                             const DropdownIcon = dropdownItem.icon;
-                            const isFeatured = dropdownItem.featured;
                             
                             return (
                               <div
                                 key={dropdownItem.name}
-                                className={`group relative bg-gray-50/50 hover:bg-white border border-gray-200/60 hover:border-gray-300 rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer ${
-                                  isFeatured ? 'col-span-2' : ''
-                                }`}
+                                className="group relative bg-white/50 hover:bg-white border border-transparent hover:border-gray-200 rounded-lg p-4 transition-all duration-200 cursor-pointer hover:shadow-md"
                                 onClick={() => {
                                   handleNavClick(dropdownItem.href);
                                   setHoveredItem(null);
                                 }}
                               >
-                                {/* Featured Card with Image */}
-                                {isFeatured && dropdownItem.image && (
-                                  <div className="flex gap-6">
-                                    <div className="flex-shrink-0">
-                                      <img 
-                                        src={dropdownItem.image}
-                                        alt={dropdownItem.name}
-                                        className="w-24 h-24 rounded-lg object-cover shadow-md"
-                                      />
-                                    </div>
-                                    <div className="flex-grow">
-                                      <div className="flex items-center gap-3 mb-3">
-                                        <div className="w-10 h-10 bg-gray-200 group-hover:bg-primary/10 rounded-lg flex items-center justify-center transition-colors">
-                                          <DropdownIcon className="w-5 h-5 text-gray-600 group-hover:text-primary" />
-                                        </div>
-                                        <h4 className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors">
-                                          {dropdownItem.name}
-                                        </h4>
-                                      </div>
-                                      <p className="text-gray-600 leading-relaxed">
-                                        {dropdownItem.description}
-                                      </p>
-                                      <div className="mt-4">
-                                        <span className="inline-flex items-center text-sm font-medium text-primary group-hover:text-primary/80 transition-colors">
-                                          Learn more →
-                                        </span>
-                                      </div>
-                                    </div>
+                                <div className="flex items-center gap-4">
+                                  <div className="flex-shrink-0 w-10 h-10 bg-gray-100 group-hover:bg-primary/10 rounded-lg flex items-center justify-center transition-colors">
+                                    <DropdownIcon className="w-5 h-5 text-gray-600 group-hover:text-primary" />
                                   </div>
-                                )}
-                                
-                                {/* Regular Cards */}
-                                {!isFeatured && (
-                                  <div>
-                                    <div className="flex items-center gap-3 mb-4">
-                                      <div className="w-12 h-12 bg-gray-200 group-hover:bg-primary/10 rounded-lg flex items-center justify-center transition-colors">
-                                        <DropdownIcon className="w-6 h-6 text-gray-600 group-hover:text-primary" />
-                                      </div>
-                                      <h4 className="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors">
-                                        {dropdownItem.name}
-                                      </h4>
-                                    </div>
-                                    <p className="text-gray-600 leading-relaxed mb-4">
+                                  <div className="flex-grow">
+                                    <h4 className="font-medium text-gray-900 group-hover:text-primary transition-colors mb-1">
+                                      {dropdownItem.name}
+                                    </h4>
+                                    <p className="text-sm text-gray-600 leading-relaxed">
                                       {dropdownItem.description}
                                     </p>
-                                    <span className="inline-flex items-center text-sm font-medium text-primary group-hover:text-primary/80 transition-colors">
-                                      Explore →
-                                    </span>
                                   </div>
-                                )}
+                                  <div className="flex-shrink-0">
+                                    <svg className="w-4 h-4 text-gray-400 group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                    </svg>
+                                  </div>
+                                </div>
                               </div>
                             );
                           })}
                         </div>
                         
                         {/* Footer CTA Section */}
-                        <div className="pt-6 border-t border-gray-200">
-                          <div className="flex items-center justify-between">
-                            <div>
-                              <h4 className="font-semibold text-gray-900 mb-1">
-                                {item.name === 'Merch' && 'Ready to represent S2PGGs?'}
-                                {item.name === 'Content' && 'Never miss an update'}
-                                {item.name === 'Our Team' && 'Want to join our team?'}
-                              </h4>
-                              <p className="text-sm text-gray-600">
-                                {item.name === 'Merch' && 'Browse our complete collection of premium merchandise'}
-                                {item.name === 'Content' && 'Subscribe to stay updated with all our latest content'}
-                                {item.name === 'Our Team' && 'Connect with us and explore opportunities'}
-                              </p>
-                            </div>
-                            <button
-                              onClick={() => {
-                                if (item.name === 'Merch') {
-                                  handleNavClick('/shop');
-                                } else if (item.name === 'Content') {
-                                  handleNavClick('#content');
-                                } else if (item.name === 'Our Team') {
-                                  window.open('https://discord.gg/Hyu6j4RFrp', '_blank');
-                                }
-                                setHoveredItem(null);
-                              }}
-                              className="px-6 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-lg transition-all duration-200 font-medium whitespace-nowrap hover:scale-105"
-                            >
-                              {item.name === 'Merch' && 'Shop Now'}
-                              {item.name === 'Content' && 'View All'}
-                              {item.name === 'Our Team' && 'Join Discord'}
-                            </button>
-                          </div>
+                        <div className="pt-4 border-t border-gray-200">
+                          <button
+                            onClick={() => {
+                              if (item.name === 'Merch') {
+                                handleNavClick('/shop');
+                              } else if (item.name === 'Content') {
+                                handleNavClick('#content');
+                              } else if (item.name === 'Our Team') {
+                                window.open('https://discord.gg/Hyu6j4RFrp', '_blank');
+                              }
+                              setHoveredItem(null);
+                            }}
+                            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-lg transition-all duration-200 font-medium hover:scale-[1.02]"
+                          >
+                            <span>
+                              {item.name === 'Merch' && 'Browse All Products'}
+                              {item.name === 'Content' && 'View All Content'}
+                              {item.name === 'Our Team' && 'Join Our Community'}
+                            </span>
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                          </button>
                         </div>
                       </div>
                     </div>
