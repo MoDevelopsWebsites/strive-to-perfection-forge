@@ -11,6 +11,7 @@ const HeroSection = () => {
   const [showDescription, setShowDescription] = useState(false);
   const [showFirstButton, setShowFirstButton] = useState(false);
   const [showSecondButton, setShowSecondButton] = useState(false);
+  const [showBrandShowcase, setShowBrandShowcase] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   
   const fullText = 'STRIVE 2 PERFECTION';
@@ -63,6 +64,10 @@ const HeroSection = () => {
                           btn2Index++;
                         } else {
                           clearInterval(btn2Interval);
+                          // Trigger brand showcase after second button completes
+                          setTimeout(() => {
+                            setShowBrandShowcase(true);
+                          }, 800);
                         }
                       }, 50);
                     }, 300);
@@ -205,9 +210,8 @@ const HeroSection = () => {
                   <div 
                     className="mt-12 lg:mt-16 transition-all duration-1000 ease-out" 
                     style={{ 
-                      opacity: showSecondButton ? 1 : 0, 
-                      transform: showSecondButton ? 'translateY(0)' : 'translateY(20px)',
-                      transitionDelay: '1.5s'
+                      opacity: showBrandShowcase ? 1 : 0, 
+                      transform: showBrandShowcase ? 'translateY(0)' : 'translateY(20px)'
                     }}
                   >
                     <div className="text-center mb-8">
