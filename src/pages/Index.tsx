@@ -3,6 +3,7 @@ import HeroSection from '@/components/HeroSection';
 import TeamSection from '@/components/TeamSection';
 import StreamersSection from '@/components/StreamersSection';
 import ContentSection from '@/components/ContentSection';
+import BrandCarousel from '@/components/BrandCarousel';
 import MerchSection from '@/components/MerchSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
@@ -21,6 +22,7 @@ const Index = () => {
         <TeamSection />
         <StreamersSection />
         <ContentSection />
+        <BrandCarousel />
         <MerchSection />
         <ContactSection />
       </main>
