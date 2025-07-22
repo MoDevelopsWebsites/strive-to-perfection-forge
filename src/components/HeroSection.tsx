@@ -202,7 +202,14 @@ const HeroSection = () => {
 
                 {/* Brand showcase - Stripe.com style */}
                 {showSecondButton && (
-                  <div className="mt-12 lg:mt-16 opacity-0 animate-fade-in" style={{ animationDelay: '1.5s', animationFillMode: 'forwards' }}>
+                  <div 
+                    className="mt-12 lg:mt-16 transition-all duration-1000 ease-out" 
+                    style={{ 
+                      opacity: showSecondButton ? 1 : 0, 
+                      transform: showSecondButton ? 'translateY(0)' : 'translateY(20px)',
+                      transitionDelay: '1.5s'
+                    }}
+                  >
                     <div className="text-center mb-8">
                       <p className="text-sm text-muted-foreground/70 font-medium uppercase tracking-widest">
                         Trusted by Gaming Communities
