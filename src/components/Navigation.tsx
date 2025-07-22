@@ -56,19 +56,28 @@ const Navigation = () => {
           name: 'T-Shirts', 
           href: '/shop?category=tshirts', 
           icon: Shirt,
-          description: 'Premium quality with custom designs'
+          description: 'Premium quality with custom designs',
+          image: '/lovable-uploads/6c6abcc5-cdb4-419a-9113-483835517d96.png',
+          featured: true
         },
         { 
           name: 'Hoodies', 
           href: '/shop?category=hoodies', 
           icon: Package,
-          description: 'Cozy & minimal styles'
+          description: 'Cozy & minimal styles',
+          image: '/lovable-uploads/c31f789f-6d8e-4649-8de3-f34b037722b3.png'
         },
         { 
           name: 'Stickers', 
           href: '/shop?category=stickers', 
           icon: Sticker,
           description: 'Brand your space, gear, or tech'
+        },
+        { 
+          name: 'Accessories', 
+          href: '/shop?category=accessories', 
+          icon: Target,
+          description: 'Complete your gaming setup'
         }
       ]
     },
@@ -78,22 +87,30 @@ const Navigation = () => {
       icon: Video,
       dropdown: [
         { 
+          name: 'Latest Videos', 
+          href: '#content', 
+          icon: PlayCircle,
+          description: 'Dynamic content about our journey',
+          image: '/lovable-uploads/ab937607-6d1b-46b4-88b5-0eb8849ed32f.png',
+          featured: true
+        },
+        { 
           name: 'Blog', 
           href: '/blog', 
           icon: BookOpen,
           description: 'Insights, updates, and behind-the-scenes'
         },
         { 
-          name: 'Videos', 
-          href: '#content', 
-          icon: PlayCircle,
-          description: 'Dynamic content about our journey'
-        },
-        { 
           name: 'Guides', 
           href: '/guides', 
           icon: FileText,
           description: 'Helpful how-tos and resources'
+        },
+        { 
+          name: 'Live Streams', 
+          href: '#streamers', 
+          icon: Video,
+          description: 'Watch our team compete live'
         }
       ]
     },
@@ -103,10 +120,12 @@ const Navigation = () => {
       icon: Users,
       dropdown: [
         { 
-          name: 'About Us', 
+          name: 'Leadership', 
           href: '#team', 
           icon: Users,
-          description: 'Meet the faces behind the mission'
+          description: 'Meet the faces behind the mission',
+          image: '/lovable-uploads/1e954a14-b815-4254-94ed-9762e2ad8379.png',
+          featured: true
         },
         { 
           name: 'Culture', 
@@ -119,6 +138,12 @@ const Navigation = () => {
           href: '/careers', 
           icon: Briefcase,
           description: 'Join our growing team'
+        },
+        { 
+          name: 'Community', 
+          href: '#contact', 
+          icon: MessageSquare,
+          description: 'Connect with fellow gamers'
         }
       ]
     },
@@ -187,66 +212,121 @@ const Navigation = () => {
                     )}
                   </button>
                   
-                  {/* Modern Mega Menu Dropdown - Superside Inspired */}
+                  {/* Superside-Style Multi-Column Card Mega Menu */}
                   {hasDropdown && hoveredItem === item.name && (
-                    <div className="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-white/98 backdrop-blur-xl border border-gray-200/60 rounded-xl shadow-xl z-50 overflow-hidden animate-fade-in">
-                      <div className="p-8 min-w-[400px]">
-                        {/* Header */}
-                        <div className="mb-6">
-                          <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.name}</h3>
-                          <p className="text-sm text-gray-600">
-                            {item.name === 'Merch' && 'Premium branded merchandise for the S2PGGs community'}
-                            {item.name === 'Content' && 'Stay updated with our latest content and insights'}
-                            {item.name === 'Our Team' && 'Learn more about the people driving S2PGGs forward'}
+                    <div className="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 mt-3 bg-white/98 backdrop-blur-xl border border-gray-200/60 rounded-2xl shadow-2xl z-50 overflow-hidden animate-fade-in">
+                      <div className="p-8 min-w-[680px] max-w-4xl">
+                        {/* Header Section */}
+                        <div className="mb-8">
+                          <h3 className="text-2xl font-bold text-gray-900 mb-3">{item.name}</h3>
+                          <p className="text-gray-600 text-lg">
+                            {item.name === 'Merch' && 'Premium branded merchandise designed for the S2PGGs community'}
+                            {item.name === 'Content' && 'Stay updated with our latest content, streams, and insights'}
+                            {item.name === 'Our Team' && 'Discover the talented people driving S2PGGs forward'}
                           </p>
                         </div>
                         
-                        {/* Menu Items Grid */}
-                        <div className="grid grid-cols-1 gap-1">
-                          {item.dropdown.map((dropdownItem) => {
+                        {/* Multi-Column Card Grid */}
+                        <div className="grid grid-cols-2 gap-6 mb-8">
+                          {item.dropdown.map((dropdownItem, index) => {
                             const DropdownIcon = dropdownItem.icon;
+                            const isFeatured = dropdownItem.featured;
+                            
                             return (
-                              <button
+                              <div
                                 key={dropdownItem.name}
+                                className={`group relative bg-gray-50/50 hover:bg-white border border-gray-200/60 hover:border-gray-300 rounded-xl p-6 transition-all duration-300 hover:shadow-lg cursor-pointer ${
+                                  isFeatured ? 'col-span-2' : ''
+                                }`}
                                 onClick={() => handleNavClick(dropdownItem.href)}
-                                className="group p-4 rounded-lg hover:bg-gray-50 transition-all duration-200 text-left w-full"
                               >
-                                <div className="flex items-start gap-4">
-                                  <div className="flex-shrink-0 w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-200">
-                                    <DropdownIcon className="w-5 h-5 text-gray-600 group-hover:text-primary" />
+                                {/* Featured Card with Image */}
+                                {isFeatured && dropdownItem.image && (
+                                  <div className="flex gap-6">
+                                    <div className="flex-shrink-0">
+                                      <img 
+                                        src={dropdownItem.image}
+                                        alt={dropdownItem.name}
+                                        className="w-24 h-24 rounded-lg object-cover"
+                                      />
+                                    </div>
+                                    <div className="flex-grow">
+                                      <div className="flex items-center gap-3 mb-3">
+                                        <div className="w-10 h-10 bg-gray-200 group-hover:bg-primary/10 rounded-lg flex items-center justify-center transition-colors">
+                                          <DropdownIcon className="w-5 h-5 text-gray-600 group-hover:text-primary" />
+                                        </div>
+                                        <h4 className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors">
+                                          {dropdownItem.name}
+                                        </h4>
+                                      </div>
+                                      <p className="text-gray-600 leading-relaxed">
+                                        {dropdownItem.description}
+                                      </p>
+                                      <div className="mt-4">
+                                        <span className="inline-flex items-center text-sm font-medium text-primary group-hover:text-primary/80">
+                                          Learn more →
+                                        </span>
+                                      </div>
+                                    </div>
                                   </div>
-                                  <div className="flex-grow">
-                                    <h4 className="font-semibold text-gray-900 group-hover:text-primary transition-colors duration-200 mb-1">
-                                      {dropdownItem.name}
-                                    </h4>
-                                    <p className="text-sm text-gray-600 leading-relaxed">
+                                )}
+                                
+                                {/* Regular Cards */}
+                                {!isFeatured && (
+                                  <div>
+                                    <div className="flex items-center gap-3 mb-4">
+                                      <div className="w-12 h-12 bg-gray-200 group-hover:bg-primary/10 rounded-lg flex items-center justify-center transition-colors">
+                                        <DropdownIcon className="w-6 h-6 text-gray-600 group-hover:text-primary" />
+                                      </div>
+                                      <h4 className="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors">
+                                        {dropdownItem.name}
+                                      </h4>
+                                    </div>
+                                    <p className="text-gray-600 leading-relaxed mb-4">
                                       {dropdownItem.description}
                                     </p>
+                                    <span className="inline-flex items-center text-sm font-medium text-primary group-hover:text-primary/80">
+                                      Explore →
+                                    </span>
                                   </div>
-                                </div>
-                              </button>
+                                )}
+                              </div>
                             );
                           })}
                         </div>
                         
-                        {/* Footer CTA */}
-                        <div className="mt-8 pt-6 border-t border-gray-200">
-                          <button
-                            onClick={() => {
-                              if (item.name === 'Merch') {
-                                handleNavClick('/shop');
-                              } else if (item.name === 'Content') {
-                                handleNavClick('#content');
-                              } else if (item.name === 'Our Team') {
-                                window.open('https://discord.gg/Hyu6j4RFrp', '_blank');
-                              }
-                            }}
-                            className="w-full px-4 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-lg transition-all duration-200 font-medium text-sm"
-                          >
-                            {item.name === 'Merch' && 'Browse All Products'}
-                            {item.name === 'Content' && 'View All Content'}
-                            {item.name === 'Our Team' && 'Join Our Community'}
-                          </button>
+                        {/* Footer CTA Section */}
+                        <div className="pt-6 border-t border-gray-200">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <h4 className="font-semibold text-gray-900 mb-1">
+                                {item.name === 'Merch' && 'Ready to represent S2PGGs?'}
+                                {item.name === 'Content' && 'Never miss an update'}
+                                {item.name === 'Our Team' && 'Want to join our team?'}
+                              </h4>
+                              <p className="text-sm text-gray-600">
+                                {item.name === 'Merch' && 'Browse our complete collection of premium merchandise'}
+                                {item.name === 'Content' && 'Subscribe to stay updated with all our latest content'}
+                                {item.name === 'Our Team' && 'Connect with us and explore opportunities'}
+                              </p>
+                            </div>
+                            <button
+                              onClick={() => {
+                                if (item.name === 'Merch') {
+                                  handleNavClick('/shop');
+                                } else if (item.name === 'Content') {
+                                  handleNavClick('#content');
+                                } else if (item.name === 'Our Team') {
+                                  window.open('https://discord.gg/Hyu6j4RFrp', '_blank');
+                                }
+                              }}
+                              className="px-6 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-lg transition-all duration-200 font-medium whitespace-nowrap"
+                            >
+                              {item.name === 'Merch' && 'Shop Now'}
+                              {item.name === 'Content' && 'View All'}
+                              {item.name === 'Our Team' && 'Join Discord'}
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
