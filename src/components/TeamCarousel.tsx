@@ -14,7 +14,8 @@ const leadership = [
     icon: Crown,
     description: 'Visionary leader driving S2PGGs to new heights',
     achievements: ['5+ years gaming industry', 'Built 3 successful teams', '50K+ community growth'],
-    gradient: 'from-yellow-500 to-orange-500'
+    gradient: 'from-yellow-500 to-orange-500',
+    image: '/lovable-uploads/dac6955e-2330-4256-9869-fc67e2fdddb7.png'
   },
   {
     name: 'Stunna',
