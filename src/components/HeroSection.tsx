@@ -293,7 +293,7 @@ const HeroSection = () => {
                         {/* Video content - Desktop full screen */}
                         <div className="bg-black h-48 sm:h-64 lg:h-96">
                           <iframe
-                            src="https://www.youtube.com/embed/U6dHTga_rBQ?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1"
+                            src="https://www.youtube.com/embed/m7YeP9K7t50?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1"
                             className="w-full h-full"
                             allow="autoplay; encrypted-media"
                             allowFullScreen
