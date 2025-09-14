@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Home, Users, Video, Gamepad2, MessageSquare, ChevronDown, ShoppingBag, Shirt, Package, Sticker, BookOpen, PlayCircle, FileText, Heart, Briefcase, Target } from 'lucide-react';
+import { Menu, X, Home, Users, Video, MessageSquare, ChevronDown, ShoppingBag, Shirt, Package, Sticker, BookOpen, PlayCircle, FileText, Heart, Briefcase, Target } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -23,16 +24,12 @@ const Navigation = () => {
       window.open(href, '_blank');
       setIsMenuOpen(false);
     } else if (href.startsWith('/')) {
-      // It's a route, use React Router navigation
       navigate(href);
       setIsMenuOpen(false);
     } else if (href.startsWith('#')) {
-      // It's an anchor link
       if (location.pathname !== '/') {
-        // If not on home page, navigate to home first then scroll
         navigate('/' + href);
       } else {
-        // If on home page, just scroll to element
         const element = document.querySelector(href);
         if (element) {
           element.scrollIntoView({ 
@@ -46,39 +43,14 @@ const Navigation = () => {
   };
 
   const navItems = [
-    { name: 'Home', href: '/', icon: Home, route: true },
+    { name: 'Home', href: '/', icon: Home },
     { 
-      name: 'Merch', 
-      href: '#merch', 
-      icon: ShoppingBag,
+      name: 'Team', 
+      href: '#team', 
+      icon: Users,
       dropdown: [
-        { 
-          name: 'T-Shirts', 
-          href: '/shop?category=tshirts', 
-          icon: Shirt,
-          description: 'Premium quality with custom designs',
-          image: '/lovable-uploads/6c6abcc5-cdb4-419a-9113-483835517d96.png',
-          featured: true
-        },
-        { 
-          name: 'Hoodies', 
-          href: '/shop?category=hoodies', 
-          icon: Package,
-          description: 'Cozy & minimal styles',
-          image: '/lovable-uploads/c31f789f-6d8e-4649-8de3-f34b037722b3.png'
-        },
-        { 
-          name: 'Stickers', 
-          href: '/shop?category=stickers', 
-          icon: Sticker,
-          description: 'Brand your space, gear, or tech'
-        },
-        { 
-          name: 'Accessories', 
-          href: '/shop?category=accessories', 
-          icon: Target,
-          description: 'Complete your gaming setup'
-        }
+        { name: 'Leadership', href: '#team', description: 'Meet our core team' },
+        { name: 'Community', href: '#contact', description: 'Join our community' },
       ]
     },
     { 
@@ -86,107 +58,57 @@ const Navigation = () => {
       href: '#content', 
       icon: Video,
       dropdown: [
-        { 
-          name: 'Latest Videos', 
-          href: '#content', 
-          icon: PlayCircle,
-          description: 'Dynamic content about our journey',
-          image: '/lovable-uploads/ab937607-6d1b-46b4-88b5-0eb8849ed32f.png',
-          featured: true
-        },
-        { 
-          name: 'Blog', 
-          href: '/blog', 
-          icon: BookOpen,
-          description: 'Insights, updates, and behind-the-scenes'
-        },
-        { 
-          name: 'Guides', 
-          href: '/guides', 
-          icon: FileText,
-          description: 'Helpful how-tos and resources'
-        },
-        { 
-          name: 'Live Streams', 
-          href: '#streamers', 
-          icon: Video,
-          description: 'Watch our team compete live'
-        }
+        { name: 'Latest Videos', href: '#content', description: 'Watch our highlights' },
+        { name: 'Live Streams', href: '#streamers', description: 'Live gaming sessions' },
       ]
     },
     { 
-      name: 'Our Team', 
-      href: '#team', 
-      icon: Users,
+      name: 'Merch', 
+      href: '#merch', 
+      icon: ShoppingBag,
       dropdown: [
-        { 
-          name: 'Leadership', 
-          href: '#team', 
-          icon: Users,
-          description: 'Meet the faces behind the mission',
-          image: '/lovable-uploads/1e954a14-b815-4254-94ed-9762e2ad8379.png',
-          featured: true
-        },
-        { 
-          name: 'Culture', 
-          href: '/culture', 
-          icon: Heart,
-          description: 'What drives us every day'
-        },
-        { 
-          name: 'Careers', 
-          href: '/careers', 
-          icon: Briefcase,
-          description: 'Join our growing team'
-        },
-        { 
-          name: 'Community', 
-          href: '#contact', 
-          icon: MessageSquare,
-          description: 'Connect with fellow gamers'
-        }
+        { name: 'T-Shirts', href: '/shop?category=tshirts', description: 'Premium S2P apparel' },
+        { name: 'Hoodies', href: '/shop?category=hoodies', description: 'Cozy gaming gear' },
+        { name: 'Accessories', href: '/shop?category=accessories', description: 'Complete your setup' },
       ]
     },
-    { name: 'Shop', href: '/shop', icon: Target, route: true },
+    { name: 'Shop', href: '/shop', icon: Target },
     { name: 'Contact', href: '#contact', icon: MessageSquare },
   ];
 
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       isScrolled 
-        ? 'bg-background/95 backdrop-blur-md border-b border-border/50' 
+        ? 'bg-white/80 backdrop-blur-xl border-b border-gray-200/50 shadow-sm' 
         : 'bg-transparent'
     }`}>
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+      <div className="container mx-auto px-6">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div 
-            className="flex items-center space-x-3 cursor-pointer"
+            className="flex items-center space-x-3 cursor-pointer group"
             onClick={() => navigate('/')}
           >
-            <div className="w-12 h-12 rounded-full overflow-hidden bg-gradient-primary p-0.5 purple-glow">
+            <div className="relative w-10 h-10 rounded-full overflow-hidden bg-gradient-primary p-0.5 shadow-lg group-hover:shadow-xl transition-all duration-300">
               <img 
                 src="/lovable-uploads/6af2116b-6281-4072-b96b-cec7ad59b43a.png" 
                 alt="S2PGGs Logo" 
-                className="w-full h-full object-cover rounded-full bg-background"
+                className="w-full h-full object-cover rounded-full bg-white"
               />
             </div>
             <div className="hidden sm:block">
-              <h1 className="font-gaming font-bold text-xl text-primary glow-text">
+              <h1 className="font-bold text-lg text-gray-900 group-hover:text-primary transition-colors">
                 S2PGGs
               </h1>
-              <p className="text-xs text-muted-foreground font-display">
+              <p className="text-xs text-gray-500 -mt-0.5">
                 Strive 2 Perfection
               </p>
             </div>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-2">
             {navItems.map((item) => {
-              const IconComponent = item.icon;
               const hasDropdown = item.dropdown && item.dropdown.length > 0;
               
               return (
@@ -197,11 +119,14 @@ const Navigation = () => {
                   onMouseLeave={() => setHoveredItem(null)}
                 >
                   <button
-                    onClick={() => handleNavClick(item.href, (item as any).external)}
-                    className="nav-link flex items-center space-x-2 px-4 py-3 rounded-lg hover:bg-muted/50 transition-all duration-300"
+                    onClick={() => !hasDropdown && handleNavClick(item.href)}
+                    className={`flex items-center space-x-2 px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                      isScrolled || hoveredItem === item.name
+                        ? 'text-gray-700 hover:text-gray-900 hover:bg-gray-100/80' 
+                        : 'text-white/90 hover:text-white hover:bg-white/10'
+                    }`}
                   >
-                    <IconComponent size={16} />
-                    <span className="font-display font-medium">{item.name}</span>
+                    <span>{item.name}</span>
                     {hasDropdown && (
                       <ChevronDown 
                         size={14} 
@@ -212,126 +137,32 @@ const Navigation = () => {
                     )}
                   </button>
                   
-                  {/* Superside-Style Horizontal Multi-Column Mega Menu */}
+                  {/* Minimalist Dropdown */}
                   {hasDropdown && hoveredItem === item.name && (
                     <div 
-                      className="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-white/98 backdrop-blur-xl border border-gray-200/60 rounded-2xl shadow-2xl z-50 overflow-hidden animate-fade-in"
+                      className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-white/95 backdrop-blur-xl border border-gray-200/60 rounded-2xl shadow-xl z-50 overflow-hidden animate-fade-in min-w-[280px]"
                       onMouseEnter={() => setHoveredItem(item.name)}
                       onMouseLeave={() => setHoveredItem(null)}
                     >
-                      <div className="p-8 min-w-[720px] max-w-5xl">
-                        {/* Header Section */}
-                        <div className="mb-6">
-                          <h3 className="text-xl font-bold text-gray-900 mb-2">{item.name}</h3>
-                          <p className="text-sm text-gray-600">
-                            {item.name === 'Merch' && 'Premium branded merchandise designed for the S2PGGs community'}
-                            {item.name === 'Content' && 'Stay updated with our latest content, streams, and insights'}
-                            {item.name === 'Our Team' && 'Discover the talented people driving S2PGGs forward'}
-                          </p>
-                        </div>
-                        
-                        {/* Horizontal Multi-Column Grid */}
-                        <div className="grid grid-cols-3 gap-6 mb-6">
-                          {item.dropdown.map((dropdownItem, index) => {
-                            const DropdownIcon = dropdownItem.icon;
-                            const isFeatured = dropdownItem.featured;
-                            
-                            return (
-                              <div
-                                key={dropdownItem.name}
-                                className={`group relative bg-gray-50/50 hover:bg-white border border-gray-200/60 hover:border-gray-300 rounded-xl p-5 transition-all duration-300 hover:shadow-lg cursor-pointer ${
-                                  isFeatured ? 'col-span-2 row-span-1' : ''
-                                }`}
-                                onClick={() => {
-                                  handleNavClick(dropdownItem.href);
-                                  setHoveredItem(null);
-                                }}
-                              >
-                                {/* Featured Card with Image */}
-                                {isFeatured && dropdownItem.image ? (
-                                  <div className="flex gap-4">
-                                    <div className="flex-shrink-0">
-                                      <img 
-                                        src={dropdownItem.image}
-                                        alt={dropdownItem.name}
-                                        className="w-20 h-20 rounded-lg object-cover shadow-md"
-                                      />
-                                    </div>
-                                    <div className="flex-grow">
-                                      <div className="flex items-center gap-2 mb-2">
-                                        <div className="w-8 h-8 bg-gray-200 group-hover:bg-primary/10 rounded-lg flex items-center justify-center transition-colors">
-                                          <DropdownIcon className="w-4 h-4 text-gray-600 group-hover:text-primary" />
-                                        </div>
-                                        <h4 className="text-lg font-semibold text-gray-900 group-hover:text-primary transition-colors">
-                                          {dropdownItem.name}
-                                        </h4>
-                                        <span className="ml-auto text-xs font-medium bg-primary/10 text-primary px-2 py-1 rounded-full">
-                                          Featured
-                                        </span>
-                                      </div>
-                                      <p className="text-sm text-gray-600 leading-relaxed mb-3">
-                                        {dropdownItem.description}
-                                      </p>
-                                      <span className="inline-flex items-center text-sm font-medium text-primary group-hover:text-primary/80 transition-colors">
-                                        Learn more →
-                                      </span>
-                                    </div>
-                                  </div>
-                                ) : (
-                                  /* Regular Cards */
-                                  <div className="text-center">
-                                    <div className="w-12 h-12 bg-gray-200 group-hover:bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-3 transition-colors">
-                                      <DropdownIcon className="w-6 h-6 text-gray-600 group-hover:text-primary" />
-                                    </div>
-                                    <h4 className="font-semibold text-gray-900 group-hover:text-primary transition-colors mb-2">
-                                      {dropdownItem.name}
-                                    </h4>
-                                    <p className="text-sm text-gray-600 leading-relaxed mb-3">
-                                      {dropdownItem.description}
-                                    </p>
-                                    <span className="inline-flex items-center text-sm font-medium text-primary group-hover:text-primary/80 transition-colors">
-                                      Explore →
-                                    </span>
-                                  </div>
-                                )}
-                              </div>
-                            );
-                          })}
-                        </div>
-                        
-                        {/* Footer CTA Section */}
-                        <div className="pt-4 border-t border-gray-200">
-                          <div className="flex items-center justify-between">
-                            <div>
-                              <h4 className="font-semibold text-gray-900 mb-1">
-                                {item.name === 'Merch' && 'Ready to represent S2PGGs?'}
-                                {item.name === 'Content' && 'Never miss an update'}
-                                {item.name === 'Our Team' && 'Want to join our team?'}
-                              </h4>
-                              <p className="text-sm text-gray-600">
-                                {item.name === 'Merch' && 'Browse our complete collection of premium merchandise'}
-                                {item.name === 'Content' && 'Subscribe to stay updated with all our latest content'}
-                                {item.name === 'Our Team' && 'Connect with us and explore opportunities'}
-                              </p>
-                            </div>
+                      <div className="p-6">
+                        <div className="space-y-1">
+                          {item.dropdown.map((dropdownItem) => (
                             <button
+                              key={dropdownItem.name}
                               onClick={() => {
-                                if (item.name === 'Merch') {
-                                  handleNavClick('/shop');
-                                } else if (item.name === 'Content') {
-                                  handleNavClick('#content');
-                                } else if (item.name === 'Our Team') {
-                                  window.open('https://discord.gg/Hyu6j4RFrp', '_blank');
-                                }
+                                handleNavClick(dropdownItem.href);
                                 setHoveredItem(null);
                               }}
-                              className="px-6 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-lg transition-all duration-200 font-medium whitespace-nowrap hover:scale-[1.02]"
+                              className="group w-full text-left p-3 rounded-xl hover:bg-gray-50 transition-all duration-200"
                             >
-                              {item.name === 'Merch' && 'Shop Now'}
-                              {item.name === 'Content' && 'View All'}
-                              {item.name === 'Our Team' && 'Join Discord'}
+                              <div className="font-semibold text-gray-900 group-hover:text-primary transition-colors mb-1">
+                                {dropdownItem.name}
+                              </div>
+                              <div className="text-sm text-gray-500 group-hover:text-gray-700 transition-colors">
+                                {dropdownItem.description}
+                              </div>
                             </button>
-                          </div>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -341,81 +172,91 @@ const Navigation = () => {
             })}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:flex items-center">
+          {/* Right Side Actions */}
+          <div className="hidden lg:flex items-center space-x-4">
             <Button 
-              className="esports-button"
+              variant="ghost"
+              size="sm"
+              className={`rounded-full px-4 ${
+                isScrolled 
+                  ? 'text-gray-600 hover:text-gray-900 hover:bg-gray-100' 
+                  : 'text-white/90 hover:text-white hover:bg-white/10'
+              }`}
+            >
+              Login
+            </Button>
+            <Button 
+              className="rounded-full px-6 bg-gray-900 hover:bg-gray-800 text-white shadow-lg hover:shadow-xl transition-all duration-300"
               onClick={() => window.open('https://discord.gg/Hyu6j4RFrp', '_blank')}
             >
               Join S2PGGs
             </Button>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* Mobile Menu Button */}
+          <div className="lg:hidden">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-foreground hover:bg-muted/50"
+              className={`rounded-full ${
+                isScrolled 
+                  ? 'text-gray-700 hover:bg-gray-100' 
+                  : 'text-white hover:bg-white/10'
+              }`}
             >
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </Button>
           </div>
         </div>
 
-        {/* Enhanced Mobile Navigation */}
+        {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden animate-fade-in">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-md rounded-xl border border-gray-200/50 mt-2 shadow-lg">
-              {navItems.map((item) => {
-                const IconComponent = item.icon;
-                const hasDropdown = item.dropdown && item.dropdown.length > 0;
-                
-                return (
-                  <div key={item.name} className="space-y-1">
-                    <button
-                      onClick={() => !hasDropdown && handleNavClick(item.href, (item as any).external)}
-                      className="nav-link flex items-center justify-between space-x-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition-all duration-300 w-full text-left"
-                    >
-                      <div className="flex items-center space-x-3">
-                        <IconComponent size={18} className="text-gray-600" />
+          <div className="lg:hidden animate-fade-in">
+            <div className="px-4 py-6 bg-white/95 backdrop-blur-xl rounded-2xl border border-gray-200/50 mt-4 shadow-xl mb-4">
+              <div className="space-y-2">
+                {navItems.map((item) => {
+                  const hasDropdown = item.dropdown && item.dropdown.length > 0;
+                  
+                  return (
+                    <div key={item.name} className="space-y-1">
+                      <button
+                        onClick={() => !hasDropdown && handleNavClick(item.href)}
+                        className="flex items-center justify-between w-full px-4 py-3 rounded-xl hover:bg-gray-50 transition-all duration-200 text-left"
+                      >
                         <span className="font-medium text-gray-900">{item.name}</span>
-                      </div>
+                        {hasDropdown && (
+                          <ChevronDown size={16} className="text-gray-400" />
+                        )}
+                      </button>
+                      
                       {hasDropdown && (
-                        <ChevronDown size={16} className="text-gray-400" />
-                      )}
-                    </button>
-                    
-                    {/* Mobile Dropdown Items */}
-                    {hasDropdown && (
-                      <div className="ml-4 space-y-1">
-                        {item.dropdown.map((dropdownItem) => {
-                          const DropdownIcon = dropdownItem.icon;
-                          return (
+                        <div className="ml-4 space-y-1">
+                          {item.dropdown.map((dropdownItem) => (
                             <button
                               key={dropdownItem.name}
                               onClick={() => handleNavClick(dropdownItem.href)}
-                              className="w-full text-left p-3 rounded-lg hover:bg-gray-50 transition-all duration-200"
+                              className="block w-full text-left px-4 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all duration-200"
                             >
-                              <div className="flex items-start gap-3">
-                                <DropdownIcon className="w-4 h-4 text-gray-500 mt-0.5" />
-                                <div>
-                                  <div className="font-medium text-gray-900 text-sm">{dropdownItem.name}</div>
-                                  <div className="text-xs text-gray-600 mt-1">{dropdownItem.description}</div>
-                                </div>
-                              </div>
+                              {dropdownItem.name}
                             </button>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-              <div className="pt-2">
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+              
+              <div className="pt-4 mt-6 border-t border-gray-200 space-y-2">
                 <Button 
-                  className="esports-button w-full"
+                  variant="ghost"
+                  className="w-full justify-start rounded-xl text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                >
+                  Login
+                </Button>
+                <Button 
+                  className="w-full rounded-xl bg-gray-900 hover:bg-gray-800 text-white"
                   onClick={() => window.open('https://discord.gg/Hyu6j4RFrp', '_blank')}
                 >
                   Join S2PGGs
