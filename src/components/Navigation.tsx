@@ -120,11 +120,7 @@ const Navigation = () => {
                 >
                   <button
                     onClick={() => !hasDropdown && handleNavClick(item.href)}
-                    className={`flex items-center space-x-2 px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                      isScrolled || hoveredItem === item.name
-                        ? 'text-gray-700 hover:text-gray-900 hover:bg-gray-100/80' 
-                        : 'text-white/90 hover:text-white hover:bg-white/10'
-                    }`}
+                    className="flex items-center space-x-2 px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 text-gray-700 hover:text-gray-900 hover:bg-gray-100/80"
                   >
                     <span>{item.name}</span>
                     {hasDropdown && (
@@ -177,11 +173,7 @@ const Navigation = () => {
             <Button 
               variant="ghost"
               size="sm"
-              className={`rounded-full px-4 ${
-                isScrolled 
-                  ? 'text-gray-600 hover:text-gray-900 hover:bg-gray-100' 
-                  : 'text-white/90 hover:text-white hover:bg-white/10'
-              }`}
+              className="rounded-full px-4 text-gray-600 hover:text-gray-900 hover:bg-gray-100"
             >
               Login
             </Button>
@@ -199,11 +191,7 @@ const Navigation = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`rounded-full ${
-                isScrolled 
-                  ? 'text-gray-700 hover:bg-gray-100' 
-                  : 'text-white hover:bg-white/10'
-              }`}
+              className="rounded-full text-gray-700 hover:bg-gray-100"
             >
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </Button>
