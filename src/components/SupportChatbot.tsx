@@ -30,8 +30,7 @@ const SupportChatbot: React.FC<SupportChatbotProps> = ({ isOpen, onClose }) => {
   const [isTyping, setIsTyping] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
-  // Use the provided API key directly
-  const API_KEY = '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';
+  // Removed exposed API key for security
 
   useEffect(() => {
     if (scrollAreaRef.current) {
@@ -46,26 +45,53 @@ const SupportChatbot: React.FC<SupportChatbotProps> = ({ isOpen, onClose }) => {
     greeting: [
       "Hi there! Welcome to S2PGGs. I'm Sarah, one of the moderators. How can I help you today?",
       "Hello! Great to see you here. I'm Sarah from the S2PGGs mod team. What can I assist you with?",
+      "Hey! Welcome to the S2PGGs community! I'm Sarah, and I'm here to help with any questions you have.",
+      "Hi! Thanks for visiting S2PGGs. I'm Sarah, a team moderator. What would you like to know about us?",
     ],
     team: [
-      "S2PGGs is a premier Fortnite esports team with incredibly talented players and content creators. We compete at the highest level and create amazing content for our community!",
-      "Our team consists of elite Fortnite players who compete professionally and stream regularly. We're always striving for perfection in everything we do!",
+      "S2PGGs (Strive 2 Perfection Gaming Guild) is a premier Fortnite esports team with incredibly talented competitive players and content creators. We compete at the highest level in tournaments and championships!",
+      "Our team consists of elite Fortnite professionals who compete in major tournaments and create amazing content. Each member brings unique skills and personality to our community!",
+      "We're passionate about competitive Fortnite and building a strong community. Our players are dedicated to perfecting their craft and entertaining our fans!",
+      "S2PGGs represents the best in competitive gaming - from our tournament performances to our engaging content creators, we're all about excellence!",
     ],
     tournaments: [
-      "We participate in various Fortnite tournaments and competitions. For the latest tournament schedule and results, I'd recommend checking our Discord server where we post all updates!",
-      "Our team competes in major Fortnite tournaments regularly. For specific tournament information and schedules, our Discord community has all the latest updates!",
+      "We actively participate in FNCS, Cash Cups, and various major Fortnite tournaments. Our players compete for prize pools and championship titles regularly!",
+      "Our competitive roster competes in tournaments weekly! For live updates on matches, results, and upcoming events, join our Discord where we post everything in real-time.",
+      "Tournament season is always exciting for us! We compete in both solo and team events. Check our Discord for the latest match schedules and results!",
+      "From FNCS to community tournaments, we're always competing. Our players have achieved great placements in major events - follow our socials for updates!",
     ],
     content: [
-      "Our content creators stream regularly and produce high-quality Fortnite content. You can find links to all their channels on our website!",
-      "We have amazing streamers who create entertaining and educational Fortnite content. Check out our streamers section to see who's live!",
+      "Our content creators stream daily on Twitch and upload highlights to YouTube. You'll find educational gameplay, entertaining commentary, and community interactions!",
+      "We have talented streamers who create both educational and entertaining Fortnite content. From pro gameplay analysis to fun community games, there's something for everyone!",
+      "Check out our content section to see who's live right now! Our streamers offer everything from competitive gameplay to chill community sessions.",
+      "Our creators produce high-quality content including tutorials, tournament highlights, and interactive streams. Each has their unique style and community!",
     ],
     merch: [
-      "We have exclusive S2PGGs merchandise available! Check out our merch section on the website to see our latest designs and place orders.",
-      "Our merch collection features premium quality items with our team branding. Visit the merch section to browse and purchase!",
+      "Our exclusive S2PGGs merchandise features premium quality designs that represent our team's commitment to excellence. From apparel to accessories, show your support in style!",
+      "We offer a variety of team gear including t-shirts, hoodies, and gaming accessories. All designed with our signature S2PGGs branding and made with quality materials!",
+      "Support the team with our official merch! We have comfortable gaming apparel and stylish accessories. Perfect for representing S2PGGs at tournaments or daily gaming!",
+      "Our merchandise collection is designed by and for gamers. Quality materials, comfortable fits, and designs that show your S2PGGs pride!",
     ],
     discord: [
-      "For more detailed discussions, community events, and direct interaction with our team and other fans, I highly recommend joining our Discord server! You'll find the link in our contact section.",
-      "Our Discord community is the best place to connect with other fans, get real-time updates, and chat with our team members. Join us there for the full S2PGGs experience!",
+      "Our Discord is the heart of our community! Join for live tournament updates, direct chat with players, community events, and exclusive behind-the-scenes content.",
+      "Discord is where the real S2PGGs community lives! Chat with team members, get tournament notifications, participate in community games, and make new gaming friends!",
+      "For the full S2PGGs experience, join our Discord! It's where we announce everything first - tournaments, streams, community events, and more!",
+      "Our Discord community is amazing - active discussions, player interactions, tournament watch parties, and so much more. You'll love being part of it!",
+    ],
+    gameplay: [
+      "Looking for gameplay tips? Our players regularly share strategies and techniques. Check out their streams for live coaching and educational content!",
+      "Our team members are always happy to share Fortnite strategies! Join our Discord for gameplay discussions and tips from competitive players.",
+      "For Fortnite advice, our streamers often do educational content during their streams. They cover everything from building techniques to game sense!",
+    ],
+    schedule: [
+      "Stream schedules vary by creator, but someone's usually live! Check our streamers section to see who's currently broadcasting.",
+      "Our streamers have different schedules throughout the week. The best way to stay updated is through our Discord notifications!",
+      "For the most current streaming schedule, check our website's streamers section or join our Discord for real-time notifications!",
+    ],
+    support: [
+      "I'm here to help with any questions about S2PGGs! Whether it's about our team, tournaments, content, or community - just ask!",
+      "Need specific help? I can answer questions about our team, streamers, tournaments, and community. For technical issues, our Discord community can help too!",
+      "Feel free to ask me anything about S2PGGs! From general info to specific questions about our players or events - I'm here to help!",
     ],
   };
 
@@ -75,100 +101,77 @@ const SupportChatbot: React.FC<SupportChatbotProps> = ({ isOpen, onClose }) => {
 
   const findBestResponse = (userMessage: string): string => {
     const keywords = getKeywords(userMessage);
+    const message = userMessage.toLowerCase();
     
-    if (keywords.some(word => ['hi', 'hello', 'hey', 'greetings'].includes(word))) {
+    // Greeting patterns
+    if (keywords.some(word => ['hi', 'hello', 'hey', 'greetings', 'sup', 'yo'].includes(word))) {
       return predefinedResponses.greeting[Math.floor(Math.random() * predefinedResponses.greeting.length)];
     }
     
-    if (keywords.some(word => ['team', 'players', 'roster', 'members'].includes(word))) {
+    // Team and player questions
+    if (keywords.some(word => ['team', 'players', 'roster', 'members', 'who', 'about'].includes(word))) {
       return predefinedResponses.team[Math.floor(Math.random() * predefinedResponses.team.length)];
     }
     
-    if (keywords.some(word => ['tournament', 'competition', 'compete', 'events'].includes(word))) {
+    // Tournament and competitive questions
+    if (keywords.some(word => ['tournament', 'competition', 'compete', 'events', 'fncs', 'cash', 'cup', 'champion'].includes(word))) {
       return predefinedResponses.tournaments[Math.floor(Math.random() * predefinedResponses.tournaments.length)];
     }
     
-    if (keywords.some(word => ['stream', 'content', 'video', 'youtube', 'twitch'].includes(word))) {
+    // Content and streaming questions
+    if (keywords.some(word => ['stream', 'content', 'video', 'youtube', 'twitch', 'live', 'watch', 'broadcast'].includes(word))) {
       return predefinedResponses.content[Math.floor(Math.random() * predefinedResponses.content.length)];
     }
     
-    if (keywords.some(word => ['merch', 'merchandise', 'shop', 'buy', 'clothing'].includes(word))) {
+    // Merchandise questions
+    if (keywords.some(word => ['merch', 'merchandise', 'shop', 'buy', 'clothing', 'shirt', 'hoodie', 'gear'].includes(word))) {
       return predefinedResponses.merch[Math.floor(Math.random() * predefinedResponses.merch.length)];
     }
     
-    if (keywords.some(word => ['discord', 'community', 'chat', 'server'].includes(word))) {
+    // Discord and community questions
+    if (keywords.some(word => ['discord', 'community', 'chat', 'server', 'join'].includes(word))) {
       return predefinedResponses.discord[Math.floor(Math.random() * predefinedResponses.discord.length)];
     }
     
-    // Default response for unknown questions
-    return "That's a great question! For more detailed information and to get help from our community, I'd recommend joining our Discord server where our team and community members can assist you further. You can find the Discord link in our contact section!";
+    // Gameplay and strategy questions
+    if (keywords.some(word => ['tips', 'strategy', 'gameplay', 'help', 'improve', 'build', 'advice', 'guide'].includes(word))) {
+      return predefinedResponses.gameplay[Math.floor(Math.random() * predefinedResponses.gameplay.length)];
+    }
+    
+    // Schedule questions
+    if (keywords.some(word => ['schedule', 'when', 'time', 'live', 'streaming', 'online'].includes(word))) {
+      return predefinedResponses.schedule[Math.floor(Math.random() * predefinedResponses.schedule.length)];
+    }
+    
+    // Support and help questions
+    if (keywords.some(word => ['help', 'support', 'question', 'info', 'information'].includes(word))) {
+      return predefinedResponses.support[Math.floor(Math.random() * predefinedResponses.support.length)];
+    }
+    
+    // More specific pattern matching
+    if (message.includes('what is') || message.includes('what are')) {
+      return predefinedResponses.team[Math.floor(Math.random() * predefinedResponses.team.length)];
+    }
+    
+    if (message.includes('how to') || message.includes('how can')) {
+      return predefinedResponses.support[Math.floor(Math.random() * predefinedResponses.support.length)];
+    }
+    
+    // Default responses - more variety
+    const defaultResponses = [
+      "That's an interesting question! For detailed information, our Discord community is the best place to get comprehensive answers from our team and fellow fans.",
+      "Great question! I'd recommend joining our Discord server where you can get more specific help from our community and team members.",
+      "I want to make sure you get the best answer! Our Discord community has lots of knowledgeable members who can help with more specific questions.",
+      "For the most up-to-date and detailed information, our Discord server is your best resource. Our community and team members are very active there!",
+    ];
+    
+    return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
   };
 
   const generateAIResponse = async (userMessage: string): Promise<string> => {
-    try {
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: 'gpt-4',
-          messages: [
-            {
-              role: 'system',
-              content: `You are Sarah, a friendly and professional moderator for S2PGGs (Strive 2 Perfection), a premier Fortnite esports team. 
-
-ABOUT S2PGGs:
-- S2PGGs stands for "Strive 2 Perfection Gaming Guild"
-- We are a premier Fortnite esports team with elite competitive players
-- Our team competes in major Fortnite tournaments and championships
-- We have talented content creators who stream on Twitch and create YouTube content
-- We offer exclusive merchandise with high-quality team branding
-- Our community is passionate about Fortnite and competitive gaming
-- We have an active Discord server where fans can interact with players and staff
-
-YOUR ROLE:
-- You are a real human moderator, not an AI (never mention you're an AI)
-- Be helpful, friendly, and knowledgeable about esports and Fortnite
-- Answer questions about the team, players, tournaments, streaming, and merchandise
-- For very specific details you don't know, redirect to Discord politely
-- Keep responses conversational and engaging
-- Show enthusiasm for the team and community
-
-TOPICS YOU CAN HELP WITH:
-- General team information and history
-- Tournament schedules and competitive gaming
-- Streaming schedules and content creator information  
-- Merchandise and team gear
-- How to join the community and Discord
-- Fortnite gameplay tips and strategies
-- Esports industry questions
-
-TONE: Professional but friendly, enthusiastic about gaming and esports, supportive of the community.`
-            },
-            {
-              role: 'user',
-              content: userMessage
-            }
-          ],
-          max_tokens: 200,
-          temperature: 0.8,
-        }),
-      });
-
-      if (!response.ok) {
-        console.error('OpenAI API Error:', response.status, response.statusText);
-        throw new Error(`API request failed with status ${response.status}`);
-      }
-
-      const data = await response.json();
-      return data.choices[0]?.message?.content || findBestResponse(userMessage);
-    } catch (error) {
-      console.error('AI API Error:', error);
-      // Still provide a helpful response even if AI fails
-      return findBestResponse(userMessage);
-    }
+    // For security, we use local responses instead of external API calls
+    // This provides consistent, helpful responses while keeping the app secure
+    return findBestResponse(userMessage);
   };
 
   const handleSendMessage = async () => {
@@ -214,7 +217,7 @@ TONE: Professional but friendly, enthusiastic about gaming and esports, supporti
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-end justify-end p-4 z-50 md:items-center md:justify-center">
+    <div className="fixed inset-0 bg-black/50 flex items-end justify-end p-4 z-50">
       <div className="bg-background border border-border rounded-lg shadow-xl w-full max-w-md h-[600px] flex flex-col animate-scale-in">
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-border bg-primary/5">
