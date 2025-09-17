@@ -51,7 +51,11 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-black border-b border-gray-800">
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+      isScrolled 
+        ? 'bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm' 
+        : 'bg-white/80 backdrop-blur-sm border-b border-gray-200/30'
+    }`}>
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -74,7 +78,7 @@ const Navigation = () => {
               <button
                 key={item.name}
                 onClick={() => handleNavClick(item.href)}
-                className="text-white text-sm font-medium tracking-wide hover:text-yellow-400 transition-colors duration-200 uppercase"
+                className="text-gray-900 text-sm font-medium tracking-wide hover:text-primary transition-colors duration-200 uppercase"
               >
                 {item.name}
               </button>
@@ -83,17 +87,17 @@ const Navigation = () => {
 
           {/* Right Side Actions */}
           <div className="hidden lg:flex items-center space-x-4">
-            <button className="flex items-center space-x-1 text-white text-sm font-medium hover:text-yellow-400 transition-colors">
+            <button className="flex items-center space-x-1 text-gray-900 text-sm font-medium hover:text-primary transition-colors">
               <span>ENGLISH</span>
               <ChevronDown size={14} />
             </button>
-            <button className="text-white hover:text-yellow-400 transition-colors p-2">
+            <button className="text-gray-900 hover:text-primary transition-colors p-2">
               <Search size={18} />
             </button>
-            <button className="text-white hover:text-yellow-400 transition-colors p-2">
+            <button className="text-gray-900 hover:text-primary transition-colors p-2">
               <User size={18} />
             </button>
-            <button className="text-white hover:text-yellow-400 transition-colors p-2">
+            <button className="text-gray-900 hover:text-primary transition-colors p-2">
               <ShoppingCart size={18} />
             </button>
           </div>
@@ -102,7 +106,7 @@ const Navigation = () => {
           <div className="lg:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white p-2"
+              className="text-gray-900 p-2"
             >
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -112,28 +116,28 @@ const Navigation = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="lg:hidden">
-            <div className="bg-black border-t border-gray-800 py-4">
+            <div className="bg-white/95 backdrop-blur-xl border-t border-gray-200 py-4">
               <div className="space-y-2">
                 {navItems.map((item) => (
                   <button
                     key={item.name}
                     onClick={() => handleNavClick(item.href)}
-                    className="block w-full text-left px-4 py-3 text-white hover:text-yellow-400 transition-colors text-sm font-medium tracking-wide uppercase"
+                    className="block w-full text-left px-4 py-3 text-gray-900 hover:text-primary transition-colors text-sm font-medium tracking-wide uppercase"
                   >
                     {item.name}
                   </button>
                 ))}
               </div>
               
-              <div className="pt-4 mt-4 border-t border-gray-800 px-4 space-y-2">
-                <button className="flex items-center space-x-1 text-white text-sm font-medium">
+              <div className="pt-4 mt-4 border-t border-gray-200 px-4 space-y-2">
+                <button className="flex items-center space-x-1 text-gray-900 text-sm font-medium">
                   <span>ENGLISH</span>
                   <ChevronDown size={14} />
                 </button>
                 <div className="flex items-center space-x-4 pt-2">
-                  <Search size={18} className="text-white" />
-                  <User size={18} className="text-white" />
-                  <ShoppingCart size={18} className="text-white" />
+                  <Search size={18} className="text-gray-900" />
+                  <User size={18} className="text-gray-900" />
+                  <ShoppingCart size={18} className="text-gray-900" />
                 </div>
               </div>
             </div>
