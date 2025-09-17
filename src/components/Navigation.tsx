@@ -1,12 +1,29 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Search, User, ShoppingCart, ChevronDown } from 'lucide-react';
+import { Menu, X, Search, User, ShoppingCart, ChevronDown, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate, useLocation } from 'react-router-dom';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [selectedLanguage, setSelectedLanguage] = useState('EN');
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [cartItems, setCartItems] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -50,11 +67,34 @@ const Navigation = () => {
     { name: 'ABOUT', href: '#team' },
   ];
 
+  const languages = [
+    { code: 'EN', name: 'English', flag: '🇺🇸' },
+    { code: 'ES', name: 'Español', flag: '🇪🇸' },
+    { code: 'FR', name: 'Français', flag: '🇫🇷' },
+    { code: 'DE', name: 'Deutsch', flag: '🇩🇪' },
+    { code: 'IT', name: 'Italiano', flag: '🇮🇹' },
+    { code: 'PT', name: 'Português', flag: '🇵🇹' },
+  ];
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      // Here you would implement actual search functionality
+      console.log('Searching for:', searchQuery);
+      setIsSearchOpen(false);
+      setSearchQuery('');
+    }
+  };
+
+  const handleCartClick = () => {
+    navigate('/shop');
+  };
+
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       isScrolled 
         ? 'bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm' 
-        : 'bg-white/80 backdrop-blur-sm border-b border-gray-200/30'
+        : 'bg-transparent border-b border-transparent'
     }`}>
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
@@ -63,10 +103,10 @@ const Navigation = () => {
             className="flex items-center space-x-3 cursor-pointer"
             onClick={() => navigate('/')}
           >
-            <div className="w-8 h-8">
+            <div className="w-10 h-10">
               <img 
-                src="/lovable-uploads/6af2116b-6281-4072-b96b-cec7ad59b43a.png" 
-                alt="S2PGGs Logo" 
+                src="/assets/s2p-logo.png" 
+                alt="Strive 2 Perfection Logo" 
                 className="w-full h-full object-contain"
               />
             </div>
@@ -87,18 +127,78 @@ const Navigation = () => {
 
           {/* Right Side Actions */}
           <div className="hidden lg:flex items-center space-x-4">
-            <button className="flex items-center space-x-1 text-gray-900 text-sm font-medium hover:text-primary transition-colors">
-              <span>ENGLISH</span>
-              <ChevronDown size={14} />
-            </button>
-            <button className="text-gray-900 hover:text-primary transition-colors p-2">
-              <Search size={18} />
-            </button>
-            <button className="text-gray-900 hover:text-primary transition-colors p-2">
+            {/* Language Selector */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="flex items-center space-x-1 text-gray-900 text-sm font-medium hover:text-primary transition-colors">
+                  <Globe size={16} />
+                  <span>{selectedLanguage}</span>
+                  <ChevronDown size={14} />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-40">
+                {languages.map((lang) => (
+                  <DropdownMenuItem
+                    key={lang.code}
+                    onClick={() => setSelectedLanguage(lang.code)}
+                    className="flex items-center space-x-2 cursor-pointer"
+                  >
+                    <span>{lang.flag}</span>
+                    <span>{lang.name}</span>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {/* Search Button */}
+            <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
+              <DialogTrigger asChild>
+                <button className="text-gray-900 hover:text-primary transition-colors p-2">
+                  <Search size={18} />
+                </button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle>Search</DialogTitle>
+                </DialogHeader>
+                <form onSubmit={handleSearch} className="space-y-4">
+                  <Input
+                    type="text"
+                    placeholder="Search products, teams, content..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full"
+                    autoFocus
+                  />
+                  <div className="flex justify-end space-x-2">
+                    <Button type="button" variant="outline" onClick={() => setIsSearchOpen(false)}>
+                      Cancel
+                    </Button>
+                    <Button type="submit">Search</Button>
+                  </div>
+                </form>
+              </DialogContent>
+            </Dialog>
+
+            {/* User Account */}
+            <button 
+              onClick={() => navigate('/account')}
+              className="text-gray-900 hover:text-primary transition-colors p-2"
+            >
               <User size={18} />
             </button>
-            <button className="text-gray-900 hover:text-primary transition-colors p-2">
+
+            {/* Shopping Cart */}
+            <button 
+              onClick={handleCartClick}
+              className="relative text-gray-900 hover:text-primary transition-colors p-2"
+            >
               <ShoppingCart size={18} />
+              {cartItems > 0 && (
+                <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartItems}
+                </span>
+              )}
             </button>
           </div>
 
@@ -130,14 +230,43 @@ const Navigation = () => {
               </div>
               
               <div className="pt-4 mt-4 border-t border-gray-200 px-4 space-y-2">
-                <button className="flex items-center space-x-1 text-gray-900 text-sm font-medium">
-                  <span>ENGLISH</span>
-                  <ChevronDown size={14} />
-                </button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <button className="flex items-center space-x-1 text-gray-900 text-sm font-medium w-full justify-start">
+                      <Globe size={16} />
+                      <span>{selectedLanguage}</span>
+                      <ChevronDown size={14} />
+                    </button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start" className="w-40">
+                    {languages.map((lang) => (
+                      <DropdownMenuItem
+                        key={lang.code}
+                        onClick={() => setSelectedLanguage(lang.code)}
+                        className="flex items-center space-x-2 cursor-pointer"
+                      >
+                        <span>{lang.flag}</span>
+                        <span>{lang.name}</span>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+                
                 <div className="flex items-center space-x-4 pt-2">
-                  <Search size={18} className="text-gray-900" />
-                  <User size={18} className="text-gray-900" />
-                  <ShoppingCart size={18} className="text-gray-900" />
+                  <button onClick={() => setIsSearchOpen(true)}>
+                    <Search size={18} className="text-gray-900" />
+                  </button>
+                  <button onClick={() => navigate('/account')}>
+                    <User size={18} className="text-gray-900" />
+                  </button>
+                  <button onClick={handleCartClick} className="relative">
+                    <ShoppingCart size={18} className="text-gray-900" />
+                    {cartItems > 0 && (
+                      <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center text-[10px]">
+                        {cartItems}
+                      </span>
+                    )}
+                  </button>
                 </div>
               </div>
             </div>
