@@ -94,7 +94,7 @@ const Navigation = () => {
     <nav className={`fixed w-full z-40 transition-all duration-300 ${
       isScrolled 
         ? 'top-0 bg-white backdrop-blur-xl shadow-sm' 
-        : 'top-8 bg-transparent'
+        : 'top-8 bg-transparent hover:bg-white/95 hover:backdrop-blur-xl hover:shadow-sm'
     }`}>
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20">
