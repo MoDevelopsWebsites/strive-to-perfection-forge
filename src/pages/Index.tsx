@@ -2,7 +2,7 @@ import Navigation from '@/components/Navigation';
 import AnnouncementBanner from '@/components/AnnouncementBanner';
 import VitalityHeroSection from '@/components/VitalityHeroSection';
 import SponsorsSection from '@/components/SponsorsSection';
-import TeamSection from '@/components/TeamSection';
+import ProductsSection from '@/components/ProductsSection';
 import StreamersSection from '@/components/StreamersSection';
 import ContentSection from '@/components/ContentSection';
 import MerchSection from '@/components/MerchSection';
@@ -19,7 +19,7 @@ const Index = () => {
       <main>
         <VitalityHeroSection />
         <SponsorsSection />
-        <TeamSection />
+        <ProductsSection />
         <StreamersSection />
         <ContentSection />
         <MerchSection />
