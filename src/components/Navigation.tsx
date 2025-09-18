@@ -93,17 +93,17 @@ const Navigation = () => {
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       isScrolled 
-        ? 'bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm' 
-        : 'bg-transparent border-b border-transparent'
+        ? 'bg-white backdrop-blur-xl border-b border-gray-200/50 shadow-sm' 
+        : 'bg-white/0 border-b border-transparent'
     }`}>
       <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div 
             className="flex items-center space-x-3 cursor-pointer"
             onClick={() => navigate('/')}
           >
-            <div className="w-10 h-10">
+            <div className="w-12 h-12">
               <img 
                 src="/assets/s2p-logo.png" 
                 alt="Strive 2 Perfection Logo" 
@@ -118,7 +118,9 @@ const Navigation = () => {
               <button
                 key={item.name}
                 onClick={() => handleNavClick(item.href)}
-                className="text-gray-900 text-sm font-medium tracking-wide hover:text-primary transition-colors duration-200 uppercase"
+                className={`text-sm font-medium tracking-wide transition-colors duration-200 uppercase ${
+                  isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600'
+                }`}
               >
                 {item.name}
               </button>
@@ -130,7 +132,9 @@ const Navigation = () => {
             {/* Language Selector */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <button className="flex items-center space-x-1 text-gray-900 text-sm font-medium hover:text-primary transition-colors">
+                <button className={`flex items-center space-x-1 text-sm font-medium transition-colors ${
+                  isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600'
+                }`}>
                   <Globe size={16} />
                   <span>{selectedLanguage}</span>
                   <ChevronDown size={14} />
@@ -153,7 +157,9 @@ const Navigation = () => {
             {/* Search Button */}
             <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
               <DialogTrigger asChild>
-                <button className="text-gray-900 hover:text-primary transition-colors p-2">
+                <button className={`transition-colors p-2 ${
+                  isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600'
+                }`}>
                   <Search size={18} />
                 </button>
               </DialogTrigger>
@@ -183,7 +189,9 @@ const Navigation = () => {
             {/* User Account */}
             <button 
               onClick={() => navigate('/account')}
-              className="text-gray-900 hover:text-primary transition-colors p-2"
+              className={`transition-colors p-2 ${
+                isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600'
+              }`}
             >
               <User size={18} />
             </button>
@@ -191,7 +199,9 @@ const Navigation = () => {
             {/* Shopping Cart */}
             <button 
               onClick={handleCartClick}
-              className="relative text-gray-900 hover:text-primary transition-colors p-2"
+              className={`relative transition-colors p-2 ${
+                isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600'
+              }`}
             >
               <ShoppingCart size={18} />
               {cartItems > 0 && (

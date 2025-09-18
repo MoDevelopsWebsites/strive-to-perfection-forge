@@ -1,5 +1,7 @@
 import Navigation from '@/components/Navigation';
-import HeroSection from '@/components/HeroSection';
+import AnnouncementBanner from '@/components/AnnouncementBanner';
+import VitalityHeroSection from '@/components/VitalityHeroSection';
+import SponsorsSection from '@/components/SponsorsSection';
 import TeamSection from '@/components/TeamSection';
 import StreamersSection from '@/components/StreamersSection';
 import ContentSection from '@/components/ContentSection';
@@ -11,13 +13,12 @@ import SupportButton from '@/components/SupportButton';
 const Index = () => {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
-      {/* Fixed background gradient for entire page */}
-      <div className="fixed inset-0 hero-gradient -z-50"></div>
-      
+      <AnnouncementBanner />
       <Navigation />
       
       <main>
-        <HeroSection />
+        <VitalityHeroSection />
+        <SponsorsSection />
         <TeamSection />
         <StreamersSection />
         <ContentSection />
