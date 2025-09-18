@@ -61,12 +61,12 @@ const ProductsSection = () => {
           {products.map((product) => (
             <Card 
               key={product.id}
-              className="group cursor-pointer border-0 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 bg-gray-50 hover:bg-white"
+              className="group cursor-pointer border-0 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 bg-gray-50 hover:bg-white rounded-none"
               onClick={() => navigate(`/product/${product.id}`)}
             >
               <CardContent className="p-0">
                 {/* Product Image */}
-                <div className="relative aspect-square bg-gray-100 rounded-t-lg overflow-hidden">
+                <div className="relative aspect-square bg-gray-100 overflow-hidden">
                   <img 
                     src={product.image} 
                     alt={product.name}
@@ -76,12 +76,12 @@ const ProductsSection = () => {
                   {/* Badges */}
                   <div className="absolute top-3 left-3 flex flex-col gap-2">
                     {product.isNew && (
-                      <Badge className="bg-yellow-400 text-black font-bold px-2 py-1 text-xs">
+                      <Badge className="bg-yellow-400 text-black font-bold px-2 py-1 text-xs rounded-none">
                         NEW
                       </Badge>
                     )}
                     {product.isCustomizable && (
-                      <Badge className="bg-blue-600 text-white font-bold px-2 py-1 text-xs">
+                      <Badge className="bg-blue-600 text-white font-bold px-2 py-1 text-xs rounded-none">
                         CUSTOMIZABLE
                       </Badge>
                     )}
@@ -113,9 +113,9 @@ const ProductsSection = () => {
 
         {/* View All Button */}
         <div className="text-center">
-          <Button 
+            <Button 
             variant="outline"
-            className="border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white px-8 py-3 font-bold uppercase tracking-wider transition-all duration-300"
+            className="border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white px-8 py-3 font-bold uppercase tracking-wider transition-all duration-300 rounded-none"
             onClick={() => navigate('/shop')}
           >
             VIEW ALL
