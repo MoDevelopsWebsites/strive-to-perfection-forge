@@ -15,12 +15,12 @@ const VitalityHeroSection = () => {
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="relative z-10 text-center p-8">
-            <h2 className="text-white text-4xl lg:text-5xl font-bold mb-6 drop-shadow-lg">
+          <div className="relative z-10 text-center p-8 flex flex-col items-center justify-center h-full">
+            <h2 className="text-white text-3xl lg:text-4xl font-bold mb-8 drop-shadow-lg tracking-wide uppercase">
               NEW ALTERNATE 2025 COLLECTION
             </h2>
             <Button 
-              className="bg-white text-black hover:bg-gray-200 px-8 py-4 text-base font-normal border-2 border-transparent hover:border-gray-300 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="bg-black text-white hover:bg-gray-800 px-6 py-3 text-sm font-medium uppercase tracking-wider transition-all duration-300"
               onClick={() => window.location.href = '/shop'}
             >
               Discover
