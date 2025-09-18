@@ -91,7 +91,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`fixed w-full z-40 transition-all duration-300 ${
+    <nav className={`fixed w-full z-30 transition-all duration-300 ${
       isScrolled 
         ? 'top-0 bg-white backdrop-blur-xl shadow-sm' 
         : 'top-8 bg-transparent hover:bg-white hover:backdrop-blur-xl hover:shadow-sm'
