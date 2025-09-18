@@ -91,10 +91,10 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-40 transition-all duration-300 ${
+    <nav className={`fixed w-full z-40 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-white backdrop-blur-xl shadow-sm' 
-        : 'bg-transparent'
+        ? 'top-0 bg-white backdrop-blur-xl shadow-sm' 
+        : 'top-8 bg-transparent'
     }`}>
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20">
