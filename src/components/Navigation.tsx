@@ -98,23 +98,24 @@ const Navigation = () => {
     }`}>
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <div 
-            className="flex items-center space-x-3 cursor-pointer"
-            onClick={() => navigate('/')}
-          >
-            <div className="w-12 h-12">
-              <img 
-                src="/assets/s2p-logo.png" 
-                alt="Strive 2 Perfection Logo" 
-                className="w-full h-full object-contain"
-              />
+          {/* Logo and Navigation - Left Side */}
+          <div className="flex items-center space-x-8">
+            {/* Logo */}
+            <div 
+              className="flex items-center space-x-3 cursor-pointer"
+              onClick={() => navigate('/')}
+            >
+              <div className="w-12 h-12">
+                <img 
+                  src="/assets/s2p-logo.png" 
+                  alt="Strive 2 Perfection Logo" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
             </div>
-          </div>
 
-          {/* Desktop Navigation - Centered */}
-          <div className="hidden lg:flex items-center justify-center flex-1">
-            <div className="flex items-center space-x-12">
+            {/* Desktop Navigation - Left aligned */}
+            <div className="hidden lg:flex items-center space-x-8">
               {navItems.map((item) => (
                 <button
                   key={item.name}
