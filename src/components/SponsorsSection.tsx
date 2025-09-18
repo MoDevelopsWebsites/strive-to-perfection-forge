@@ -32,7 +32,7 @@ const SponsorsSection = () => {
             {[...Array(12)].map((_, setIndex) => (
               <div key={setIndex} className="flex items-center space-x-12 flex-shrink-0">
                 {sponsors.map((sponsor, index) => (
-                  <div key={`${setIndex}-${index}`} className="flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
+                  <div key={`${setIndex}-${index}`} className="flex items-center justify-center transition-all duration-300">
                     <img 
                       src={sponsor.logo} 
                       alt={sponsor.name}
