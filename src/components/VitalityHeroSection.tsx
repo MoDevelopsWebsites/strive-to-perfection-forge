@@ -2,9 +2,9 @@ import { Button } from '@/components/ui/button';
 
 const VitalityHeroSection = () => {
   return (
-    <section className="relative min-h-screen bg-white">
+    <section className="relative bg-white pt-20">
       {/* Three panel layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 h-screen">
+      <div className="grid grid-cols-1 lg:grid-cols-3 h-[70vh] lg:h-[80vh]">
         
         {/* Left Panel - Person with jacket */}
         <div className="relative bg-gray-100 flex items-center justify-center overflow-hidden">
@@ -20,7 +20,7 @@ const VitalityHeroSection = () => {
               NEW ALTERNATE 2025 COLLECTION
             </h2>
             <Button 
-              className="bg-white text-black hover:bg-gray-100 px-8 py-3 text-lg font-semibold"
+              className="bg-white text-black hover:bg-gray-200 px-8 py-4 text-base font-normal border-2 border-transparent hover:border-gray-300 transition-all duration-300 shadow-lg hover:shadow-xl"
               onClick={() => window.location.href = '/shop'}
             >
               Discover

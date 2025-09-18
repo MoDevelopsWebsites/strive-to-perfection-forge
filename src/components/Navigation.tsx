@@ -91,13 +91,13 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+    <nav className={`fixed top-8 w-full z-40 transition-all duration-500 ${
       isScrolled 
-        ? 'bg-white backdrop-blur-xl border-b border-gray-200/50 shadow-sm' 
-        : 'bg-white/0 border-b border-transparent'
-    }`}>
+        ? 'bg-white backdrop-blur-xl shadow-sm' 
+        : 'bg-transparent hover:bg-white/95 hover:backdrop-blur-xl hover:shadow-sm'
+    } group`}>
       <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-start justify-between h-20">
           {/* Logo */}
           <div 
             className="flex items-center space-x-3 cursor-pointer"
@@ -113,13 +113,13 @@ const Navigation = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-12 ml-8">
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => handleNavClick(item.href)}
-                className={`text-sm font-medium tracking-wide transition-colors duration-200 uppercase ${
-                  isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600'
+                className={`text-lg font-bold tracking-wide transition-colors duration-200 uppercase ${
+                  isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600 group-hover:text-gray-900'
                 }`}
               >
                 {item.name}
@@ -133,7 +133,7 @@ const Navigation = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button className={`flex items-center space-x-1 text-sm font-medium transition-colors ${
-                  isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600'
+                  isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600 group-hover:text-gray-900'
                 }`}>
                   <Globe size={16} />
                   <span>{selectedLanguage}</span>
@@ -158,7 +158,7 @@ const Navigation = () => {
             <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
               <DialogTrigger asChild>
                 <button className={`transition-colors p-2 ${
-                  isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600'
+                  isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600 group-hover:text-gray-900'
                 }`}>
                   <Search size={18} />
                 </button>
@@ -190,7 +190,7 @@ const Navigation = () => {
             <button 
               onClick={() => navigate('/account')}
               className={`transition-colors p-2 ${
-                isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600'
+                isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600 group-hover:text-gray-900'
               }`}
             >
               <User size={18} />
@@ -200,7 +200,7 @@ const Navigation = () => {
             <button 
               onClick={handleCartClick}
               className={`relative transition-colors p-2 ${
-                isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600'
+                isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600 group-hover:text-gray-900'
               }`}
             >
               <ShoppingCart size={18} />
