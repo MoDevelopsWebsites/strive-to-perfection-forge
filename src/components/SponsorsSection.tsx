@@ -23,17 +23,13 @@ const SponsorsSection = () => {
   ];
 
   return (
-    <section className="bg-white py-16 border-t">
-      <div className="container mx-auto px-6">
+    <section className="bg-white py-16">
+      <div className="w-full px-0">
         <div className="relative overflow-hidden">
-          {/* Gradient fade edges */}
-          <div className="absolute left-0 top-0 w-8 h-full bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute right-0 top-0 w-8 h-full bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
-          
-          {/* Infinite scrolling sponsor logos */}
+          {/* Infinite scrolling sponsor logos - Full width */}
           <div className="flex items-center space-x-12 animate-marquee hover:animate-marquee-paused will-change-transform">
-            {/* Duplicate sponsors for seamless loop */}
-            {[...Array(8)].map((_, setIndex) => (
+            {/* Duplicate sponsors for seamless loop - more repetitions for full coverage */}
+            {[...Array(12)].map((_, setIndex) => (
               <div key={setIndex} className="flex items-center space-x-12 flex-shrink-0">
                 {sponsors.map((sponsor, index) => (
                   <div key={`${setIndex}-${index}`} className="flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">

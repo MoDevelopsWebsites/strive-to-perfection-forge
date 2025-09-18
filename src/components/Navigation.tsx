@@ -97,7 +97,7 @@ const Navigation = () => {
         : 'bg-transparent hover:bg-white/95 hover:backdrop-blur-xl hover:shadow-sm'
     } group`}>
       <div className="container mx-auto px-6">
-        <div className="flex items-start justify-between h-20">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div 
             className="flex items-center space-x-3 cursor-pointer"
@@ -112,19 +112,21 @@ const Navigation = () => {
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-12 ml-8">
-            {navItems.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => handleNavClick(item.href)}
-                className={`text-lg font-bold tracking-wide transition-colors duration-200 uppercase ${
-                  isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600 group-hover:text-gray-900'
-                }`}
-              >
-                {item.name}
-              </button>
-            ))}
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden lg:flex items-center justify-center flex-1">
+            <div className="flex items-center space-x-12">
+              {navItems.map((item) => (
+                <button
+                  key={item.name}
+                  onClick={() => handleNavClick(item.href)}
+                  className={`text-lg font-bold tracking-wide transition-colors duration-200 uppercase ${
+                    isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600 group-hover:text-gray-900'
+                  }`}
+                >
+                  {item.name}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Right Side Actions */}

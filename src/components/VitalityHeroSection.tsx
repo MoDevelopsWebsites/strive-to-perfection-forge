@@ -28,7 +28,18 @@ const VitalityHeroSection = () => {
           </div>
         </div>
 
-        {/* Center Panel - Jersey with gradient background */}
+        {/* Center Panel - Person with jersey */}
+        <div className="relative bg-gray-50 flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0">
+            <img 
+              src="/lovable-uploads/1e954a14-b815-4254-94ed-9762e2ad8379.png" 
+              alt="S2P Team Member" 
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        {/* Right Panel - Jersey with gradient background */}
         <div className="relative flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500"></div>
           <div className="relative z-10 flex items-center justify-center h-full">
@@ -36,17 +47,6 @@ const VitalityHeroSection = () => {
               src="/lovable-uploads/6c6abcc5-cdb4-419a-9113-483835517d96.png" 
               alt="S2P Jersey" 
               className="max-w-md h-auto object-contain drop-shadow-2xl"
-            />
-          </div>
-        </div>
-
-        {/* Right Panel - Person with jersey */}
-        <div className="relative bg-gray-50 flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0">
-            <img 
-              src="/lovable-uploads/1e954a14-b815-4254-94ed-9762e2ad8379.png" 
-              alt="S2P Team Member" 
-              className="w-full h-full object-cover"
             />
           </div>
         </div>
