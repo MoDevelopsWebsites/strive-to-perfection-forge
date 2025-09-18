@@ -49,11 +49,10 @@ const VitalityHeroSection = () => {
               NEW ALTERNATE 2025 COLLECTION
             </h2>
             <button 
-              className="group relative bg-white/10 backdrop-blur-sm text-white border border-white/30 hover:bg-white hover:text-black px-8 py-3 text-sm font-medium uppercase tracking-wider transition-all duration-500 ease-out transform hover:scale-105 hover:shadow-2xl"
+              className="group relative bg-black text-white border-2 border-black hover:bg-white hover:text-black hover:border-white px-8 py-3 text-sm font-medium uppercase tracking-wider transition-all duration-500 ease-out transform hover:scale-105 hover:shadow-2xl"
               onClick={() => window.location.href = '/shop'}
             >
               <span className="relative z-10">Discover</span>
-              <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out"></div>
             </button>
           </div>
         </div>
