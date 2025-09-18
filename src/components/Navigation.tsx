@@ -115,12 +115,12 @@ const Navigation = () => {
             </div>
 
             {/* Desktop Navigation - Left aligned */}
-            <div className="hidden lg:flex items-center space-x-8">
+            <div className="hidden lg:flex items-center space-x-16 ml-12">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => handleNavClick(item.href)}
-                  className={`text-lg font-bold tracking-wide transition-colors duration-200 uppercase ${
+                  className={`text-sm font-bold tracking-wide transition-colors duration-200 uppercase ${
                     isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600'
                   }`}
                 >
