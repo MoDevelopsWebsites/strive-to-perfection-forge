@@ -91,43 +91,38 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`fixed w-full z-30 transition-all duration-300 ${
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       isScrolled 
-        ? 'top-0 bg-white backdrop-blur-xl shadow-sm' 
-        : 'top-8 bg-transparent hover:bg-white hover:backdrop-blur-xl hover:shadow-sm'
+        ? 'bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm' 
+        : 'bg-transparent border-b border-transparent'
     }`}>
       <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo and Navigation - Left Side */}
-          <div className="flex items-center space-x-8">
-            {/* Logo */}
-            <div 
-              className="flex items-center space-x-3 cursor-pointer"
-              onClick={() => navigate('/')}
-            >
-              <div className="w-12 h-12">
-                <img 
-                  src="/assets/s2p-logo.png" 
-                  alt="Strive 2 Perfection Logo" 
-                  className="w-full h-full object-contain"
-                />
-              </div>
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <div 
+            className="flex items-center space-x-3 cursor-pointer"
+            onClick={() => navigate('/')}
+          >
+            <div className="w-10 h-10">
+              <img 
+                src="/assets/s2p-logo.png" 
+                alt="Strive 2 Perfection Logo" 
+                className="w-full h-full object-contain"
+              />
             </div>
+          </div>
 
-            {/* Desktop Navigation - Left aligned */}
-            <div className="hidden lg:flex items-center space-x-16 ml-12">
-              {navItems.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => handleNavClick(item.href)}
-                  className={`text-sm font-bold tracking-wide transition-colors duration-200 uppercase ${
-                    isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600'
-                  }`}
-                >
-                  {item.name}
-                </button>
-              ))}
-            </div>
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-8">
+            {navItems.map((item) => (
+              <button
+                key={item.name}
+                onClick={() => handleNavClick(item.href)}
+                className="text-gray-900 text-sm font-medium tracking-wide hover:text-primary transition-colors duration-200 uppercase"
+              >
+                {item.name}
+              </button>
+            ))}
           </div>
 
           {/* Right Side Actions */}
@@ -135,9 +130,7 @@ const Navigation = () => {
             {/* Language Selector */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <button className={`flex items-center space-x-1 text-sm font-medium transition-colors ${
-                  isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600'
-                }`}>
+                <button className="flex items-center space-x-1 text-gray-900 text-sm font-medium hover:text-primary transition-colors">
                   <Globe size={16} />
                   <span>{selectedLanguage}</span>
                   <ChevronDown size={14} />
@@ -160,9 +153,7 @@ const Navigation = () => {
             {/* Search Button */}
             <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
               <DialogTrigger asChild>
-                <button className={`transition-colors p-2 ${
-                  isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600'
-                }`}>
+                <button className="text-gray-900 hover:text-primary transition-colors p-2">
                   <Search size={18} />
                 </button>
               </DialogTrigger>
@@ -192,9 +183,7 @@ const Navigation = () => {
             {/* User Account */}
             <button 
               onClick={() => navigate('/account')}
-              className={`transition-colors p-2 ${
-                isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600'
-              }`}
+              className="text-gray-900 hover:text-primary transition-colors p-2"
             >
               <User size={18} />
             </button>
@@ -202,9 +191,7 @@ const Navigation = () => {
             {/* Shopping Cart */}
             <button 
               onClick={handleCartClick}
-              className={`relative transition-colors p-2 ${
-                isScrolled ? 'text-gray-900 hover:text-gray-600' : 'text-gray-900 hover:text-gray-600'
-              }`}
+              className="relative text-gray-900 hover:text-primary transition-colors p-2"
             >
               <ShoppingCart size={18} />
               {cartItems > 0 && (

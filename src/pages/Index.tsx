@@ -1,8 +1,6 @@
 import Navigation from '@/components/Navigation';
-import AnnouncementBanner from '@/components/AnnouncementBanner';
-import VitalityHeroSection from '@/components/VitalityHeroSection';
-import SponsorsSection from '@/components/SponsorsSection';
-import ProductsSection from '@/components/ProductsSection';
+import HeroSection from '@/components/HeroSection';
+import TeamSection from '@/components/TeamSection';
 import StreamersSection from '@/components/StreamersSection';
 import ContentSection from '@/components/ContentSection';
 import MerchSection from '@/components/MerchSection';
@@ -13,13 +11,14 @@ import SupportButton from '@/components/SupportButton';
 const Index = () => {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
-      <AnnouncementBanner />
+      {/* Fixed background gradient for entire page */}
+      <div className="fixed inset-0 hero-gradient -z-50"></div>
+      
       <Navigation />
       
       <main>
-        <VitalityHeroSection />
-        <SponsorsSection />
-        <ProductsSection />
+        <HeroSection />
+        <TeamSection />
         <StreamersSection />
         <ContentSection />
         <MerchSection />
